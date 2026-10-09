@@ -138,7 +138,7 @@ class MainActivity : ComponentActivity() {
                 if (customView != null) {
                     hideCustomView()
                 } else if (isImmersive) {
-                    setImmersive(false)
+                    setImmersiveMode(false)
                 } else if (webView.canGoBack()) {
                     webView.goBack()
                 } else {
@@ -727,7 +727,7 @@ class MainActivity : ComponentActivity() {
         }.getOrDefault(false)
     }
 
-    private fun setImmersive(enabled: Boolean) {
+    private fun setImmersiveMode(enabled: Boolean) {
         isImmersive = enabled
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.let { controller ->
@@ -767,7 +767,7 @@ class MainActivity : ComponentActivity() {
         customViewCallback = callback
         webView.visibility = View.GONE
         root.addView(view, FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT))
-        setImmersive(true)
+        setImmersiveMode(true)
     }
 
     private fun hideCustomView() {
@@ -777,7 +777,7 @@ class MainActivity : ComponentActivity() {
         customViewCallback?.onCustomViewHidden()
         customViewCallback = null
         webView.visibility = View.VISIBLE
-        setImmersive(false)
+        setImmersiveMode(false)
     }
 
     private fun storeLoad(): JSONObject {
@@ -974,12 +974,13 @@ class MainActivity : ComponentActivity() {
     private fun handleRequest(channel: String, args: JSONArray): JSONObject {
         val first = args.opt(0)
         return when (channel) {
-            "pv:app-info" -> JSONObject()
-                .put("version", BuildConfig.VERSION_NAME)
-                .put("platform", "android")
-                .put("arch", Build.SUPPORTED_ABIS.firstOrNull() ?: "unknown")
-                .put("locale", Locale.getDefault().toLanguageTag())
-                .put("packaged", true)
+            "pv:app-info" -> JSONObject().apply {
+                put("version", BuildConfig.VERSION_NAME)
+                put("platform", "android")
+                put("arch", Build.SUPPORTED_ABIS.firstOrNull() ?: "unknown")
+                put("locale", Locale.getDefault().toLanguageTag())
+                put("packaged", true)
+            }
             "pv:store-load" -> storeLoad()
             "pv:store-save" -> storeSave(first as? JSONObject ?: JSONObject())
             "pv:store-path" -> JSONObject().put("path", dataFile.absolutePath)
@@ -996,7 +997,7 @@ class MainActivity : ComponentActivity() {
             "pv:show-in-folder" -> JSONObject().put("ok", false)
             "pv:window-action" -> {
                 val action = first?.toString().orEmpty()
-                if (action == "fullscreen") onMain { setImmersive(!isImmersive) }
+                if (action == "fullscreen") onMain { setImmersiveMode(!isImmersive) }
                 JSONObject().put("ok", action == "fullscreen")
             }
             "pv:is-fullscreen" -> JSONObject().put("fullscreen", isImmersive)

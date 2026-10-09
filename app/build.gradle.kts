@@ -20,6 +20,10 @@ android {
     namespace = "app.proudvocab.android"
     compileSdk = 35
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     defaultConfig {
         applicationId = "app.proudvocab.android"
         minSdk = 28 // Android 9 (Pie) and newer
