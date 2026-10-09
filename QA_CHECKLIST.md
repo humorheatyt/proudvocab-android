@@ -6,8 +6,9 @@
 
 - [x] `npm test` — تست‌های entitlement محلی، پل JavaScript و پارسر زیرنویس
 - [x] `node --check` روی JavaScriptهای بسته‌بندی‌شده
-- [ ] `./gradlew testDebugUnitTest lint assembleDebug assembleRelease` در GitHub Actions
-- [ ] بررسی APK با `unzip -t` و `aapt dump badging` در GitHub Actions
+- [x] `./gradlew testDebugUnitTest lint assembleDebug assembleRelease` در GitHub Actions
+- [x] بررسی APK با `unzip -t` و `aapt dump badging` در GitHub Actions
+- [x] آپلود APKهای debug/release به‌عنوان artifact از CI
 - [ ] دریافت artifact/Release APK و نصب تمیز آن
 
 ## آزمون دستی Android 9+
@@ -35,5 +36,6 @@
 
 ## نتیجهٔ فعلی محیط توسعه
 
-- تست‌های Node محلی اجرا شده‌اند.
-- این sandbox فاقد JDK و Android SDK است؛ نتیجهٔ Gradle و نصب روی Poco تا اجرای workflow/آزمون دستگاه **تأییدنشده** است.
+- تست‌های Node محلی (۱۵ مورد) و بررسی syntax جاوااسکریپت موفق بوده‌اند.
+- [GitHub Actions run 37871412042](https://github.com/humorheatyt/proudvocab-android/actions/runs/37871412042) سبز است: `testDebugUnitTest`، lint، ساخت debug/release و بررسی package/minSdk هر دو APK موفق شدند؛ artifact شامل APKها و گزارش‌هاست.
+- این sandbox فاقد JDK و Android SDK است؛ نصب/اجرای واقعی روی Android 9+ و Poco X3 Pro هنوز **تأییدنشده** و باید روی دستگاه انجام شود.
