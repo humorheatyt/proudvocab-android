@@ -24,14 +24,14 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="video/*" />
+                <data android:scheme="content" android:mimeType="video/*" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="application/x-subrip" />
-                <data android:mimeType="text/vtt" />
-                <data android:mimeType="text/plain" />
+                <data android:scheme="content" android:mimeType="application/x-subrip" />
+                <data android:scheme="content" android:mimeType="text/vtt" />
+                <data android:scheme="content" android:mimeType="text/plain" />
             </intent-filter>
         </activity>
     </application>
