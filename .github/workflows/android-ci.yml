@@ -61,8 +61,8 @@ jobs:
           RESULT=${PIPESTATUS[0]}
           if [[ "$RESULT" -ne 0 ]]; then
             echo '### Gradle failure details' >> "$GITHUB_STEP_SUMMARY"
-            grep -E '^(e: |FAILURE:|\* What went wrong:|Execution failed for task|.*Could not resolve|.*error:)' "$RUNNER_TEMP/gradle-build.log" \
-              | tail -n 40 | tee -a "$GITHUB_STEP_SUMMARY" \
+            grep -n -C 3 -i -E 'Missing URL|Error:|FAILURE:|What went wrong:|Execution failed for task|Could not resolve' "$RUNNER_TEMP/gradle-build.log" \
+              | tail -n 100 | tee -a "$GITHUB_STEP_SUMMARY" \
               | while IFS= read -r line; do echo "::error title=Gradle build detail::$line"; done
           fi
           exit "$RESULT"
