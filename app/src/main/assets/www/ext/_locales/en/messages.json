@@ -1,0 +1,2075 @@
+{
+  "ext_name": {
+    "message": "PrimeVocab - Dual Subtitle & Spaced Repetition Vocabulary"
+  },
+  "btn_ok": {
+    "message": "OK"
+  },
+  "game_correct": {
+    "message": "Correct!"
+  },
+  "game_wrong_template": {
+    "message": "✗ Wrong! Correct: {word}"
+  },
+  "ext_desc": {
+    "message": "Dual subtitles, smart auto-pause, and spaced repetition (SRS) vocabulary learning on Amazon Prime Video, Netflix, and YouTube."
+  },
+  "open_panel": {
+    "message": "Open PrimeVocab Panel"
+  },
+  "cmd_open_panel": {
+    "message": "Open/Close PrimeVocab Panel"
+  },
+  "cmd_seek_back": {
+    "message": "Rewind"
+  },
+  "cmd_seek_forward": {
+    "message": "Forward"
+  },
+  "cmd_seek_forward_tpl": {
+    "message": "Forward $SEC$ seconds",
+    "placeholders": {
+      "sec": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "cmd_seek_back_tpl": {
+    "message": "Rewind $SEC$ seconds",
+    "placeholders": {
+      "sec": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "seek_duration_label": {
+    "message": "Skip duration"
+  },
+  "seek_duration_unit": {
+    "message": "s"
+  },
+  "app_title": {
+    "message": "PrimeVocab"
+  },
+  "word_count_lbl": {
+    "message": "Words"
+  },
+  "empty_state_title": {
+    "message": "You haven't saved any words yet."
+  },
+  "empty_state_help": {
+    "message": "Click on words in the subtitles while watching Prime Video to add them to your list."
+  },
+  "btn_export": {
+    "message": "Export (CSV)"
+  },
+  "btn_clear": {
+    "message": "Clear All"
+  },
+  "confirm_clear_all": {
+    "message": "Are you sure you want to delete all saved words?"
+  },
+  "alert_no_words": {
+    "message": "No words found to export."
+  },
+  "translation_none": {
+    "message": "No translation"
+  },
+  "translation_label": {
+    "message": "Translation"
+  },
+  "tab_subtitle": {
+    "message": "Subtitles"
+  },
+  "tab_settings": {
+    "message": "Settings"
+  },
+  "tab_archive": {
+    "message": "Dictionary"
+  },
+  "tab_review": {
+    "message": "Study"
+  },
+  "shortcuts_title": {
+    "message": "Shortcuts"
+  },
+  "shortcuts_pv": {
+    "message": "Player Shortcuts"
+  },
+  "shortcuts_pv_play": {
+    "message": "Play / Pause"
+  },
+  "shortcuts_pv_fullscreen": {
+    "message": "Full Screen"
+  },
+  "shortcuts_pv_fwd": {
+    "message": "10s Forward"
+  },
+  "shortcuts_pv_rwd": {
+    "message": "10s Rewind"
+  },
+  "shortcuts_pv_volume": {
+    "message": "Volume"
+  },
+  "shortcuts_pv_mute": {
+    "message": "Mute"
+  },
+  "shortcuts_pv_custom": {
+    "message": "Customize shortcuts:"
+  },
+  "status_waiting": {
+    "message": "Waiting for subtitles..."
+  },
+  "status_connected": {
+    "message": "Connected to local video"
+  },
+  "label_current_sub": {
+    "message": "Current Subtitle"
+  },
+  "empty_sub_title": {
+    "message": "Waiting for subtitles..."
+  },
+  "empty_sub_help": {
+    "message": "Play a video with subtitles."
+  },
+  "hint_word_click": {
+    "message": "Click a word to view translation and save it"
+  },
+  "sub_legend_colors": {
+    "message": "Colors"
+  },
+  "sub_legend_tooltip": {
+    "message": "Subtitle color guide"
+  },
+  "sub_legend_saved": {
+    "message": "Saved word"
+  },
+  "sub_legend_phrasal": {
+    "message": "Phrasal verb"
+  },
+  "sub_legend_idiom": {
+    "message": "Idiom"
+  },
+  "sub_legend_collocation": {
+    "message": "Collocation"
+  },
+  "sub_session_saved_words": {
+    "message": "You saved {count} new words in this video"
+  },
+  "tooltip_seek_to_time": {
+    "message": "Jump to this time"
+  },
+  "tooltip_translate_sentence": {
+    "message": "Translate sentence"
+  },
+  "badge_phrasal": {
+    "message": "PHRASAL"
+  },
+  "badge_idiom": {
+    "message": "IDIOM"
+  },
+  "badge_collocation": {
+    "message": "COLLOCATION"
+  },
+  "btn_review": {
+    "message": "Review"
+  },
+  "btn_refresh_families": {
+    "message": "Refresh word families"
+  },
+  "settings_show_quick_access": {
+    "message": "Show Quick Access Button"
+  },
+  "settings_show_quick_access_help": {
+    "message": "Displays a semi-transparent icon on the video player to open the panel when closed. Clicking it opens the panel."
+  },
+  "tooltip_quick_access": {
+    "message": "Open PrimeVocab Panel"
+  },
+  "btn_toggle_family": {
+    "message": ""
+  },
+  "btn_clear_short": {
+    "message": "Clear"
+  },
+  "search_placeholder": {
+    "message": "Search words..."
+  },
+  "filter_all": {
+    "message": "All"
+  },
+  "filter_hard": {
+    "message": "Hard"
+  },
+  "filter_idiom": {
+    "message": "Idiom"
+  },
+  "filter_collocation": {
+    "message": "Collocation"
+  },
+  "shortcuts_reset": {
+    "message": "Reset to Defaults"
+  },
+  "sort_newest": {
+    "message": "Newest"
+  },
+  "sort_oldest": {
+    "message": "Oldest"
+  },
+  "sort_az": {
+    "message": "A → Z"
+  },
+  "sort_za": {
+    "message": "Z → A"
+  },
+  "select_all_sources": {
+    "message": "All sources"
+  },
+  "empty_archive_title": {
+    "message": "No words added yet"
+  },
+  "empty_archive_help": {
+    "message": "Click words in subtitles to add them to your dictionary"
+  },
+  "srs_stat_due": {
+    "message": "Due today"
+  },
+  "srs_stat_total": {
+    "message": "Total words"
+  },
+  "srs_stat_streak": {
+    "message": "Day streak"
+  },
+  "srs_best_streak": {
+    "message": "{count}"
+  },
+  "srs_weekly_title": {
+    "message": "Weekly Words"
+  },
+  "srs_start_btn": {
+    "message": "Start Training"
+  },
+  "srs_completed": {
+    "message": "Today's training complete!"
+  },
+  "srs_settings_title": {
+    "message": "Training Settings"
+  },
+  "srs_settings_new_limit": {
+    "message": "Daily New Card Limit"
+  },
+  "srs_settings_new_limit_help": {
+    "message": "Even if you have many words in your dictionary, at most this many new cards will appear daily. Due cards are not included in this limit."
+  },
+  "srs_settings_session_limit": {
+    "message": "Session Limit"
+  },
+  "srs_settings_session_limit_help": {
+    "message": "Maximum cards per session. Once reached, the session ends. Remaining cards do not carry over to tomorrow."
+  },
+  "srs_unlimited": {
+    "message": "Unlimited"
+  },
+  "srs_next_card": {
+    "message": "Next card: "
+  },
+  "srs_next_in_minutes": {
+    "message": "{count}m later"
+  },
+  "srs_next_in_hours": {
+    "message": "{count}h later"
+  },
+  "srs_next_in_days": {
+    "message": "{count}d later"
+  },
+  "srs_add_words_first": {
+    "message": "Add words to your dictionary."
+  },
+  "srs_new_cards_done": {
+    "message": "Today's new cards limit reached. Continue tomorrow!"
+  },
+  "srs_card_hint_btn": {
+    "message": "Show Hint"
+  },
+  "srs_card_reveal_btn": {
+    "message": "Show Translation"
+  },
+  "srs_rate_again": {
+    "message": "Again"
+  },
+  "srs_rate_hard": {
+    "message": "Hard"
+  },
+  "srs_rate_good": {
+    "message": "Good"
+  },
+  "srs_rate_easy": {
+    "message": "Easy"
+  },
+  "srs_rate_learned": {
+    "message": "Learned"
+  },
+  "srs_rate_learned_interval": {
+    "message": "Don't ask"
+  },
+  "srs_result_title": {
+    "message": "Session Completed"
+  },
+  "srs_result_total": {
+    "message": "Total cards"
+  },
+  "srs_result_back_btn": {
+    "message": "Back to Home"
+  },
+  "srs_study_list_btn": {
+    "message": "Study List & Progress"
+  },
+  "srs_overlay_title": {
+    "message": "Study List"
+  },
+  "srs_sort_time_asc": {
+    "message": "Time Remaining (Ascending)"
+  },
+  "srs_sort_time_desc": {
+    "message": "Time Remaining (Descending)"
+  },
+  "srs_sort_alphabetical": {
+    "message": "Word (A → Z)"
+  },
+  "srs_sort_learned_first": {
+    "message": "Learned First"
+  },
+  "srs_sort_new_first": {
+    "message": "New Cards First"
+  },
+  "srs_no_words_review": {
+    "message": "No words in study list yet."
+  },
+  "srs_status_learned": {
+    "message": "Learned"
+  },
+  "srs_status_new": {
+    "message": "New"
+  },
+  "srs_status_due": {
+    "message": "Due"
+  },
+  "srs_status_tomorrow": {
+    "message": "Tomorrow"
+  },
+  "srs_status_days_later": {
+    "message": "{days}d later"
+  },
+  "srs_status_weeks_later": {
+    "message": "{weeks}w later"
+  },
+  "srs_status_months_later": {
+    "message": "{months}m later"
+  },
+  "srs_status_today": {
+    "message": "Today"
+  },
+  "srs_study_session": {
+    "message": "Study Session"
+  },
+  "srs_shortcut_flip": {
+    "message": "Flip"
+  },
+  "srs_shortcut_rate": {
+    "message": "Rate"
+  },
+  "srs_rate_learned_link": {
+    "message": "I know this, don't show again"
+  },
+  "srs_result_subtitle": {
+    "message": "You have successfully completed today's study goal."
+  },
+  "srs_stat_completed_100": {
+    "message": "100% Completed"
+  },
+  "srs_view_words_btn": {
+    "message": "Review Words"
+  },
+  "srs_heatmap_reviewed_count": {
+    "message": "{count} words reviewed"
+  },
+  "srs_heatmap_no_activity": {
+    "message": "No activity"
+  },
+  "srs_btn_back_tooltip": {
+    "message": "Back"
+  },
+  "fc_modal_title": {
+    "message": "Flashcard Mode"
+  },
+  "fc_done_title": {
+    "message": "Congratulations!"
+  },
+  "fc_done_sub": {
+    "message": "{score} / {total} words known"
+  },
+  "fc_restart_btn": {
+    "message": "Restart"
+  },
+  "fc_stat_total": {
+    "message": "Total"
+  },
+  "fc_stat_remembered": {
+    "message": "Remembered"
+  },
+  "fc_stat_accuracy": {
+    "message": "Accuracy"
+  },
+  "fc_done_perfect": {
+    "message": "Flawless! You knew all {total} words."
+  },
+  "fc_done_mixed": {
+    "message": "You got {correct} of {total} words right ({incorrect} to review)."
+  },
+  "fc_done_completed": {
+    "message": "You completed the {total}-word practice session."
+  },
+  "fc_retry_missed_count": {
+    "message": "Review Missed Words ({count})"
+  },
+  "fc_again_btn": {
+    "message": "Again"
+  },
+  "fc_good_btn": {
+    "message": "Good"
+  },
+  "settings_section_general": {
+    "message": "General"
+  },
+  "settings_section_languages": {
+    "message": "Translation Languages"
+  },
+  "settings_source_lang": {
+    "message": "Learning Language"
+  },
+  "settings_target_lang": {
+    "message": "Native Language (Target)"
+  },
+  "settings_section_overlay": {
+    "message": "Subtitle Appearance"
+  },
+  "settings_section_screen_sub": {
+    "message": "Subtitle Appearance"
+  },
+  "settings_section_advanced_sub": {
+    "message": "Advanced Subtitles"
+  },
+  "settings_font_size": {
+    "message": "Font Size"
+  },
+  "settings_position": {
+    "message": "Position"
+  },
+  "settings_dual_sub": {
+    "message": "Dual Subtitles"
+  },
+  "settings_dual_sub_help": {
+    "message": "If two different subtitle tracks are loaded (e.g. English + Turkish), it reads the second automatically. Otherwise, it uses Google Translate."
+  },
+  "settings_font_small": {
+    "message": "Small"
+  },
+  "settings_font_medium": {
+    "message": "Medium"
+  },
+  "settings_font_large": {
+    "message": "Large"
+  },
+  "settings_font_xlarge": {
+    "message": "Very Large"
+  },
+  "settings_pos_bottom": {
+    "message": "Bottom"
+  },
+  "settings_pos_normal": {
+    "message": "Normal"
+  },
+  "settings_pos_midbottom": {
+    "message": "Mid-Bottom"
+  },
+  "settings_pos_middle": {
+    "message": "Middle"
+  },
+  "settings_section_panel": {
+    "message": "Panel Subtitle"
+  },
+  "settings_section_panel_sub": {
+    "message": "Panel Subtitle"
+  },
+  "settings_section_smart": {
+    "message": "Smart Features"
+  },
+  "settings_highlight_idioms": {
+    "message": "Highlight Idioms"
+  },
+  "settings_highlight_idioms_help": {
+    "message": "Automatically detects and highlights common idioms and collocations (e.g. piece of cake, under the weather) in subtitles."
+  },
+  "settings_shadowing": {
+    "message": "Shadowing Mode"
+  },
+  "settings_shadowing_help": {
+    "message": "Video pauses at the end of each subtitle line. Continue with Space."
+  },
+  "settings_shadowing_mode": {
+    "message": "Mode"
+  },
+  "settings_shadowing_standard": {
+    "message": "Standard"
+  },
+  "settings_shadowing_smart": {
+    "message": "Smart"
+  },
+  "settings_shadowing_smart_help": {
+    "message": "Smart: only pauses on sentences containing C1/C2-level vocabulary, words marked as hard, idioms, or phrasal verbs."
+  },
+  "settings_auto_rewind": {
+    "message": "Auto Rewind"
+  },
+  "settings_auto_rewind_help": {
+    "message": "Video rewinds when a word is saved."
+  },
+  "settings_rewind_seconds": {
+    "message": "Rewind duration"
+  },
+  "settings_auto_slow_mo": {
+    "message": "Auto Slow-mo"
+  },
+  "settings_auto_slow_mo_help": {
+    "message": "Automatically slows down video playback when subtitles contain saved words from the selected levels."
+  },
+  "settings_auto_slow_mo_speed": {
+    "message": "Slow-mo Playback Speed"
+  },
+  "settings_auto_slow_mo_levels": {
+    "message": "Slow-mo Word Levels"
+  },
+  "settings_auto_slow_mo_level_other": {
+    "message": "Other (Unknown)"
+  },
+  "settings_auto_slow_mo_level_hard": {
+    "message": "Hard"
+  },
+  "settings_auto_slow_mo_level_phrasal": {
+    "message": "Phrasal"
+  },
+  "settings_auto_slow_mo_level_idiom": {
+    "message": "Idiom"
+  },
+  "settings_auto_slow_mo_level_collocation": {
+    "message": "Collocation"
+  },
+  "settings_yt_smart_note": {
+    "message": "On YouTube, these features only work with original (human-made) subtitles. They are disabled for auto-generated (ASR) captions."
+  },
+  "settings_yt_allow_asr": {
+    "message": "Allow on ASR Captions (Experimental)"
+  },
+  "settings_yt_asr_warning": {
+    "message": "Warning: This option may lead to unstable playback, constant pauses, or incorrect rewinds."
+  },
+  "settings_section_video": {
+    "message": "Video"
+  },
+  "settings_hide_imdb": {
+    "message": "Hide IMDb Panel"
+  },
+  "settings_hide_imdb_help": {
+    "message": "Hides X-Ray player list and dimming overlay."
+  },
+  "settings_cinema": {
+    "message": "Cinema Mode"
+  },
+  "settings_cinema_mode": {
+    "message": "Cinema Mode"
+  },
+  "settings_cinema_help": {
+    "message": "Hides all UI overlays, showing only subtitles on the video screen."
+  },
+  "settings_prime_domain": {
+    "message": "Prime Video Redirection Domain"
+  },
+  "settings_prime_domain_help": {
+    "message": "Choose the default domain to open Prime Video links from the dictionary. Useful for routing links to your local regional Amazon store."
+  },
+  "settings_prime_domain_option_default": {
+    "message": "Saved Domain (Default)"
+  },
+  "settings_section_data": {
+    "message": "Data"
+  },
+  "settings_reset_srs": {
+    "message": "Reset SRS Progress"
+  },
+  "settings_reset_srs_help": {
+    "message": "Words will not be deleted, only study history (interval, review count, difficulty) will be reset."
+  },
+  "settings_reset_srs_btn": {
+    "message": "Reset SRS"
+  },
+  "settings_reset_srs_confirm": {
+    "message": "Your SRS progress will be reset. Words will not be deleted. Continue?"
+  },
+  "settings_reset_srs_done": {
+    "message": "Your SRS progress has been reset."
+  },
+  "settings_reset_streak": {
+    "message": "Reset Day Streak Progress"
+  },
+  "settings_reset_streak_help": {
+    "message": "Your current study day streak and best streak (record) will be completely reset."
+  },
+  "settings_reset_streak_btn": {
+    "message": "Reset Streak"
+  },
+  "settings_reset_streak_confirm": {
+    "message": "Your day streak and best streak record will be completely reset. Do you want to continue?"
+  },
+  "settings_reset_streak_done": {
+    "message": "Your study day streak and record have been reset."
+  },
+  "settings_refresh_families_toast": {
+    "message": "{updated} / {total} words updated"
+  },
+  "settings_refresh_families_empty": {
+    "message": "No words in dictionary yet."
+  },
+  "settings_toast_saved": {
+    "message": "Saved"
+  },
+  "settings_word_family_visible": {
+    "message": "Word Family"
+  },
+  "csv_header": {
+    "message": "Word,Translation,Context,IsHard,Reviews"
+  },
+  "archive_export_confirm": {
+    "message": "No words found to export."
+  },
+  "archive_clear_confirm": {
+    "message": "Are you sure you want to delete all saved words?"
+  },
+  "archive_clear_title": {
+    "message": "Clear Dictionary"
+  },
+  "seek_seekable_badge": {
+    "message": "Go to this second"
+  },
+  "seek_translate_badge": {
+    "message": "Translate sentence"
+  },
+  "gt_auto_translate_tooltip": {
+    "message": "Google Translate (Auto-Translated)"
+  },
+  "srs_stat_streak_days": {
+    "message": "Day streak"
+  },
+  "word_list_no_results": {
+    "message": "No matching words found."
+  },
+  "archive_word_family_lbl": {
+    "message": "Word Family"
+  },
+  "archive_search_placeholder": {
+    "message": "Search words…"
+  },
+  "archive_search_count_placeholder": {
+    "message": "Search in {count} words…"
+  },
+  "filter_other": {
+    "message": "Other"
+  },
+  "select_all_tags": {
+    "message": "All tags"
+  },
+  "filter_level_tooltip": {
+    "message": "Level and type filter"
+  },
+  "filter_sort_tooltip": {
+    "message": "Sort order"
+  },
+  "filter_source_tooltip": {
+    "message": "Source video filter"
+  },
+  "filter_tag_tooltip": {
+    "message": "Tag filter"
+  },
+  "archive_tools_btn": {
+    "message": "Actions"
+  },
+  "archive_tool_expand_all": {
+    "message": "Expand All Details"
+  },
+  "archive_tool_word_family": {
+    "message": "Word Families"
+  },
+  "archive_tool_tagging": {
+    "message": "Word Tagging"
+  },
+  "archive_tool_review_practice": {
+    "message": "Review Practice"
+  },
+  "archive_tool_refresh_families": {
+    "message": "Refresh word families"
+  },
+  "archive_tool_export": {
+    "message": "Export dictionary"
+  },
+  "archive_tool_clear": {
+    "message": "Clear dictionary"
+  },
+  "tooltip_speak": {
+    "message": "Pronounce"
+  },
+  "tooltip_double_click_edit": {
+    "message": "Double click to edit"
+  },
+  "archive_card_tools_tooltip": {
+    "message": "Actions"
+  },
+  "archive_card_add_tag": {
+    "message": "Add tag"
+  },
+  "archive_card_mark_hard": {
+    "message": "Mark as Hard"
+  },
+  "archive_card_unmark_hard": {
+    "message": "Unmark as Hard"
+  },
+  "archive_card_go_to_source": {
+    "message": "Go to source"
+  },
+  "archive_card_delete": {
+    "message": "Delete"
+  },
+  "archive_source_season": {
+    "message": "Season"
+  },
+  "archive_no_match_title": {
+    "message": "No matching words found"
+  },
+  "search_no_results": {
+    "message": "No matching words found."
+  },
+  "archive_no_match_help": {
+    "message": "Try changing filters or search query"
+  },
+  "archive_remove_tag_tooltip": {
+    "message": "Remove tag"
+  },
+  "archive_click_for_translation": {
+    "message": "click for translation"
+  },
+  "archive_hard_badge_label": {
+    "message": "HARD"
+  },
+  "archive_tag_placeholder": {
+    "message": "tag…"
+  },
+  "source_popup_added_time": {
+    "message": "⏱ Added at {time}"
+  },
+  "source_popup_added_url": {
+    "message": "Go to video ↗"
+  },
+  "source_popup_title_unknown": {
+    "message": "Unknown"
+  },
+  "srs_heatmap_title": {
+    "message": "Last 12 Weeks"
+  },
+  "sidebar_tooltip_save_title": {
+    "message": "Save to Dictionary"
+  },
+  "srs_chart_summary_comparison": {
+    "message": "This week: {thisWeek} words  •  Last week: {lastWeek}"
+  },
+  "srs_chart_summary_single": {
+    "message": "{thisWeek} words added this week"
+  },
+  "settings_app_lang": {
+    "message": "Extension Language"
+  },
+  "settings_lang_auto": {
+    "message": "Automatic (Browser Default)"
+  },
+  "settings_color_title": {
+    "message": "Translation color:"
+  },
+  "interval_10m": {
+    "message": "10m"
+  },
+  "interval_hours_abbr": {
+    "message": "h"
+  },
+  "interval_days_abbr": {
+    "message": "d"
+  },
+  "interval_months_abbr": {
+    "message": "mo"
+  },
+  "interval_years_abbr": {
+    "message": "y"
+  },
+  "loading": {
+    "message": "Loading..."
+  },
+  "tooltip_hide_family": {
+    "message": "Hide word families"
+  },
+  "tooltip_show_family": {
+    "message": "Show word families"
+  },
+  "alert_no_words_dictionary": {
+    "message": "No words in dictionary yet."
+  },
+  "alert_no_words_filter": {
+    "message": "No words found for this filter."
+  },
+  "shortcut_pv_word_nav": {
+    "message": "Navigate words (Left / Right)"
+  },
+  "shortcut_pv_word_save": {
+    "message": "Save word"
+  },
+  "shortcut_pv_word_cancel": {
+    "message": "Cancel / Resume"
+  },
+  "lang_tr": {
+    "message": "Turkish"
+  },
+  "lang_en": {
+    "message": "English"
+  },
+  "lang_de": {
+    "message": "German"
+  },
+  "lang_fr": {
+    "message": "French"
+  },
+  "lang_es": {
+    "message": "Spanish"
+  },
+  "lang_it": {
+    "message": "Italian"
+  },
+  "lang_ru": {
+    "message": "Russian"
+  },
+  "lang_pt": {
+    "message": "Portuguese"
+  },
+  "lang_ar": {
+    "message": "Arabic"
+  },
+  "lang_zh": {
+    "message": "Chinese"
+  },
+  "lang_ja": {
+    "message": "Japanese"
+  },
+  "lang_ko": {
+    "message": "Korean"
+  },
+  "lang_nl": {
+    "message": "Dutch"
+  },
+  "lang_pl": {
+    "message": "Polish"
+  },
+  "lang_sv": {
+    "message": "Swedish"
+  },
+  "lang_uk": {
+    "message": "Ukrainian"
+  },
+  "lang_hi": {
+    "message": "Hindi"
+  },
+  "translation_failed": {
+    "message": "Translation failed"
+  },
+  "error": {
+    "message": "Error"
+  },
+  "tooltip_hard_badge": {
+    "message": "Failed 3+ times"
+  },
+  "tooltip_cefr_unknown": {
+    "message": "Level unknown (Proper noun, typo, or rare word)"
+  },
+  "tooltip_pronounce": {
+    "message": "Pronounce"
+  },
+  "tooltip_delete": {
+    "message": "Delete"
+  },
+  "tooltip_expand_context": {
+    "message": "Click to expand/collapse"
+  },
+  "level_unknown": {
+    "message": "Level unknown"
+  },
+  "heatmap_less": {
+    "message": "Less"
+  },
+  "heatmap_more": {
+    "message": "More"
+  },
+  "heatmap_tooltip": {
+    "message": "{date}: {count} cards"
+  },
+  "chart_this_week": {
+    "message": "this"
+  },
+  "chart_week_abbr": {
+    "message": "w"
+  },
+  "settings_backup_title": {
+    "message": "Backup Data (JSON)"
+  },
+  "settings_restore_title": {
+    "message": "Restore Backup"
+  },
+  "settings_backup_help": {
+    "message": "Export all saved words and study progress as a JSON file."
+  },
+  "settings_restore_help": {
+    "message": "Import and restore a previously saved JSON backup file."
+  },
+  "settings_restore_confirm": {
+    "message": "Warning: Your current words and settings will be overwritten with the backup file data. Do you want to continue?"
+  },
+  "settings_restore_success": {
+    "message": "Backup restored successfully!"
+  },
+  "settings_restore_error": {
+    "message": "Error: Invalid backup file format!"
+  },
+  "shortcut_pv_word_nav_vert": {
+    "message": "Navigate words (Up / Down)"
+  },
+  "tooltip_close_panel": {
+    "message": "Close Panel"
+  },
+  "tooltip_show_tags": {
+    "message": "Show Tags"
+  },
+  "tooltip_hide_tags": {
+    "message": "Hide Tags"
+  },
+  "tooltip_expand_all": {
+    "message": "Expand All Details"
+  },
+  "tooltip_collapse_all": {
+    "message": "Collapse All Details"
+  },
+  "tooltip_add_tag": {
+    "message": "Add Tag"
+  },
+  "tag_input_placeholder": {
+    "message": "Tag..."
+  },
+  "search_placeholder_dynamic": {
+    "message": "Search within {count} words..."
+  },
+  "all_tags_option": {
+    "message": "All tags"
+  },
+  "shortcut_pv_word_left": {
+    "message": "Navigate Word (Left)"
+  },
+  "shortcut_pv_word_right": {
+    "message": "Navigate Word (Right)"
+  },
+  "shortcut_pv_word_up": {
+    "message": "Navigate Word (Up)"
+  },
+  "shortcut_pv_word_down": {
+    "message": "Navigate Word (Down)"
+  },
+  "season_label": {
+    "message": "Season"
+  },
+  "show_all_seasons": {
+    "message": "All Seasons"
+  },
+  "subtab_srs": {
+    "message": "Training"
+  },
+  "subtab_games": {
+    "message": "Games"
+  },
+  "games_title": {
+    "message": "Mini Games"
+  },
+  "games_empty_title": {
+    "message": "Not Enough Words"
+  },
+  "games_empty_desc": {
+    "message": "You must have at least {count} words in your dictionary to play games."
+  },
+  "game_pool_title": {
+    "message": "Study Pool"
+  },
+  "game_pool_all": {
+    "message": "All"
+  },
+  "game_pool_words": {
+    "message": "Only Words"
+  },
+  "game_pool_collocation": {
+    "message": "Only Collocations"
+  },
+  "game_pool_phrasal": {
+    "message": "Only Phrasal Verbs"
+  },
+  "game_pool_idiom": {
+    "message": "Only Idioms"
+  },
+  "game_insufficient_filtered_words": {
+    "message": "You must have at least 4 saved words of this type to play."
+  },
+  "game_mc_title": {
+    "message": "Multiple Choice"
+  },
+  "game_mc_desc": {
+    "message": "Find the correct translation from 4 options."
+  },
+  "game_blank_title": {
+    "message": "Fill in the Blank"
+  },
+  "game_blank_desc": {
+    "message": "Find the correct word to fill in the blank."
+  },
+  "game_scramble_title": {
+    "message": "Word Builder"
+  },
+  "game_scramble_desc": {
+    "message": "Reorder the letters to form the correct word."
+  },
+  "game_match_title": {
+    "message": "Word Match"
+  },
+  "game_match_desc": {
+    "message": "Match the words with their meanings."
+  },
+  "game_btn_play": {
+    "message": "Play"
+  },
+  "game_btn_check": {
+    "message": "Check"
+  },
+  "game_btn_clear": {
+    "message": "Clear"
+  },
+  "game_btn_continue": {
+    "message": "Continue"
+  },
+  "game_result_title": {
+    "message": "Game Completed!"
+  },
+  "game_result_perfect": {
+    "message": "Flawless! You answered all questions correctly."
+  },
+  "game_result_completed": {
+    "message": "Congratulations! You completed the practice session."
+  },
+  "game_result_skipped_words": {
+    "message": "Skipped Words ({count})"
+  },
+  "game_stat_score": {
+    "message": "Score"
+  },
+  "game_stat_accuracy": {
+    "message": "Accuracy"
+  },
+  "game_stat_xp": {
+    "message": "XP"
+  },
+  "game_btn_retry": {
+    "message": "Play Again"
+  },
+  "game_pool_prefix": {
+    "message": "Pool"
+  },
+  "game_hint_mc": {
+    "message": "Select the correct translation (1-4)"
+  },
+  "game_hint_blank": {
+    "message": "Choose the right word for the blank (1-4)"
+  },
+  "game_hint_scramble": {
+    "message": "Arrange the letters in the correct order"
+  },
+  "game_hint_match": {
+    "message": "Match words with their meanings (1-0)"
+  },
+  "game_hint_dictation": {
+    "message": "Type the word you hear · Press Enter to check"
+  },
+  "game_hint_context": {
+    "message": "Flip cards to find pairs (1-0)"
+  },
+  "confirm_title": {
+    "message": "Confirmation Required"
+  },
+  "btn_confirm": {
+    "message": "Confirm"
+  },
+  "game_result_score": {
+    "message": "Your Score: {score} / {total}"
+  },
+  "game_result_btn_back": {
+    "message": "Back to Games"
+  },
+  "game_score_lbl": {
+    "message": "{score} Pts"
+  },
+  "game_quit_title": {
+    "message": "Quit Game?"
+  },
+  "game_quit_confirm": {
+    "message": "Are you sure you want to quit the game? Your progress will be lost."
+  },
+  "game_btn_quit": {
+    "message": "Quit"
+  },
+  "game_btn_cancel": {
+    "message": "Cancel"
+  },
+  "game_resume_title": {
+    "message": "Resume Game"
+  },
+  "game_resume_desc": {
+    "message": "You have an active session in {game}. Do you want to resume?"
+  },
+  "game_resume_btn": {
+    "message": "Resume Game"
+  },
+  "game_discard_btn": {
+    "message": "Start New Game"
+  },
+  "game_btn_skip": {
+    "message": "Skip"
+  },
+  "settings_section_games": {
+    "message": "Word Games"
+  },
+  "settings_games_sound": {
+    "message": "Game Sound Effects"
+  },
+  "settings_games_sound_help": {
+    "message": "Plays sound effects on correct and incorrect answers during games."
+  },
+  "settings_autoplay_sound_title": {
+    "message": "Training Sounds"
+  },
+  "settings_autoplay_sound_desc": {
+    "message": "Autoplay word audio in training mode"
+  },
+  "game_dictation_title": {
+    "message": "Dictation"
+  },
+  "game_dictation_desc": {
+    "message": "Type the word you hear correctly."
+  },
+  "game_dictation_placeholder": {
+    "message": "Type the word here..."
+  },
+  "game_dictation_listen": {
+    "message": "Listen Again"
+  },
+  "game_dictation_correct": {
+    "message": "Great, correct spelling!"
+  },
+  "game_dictation_almost": {
+    "message": "Almost correct! The correct spelling is: {word}"
+  },
+  "game_dictation_wrong": {
+    "message": "Incorrect! The correct word is: {word}"
+  },
+  "game_context_title": {
+    "message": "Memory Cards"
+  },
+  "game_context_desc": {
+    "message": "Match words with their translations by flipping cards."
+  },
+  "game_context_no_words": {
+    "message": "At least 4 words are required for this game."
+  },
+  "game_errors_lbl": {
+    "message": "Errors"
+  },
+  "subtab_achievements": {
+    "message": "Achievements"
+  },
+  "subtab_stats": {
+    "message": "Statistics"
+  },
+  "user_exp_label": {
+    "message": "Total EXP"
+  },
+  "user_exp_word_added": {
+    "message": "Word Added"
+  },
+  "user_exp_game_completed": {
+    "message": "Game Completed"
+  },
+  "user_exp_achievement": {
+    "message": "Achievement Earned"
+  },
+  "achievements_title": {
+    "message": "Achievements"
+  },
+  "achievements_empty": {
+    "message": "No achievements yet. Keep playing!"
+  },
+  "achievement_earned_on": {
+    "message": "Earned:"
+  },
+  "achievement_locked": {
+    "message": "Locked"
+  },
+  "ach_first_step_title": {
+    "message": "First Step"
+  },
+  "ach_first_step_desc": {
+    "message": "Add your first word"
+  },
+  "ach_word_hunter_title": {
+    "message": "Word Hunter"
+  },
+  "ach_word_hunter_desc": {
+    "message": "Add 10 words"
+  },
+  "ach_word_expert_title": {
+    "message": "Word Expert"
+  },
+  "ach_word_expert_desc": {
+    "message": "Add 150 words"
+  },
+  "ach_word_master_title": {
+    "message": "Word Master"
+  },
+  "ach_word_master_desc": {
+    "message": "Add 300 words"
+  },
+  "ach_perfect_game_title": {
+    "message": "Perfect Game"
+  },
+  "ach_perfect_game_desc": {
+    "message": "Score 100% in a game"
+  },
+  "ach_speed_player_title": {
+    "message": "Speed Player"
+  },
+  "ach_speed_player_desc": {
+    "message": "Complete 20 games"
+  },
+  "ach_game_addict_title": {
+    "message": "Game Addict"
+  },
+  "ach_game_addict_desc": {
+    "message": "Complete 100 games"
+  },
+  "ach_ear_master_title": {
+    "message": "Ear Master"
+  },
+  "ach_ear_master_desc": {
+    "message": "Spell 25 words correctly in Dictation"
+  },
+  "ach_context_hero_title": {
+    "message": "Context Hero"
+  },
+  "ach_context_hero_desc": {
+    "message": "Answer 25 scene match questions correctly"
+  },
+  "ach_hard_conqueror_title": {
+    "message": "Hard Conqueror"
+  },
+  "ach_hard_conqueror_desc": {
+    "message": "Answer 10 hard words correctly in games"
+  },
+  "ach_word_collector_title": {
+    "message": "Word Collector"
+  },
+  "ach_word_collector_desc": {
+    "message": "Add 50 words"
+  },
+  "ach_word_legend_title": {
+    "message": "Word Legend"
+  },
+  "ach_word_legend_desc": {
+    "message": "Add 750 words"
+  },
+  "ach_word_god_title": {
+    "message": "Language Genius"
+  },
+  "ach_word_god_desc": {
+    "message": "Add 1500 words"
+  },
+  "ach_perfectionist_title": {
+    "message": "Perfectionist"
+  },
+  "ach_perfectionist_desc": {
+    "message": "Score 100% in 10 games"
+  },
+  "ach_game_rookie_title": {
+    "message": "First Play"
+  },
+  "ach_game_rookie_desc": {
+    "message": "Complete 1 game"
+  },
+  "ach_game_champion_title": {
+    "message": "Game Champion"
+  },
+  "ach_game_champion_desc": {
+    "message": "Complete 250 games"
+  },
+  "ach_ear_god_title": {
+    "message": "Golden Ear"
+  },
+  "ach_ear_god_desc": {
+    "message": "Spell 100 words correctly in Dictation"
+  },
+  "ach_context_god_title": {
+    "message": "Scene Director"
+  },
+  "ach_context_god_desc": {
+    "message": "Answer 100 scene matches correctly"
+  },
+  "ach_hard_annihilator_title": {
+    "message": "Flame Bender"
+  },
+  "ach_hard_annihilator_desc": {
+    "message": "Answer 30 hard words correctly in games"
+  },
+  "ach_a1_explorer_title": {
+    "message": "Explorer"
+  },
+  "ach_a1_explorer_desc": {
+    "message": "Add 25 words of level A1/A2"
+  },
+  "ach_b1_scholar_title": {
+    "message": "Scholar"
+  },
+  "ach_b1_scholar_desc": {
+    "message": "Add 35 words of level B1/B2"
+  },
+  "ach_c1_polymath_title": {
+    "message": "Polymath"
+  },
+  "ach_c1_polymath_desc": {
+    "message": "Add 15 words of level C1/C2"
+  },
+  "ach_phrasal_explorer_title": {
+    "message": "Phrasal Explorer"
+  },
+  "ach_phrasal_explorer_desc": {
+    "message": "Add 5 phrasal verbs to your vocabulary"
+  },
+  "ach_phrasal_master_title": {
+    "message": "Phrasal Master"
+  },
+  "ach_phrasal_master_desc": {
+    "message": "Add 15 phrasal verbs to your vocabulary"
+  },
+  "ach_phrasal_guru_title": {
+    "message": "Phrasal Guru"
+  },
+  "ach_phrasal_guru_desc": {
+    "message": "Add 35 phrasal verbs to your vocabulary"
+  },
+  "ach_idiom_hunter_title": {
+    "message": "Idiom Hunter"
+  },
+  "ach_idiom_hunter_desc": {
+    "message": "Add 5 idioms to your vocabulary"
+  },
+  "ach_idiom_master_title": {
+    "message": "Idiom Master"
+  },
+  "ach_idiom_master_desc": {
+    "message": "Add 15 idioms to your vocabulary"
+  },
+  "ach_idiom_sage_title": {
+    "message": "Idiom Sage"
+  },
+  "ach_idiom_sage_desc": {
+    "message": "Add 30 idioms to your vocabulary"
+  },
+  "ach_collocation_seeker_title": {
+    "message": "Collocation Seeker"
+  },
+  "ach_collocation_seeker_desc": {
+    "message": "Add 5 collocations to your vocabulary"
+  },
+  "ach_collocation_master_title": {
+    "message": "Collocation Master"
+  },
+  "ach_collocation_master_desc": {
+    "message": "Add 15 collocations to your vocabulary"
+  },
+  "ach_collocation_architect_title": {
+    "message": "Collocation Architect"
+  },
+  "ach_collocation_architect_desc": {
+    "message": "Add 30 collocations to your vocabulary"
+  },
+  "ach_streak_3_title": {
+    "message": "3-Day Streak"
+  },
+  "ach_streak_3_desc": {
+    "message": "Reach a study streak of 5 on any word"
+  },
+  "ach_streak_7_title": {
+    "message": "Weekly Fire"
+  },
+  "ach_streak_7_desc": {
+    "message": "Reach a study streak of 14 on any word"
+  },
+  "stats_title": {
+    "message": "Learning Statistics"
+  },
+  "stats_vocab_growth": {
+    "message": "Vocabulary Growth — Last 30 Days"
+  },
+  "stats_level_dist": {
+    "message": "CEFR Level Distribution"
+  },
+  "stats_game_perf": {
+    "message": "Game Performance"
+  },
+  "stats_total_games": {
+    "message": "Total Games"
+  },
+  "stats_total_correct": {
+    "message": "Correct Answers"
+  },
+  "stats_best_score": {
+    "message": "Best Score"
+  },
+  "stats_no_data": {
+    "message": "No data yet."
+  },
+  "stats_words_added": {
+    "message": "words added"
+  },
+  "settings_reset_games": {
+    "message": "Reset Games & Achievements"
+  },
+  "settings_reset_games_help": {
+    "message": "Your total points (EXP), game statistics, and all earned achievements will be reset."
+  },
+  "settings_reset_games_btn": {
+    "message": "Reset Progress"
+  },
+  "settings_reset_games_confirm": {
+    "message": "Your game statistics, total points (EXP), and all achievements will be reset. Do you want to continue?"
+  },
+  "settings_reset_games_done": {
+    "message": "Game and achievements progress has been reset."
+  },
+  "btn_confirm_reset": {
+    "message": "Reset"
+  },
+  "stats_game_breakdown": {
+    "message": "Detailed Game Statistics"
+  },
+  "stats_th_game": {
+    "message": "Game"
+  },
+  "stats_th_played": {
+    "message": "Played"
+  },
+  "stats_th_accuracy": {
+    "message": "Accuracy %"
+  },
+  "stats_th_best": {
+    "message": "High Score"
+  },
+  "ach_exp_bronze_title": {
+    "message": "Bronze Explorer"
+  },
+  "ach_exp_bronze_desc": {
+    "message": "Accumulate 500 total EXP points"
+  },
+  "ach_exp_silver_title": {
+    "message": "Silver Warrior"
+  },
+  "ach_exp_silver_desc": {
+    "message": "Accumulate 2000 total EXP points"
+  },
+  "ach_exp_gold_title": {
+    "message": "Gold Conqueror"
+  },
+  "ach_exp_gold_desc": {
+    "message": "Accumulate 5000 total EXP points"
+  },
+  "ach_exp_legend_title": {
+    "message": "EXP Legend"
+  },
+  "ach_exp_legend_desc": {
+    "message": "Accumulate 10000 total EXP points"
+  },
+  "stats_avg_accuracy": {
+    "message": "Avg. Accuracy"
+  },
+  "stats_perfect_games": {
+    "message": "Perfect Games"
+  },
+  "stats_total_exp": {
+    "message": "Total EXP"
+  },
+  "ach_exp_deity_title": {
+    "message": "EXP Deity"
+  },
+  "ach_exp_deity_desc": {
+    "message": "Accumulate 25000 total EXP points"
+  },
+  "ach_word_titan_title": {
+    "message": "Vocabulary Titan"
+  },
+  "ach_word_titan_desc": {
+    "message": "Add 1000 words"
+  },
+  "ach_perfect_sovereign_title": {
+    "message": "Perfect Sovereign"
+  },
+  "ach_perfect_sovereign_desc": {
+    "message": "Score 100% in 30 games"
+  },
+  "ach_game_grandmaster_title": {
+    "message": "Game Grandmaster"
+  },
+  "ach_game_grandmaster_desc": {
+    "message": "Complete 500 games"
+  },
+  "ach_streak_30_title": {
+    "message": "Time Bender"
+  },
+  "ach_streak_30_desc": {
+    "message": "Reach a study streak of 30 on any word"
+  },
+  "settings_anki_export_title": {
+    "message": "Export Words for Anki"
+  },
+  "settings_anki_export_help": {
+    "message": "Download your saved words, translations, and context sentences in a format compatible with Anki."
+  },
+  "settings_anki_export_btn": {
+    "message": "Export to Anki"
+  },
+  "anki_export_success": {
+    "message": "Anki export file downloaded!"
+  },
+  "tooltip_seek_to_scene": {
+    "message": "Play Scene"
+  },
+  "settings_subtab_platform": {
+    "message": "Player"
+  },
+  "settings_subtab_general": {
+    "message": "Settings"
+  },
+  "settings_subtab_about": {
+    "message": "About"
+  },
+  "settings_platform_filter_title": {
+    "message": "Player Filter"
+  },
+  "settings_platform_filter_help": {
+    "message": "Filter to list platform-specific settings. Automatically updates when watching a video."
+  },
+  "settings_section_platforms": {
+    "message": "Active Platforms"
+  },
+  "settings_platforms_help": {
+    "message": "Choose which video platforms the extension should run on."
+  },
+  "status_connected_youtube": {
+    "message": "Connected to YouTube"
+  },
+  "status_connected_netflix": {
+    "message": "Connected to Netflix"
+  },
+  "status_connected_prime": {
+    "message": "Connected to local video"
+  },
+  "onboarding_btn_start": {
+    "message": "Start Tour"
+  },
+  "onboarding_welcome_title": {
+    "message": "Welcome to PrimeVocab!"
+  },
+  "onboarding_welcome_desc": {
+    "message": "PrimeVocab is a smart assistant designed to help you learn vocabulary while watching videos. Let's learn the key features in 1 minute!"
+  },
+  "onboarding_subtitles_title": {
+    "message": "Interactive Subtitles"
+  },
+  "onboarding_subtitles_desc": {
+    "message": "Click on any word in the subtitles while watching a video to instantly translate it and save it to your dictionary with a single click."
+  },
+  "onboarding_dictionary_title": {
+    "message": "Personal Dictionary"
+  },
+  "onboarding_dictionary_desc": {
+    "message": "Saved words are automatically clustered by show, movie, and season. You can search, add custom tags, and filter words by CEFR levels."
+  },
+  "onboarding_review_title": {
+    "message": "SRS Word Training"
+  },
+  "onboarding_review_desc": {
+    "message": "Review words right before you forget them using scientific spaced repetition (SM-2), and track your learning streak with the activity heatmap."
+  },
+  "onboarding_games_title": {
+    "message": "Fun Mini-Games"
+  },
+  "onboarding_games_desc": {
+    "message": "Reinforce your vocabulary with 6 different interactive games like multiple choice, fill in the blanks, scramble, and dictation, while earning XP!"
+  },
+  "onboarding_shortcuts_title": {
+    "message": "Keyboard Shortcuts"
+  },
+  "onboarding_shortcuts_desc": {
+    "message": "Use your Numpad or custom keys to navigate between words and save them quickly while the video is paused."
+  },
+  "onboarding_btn_next": {
+    "message": "Next"
+  },
+  "onboarding_btn_prev": {
+    "message": "Back"
+  },
+  "onboarding_btn_skip": {
+    "message": "Skip"
+  },
+  "onboarding_btn_finish": {
+    "message": "Finish Tour"
+  },
+  "onboarding_settings_replay": {
+    "message": "Replay Tour"
+  },
+  "onboarding_profile_title": {
+    "message": "Profile & Cloud Sync"
+  },
+  "onboarding_profile_desc": {
+    "message": "Connect your Google account to back up words to the cloud; track your study streaks, XP, and earned level badges here."
+  },
+  "onboarding_settings_title": {
+    "message": "Settings & Menu"
+  },
+  "onboarding_settings_desc": {
+    "message": "Customize subtitle appearance, auto slow-motion, Google Drive cloud sync, and keyboard shortcuts from the top menu drawer."
+  },
+  "info_btn_title": {
+    "message": "About Extension"
+  },
+  "info_title": {
+    "message": "About PrimeVocab"
+  },
+  "info_desc": {
+    "message": "PrimeVocab is an intelligent extension that lets you learn languages using dual subtitles and spaced repetition while watching videos."
+  },
+  "info_developer": {
+    "message": "Developer"
+  },
+  "info_contact": {
+    "message": "Contact"
+  },
+  "info_legal": {
+    "message": "Privacy & Terms"
+  },
+  "info_legal_view": {
+    "message": "Read"
+  },
+  "profile_btn_title": {
+    "message": "User Profile"
+  },
+  "profile_title": {
+    "message": "Profile Info"
+  },
+  "profile_user_title": {
+    "message": "User"
+  },
+  "profile_local_user": {
+    "message": "Local User"
+  },
+  "profile_total_words": {
+    "message": "Total Words:"
+  },
+  "profile_streak": {
+    "message": "Study Streak:"
+  },
+  "profile_exp": {
+    "message": "Total EXP:"
+  },
+  "profile_sync_enable": {
+    "message": "Cloud Sync"
+  },
+  "profile_sync_status_linked": {
+    "message": "Sync Active: {email}"
+  },
+  "profile_sync_status_unlinked": {
+    "message": "Sync Off"
+  },
+  "profile_sync_now": {
+    "message": "Sync Now"
+  },
+  "profile_level_label": {
+    "message": "Current Level:"
+  },
+  "profile_level_title": {
+    "message": "Level"
+  },
+  "profile_today_activity_label": {
+    "message": "Today's Activity:"
+  },
+  "profile_today_activity_saved": {
+    "message": "{count} words studied"
+  },
+  "profile_achievements_label": {
+    "message": "Achievements:"
+  },
+  "profile_no_achievements": {
+    "message": "No achievements earned yet. Keep learning words!"
+  },
+  "profile_last_sync_label": {
+    "message": "Last Sync:"
+  },
+  "profile_last_sync_never": {
+    "message": "Never"
+  },
+  "profile_logout": {
+    "message": "Logout"
+  },
+  "profile_logging_out": {
+    "message": "Logging out..."
+  },
+  "archive_csv_backup_warning": {
+    "message": "Words exported in CSV format cannot be directly imported back to the app. This is not a backup mechanism.\n\nFor a full backup, please use the 'Backup' option in settings or synchronize your account.\n\nDo you want to proceed and download the CSV?"
+  },
+  "premium_welcome_title": {
+    "message": "Welcome to Premium!"
+  },
+  "premium_welcome_desc": {
+    "message": "Welcome to PrimeVocab Premium! All limits are unlocked and your perks are active:"
+  },
+  "premium_feat_limit_title": {
+    "message": "Unlimited Word Vault"
+  },
+  "premium_feat_limit": {
+    "message": "The 50-word free limit is removed. Save as many words as you want."
+  },
+  "premium_feat_sync_title": {
+    "message": "Google Drive Cloud Sync"
+  },
+  "premium_feat_sync": {
+    "message": "Automatically sync your vocabulary and streak progress across all devices."
+  },
+  "premium_feat_practice_title": {
+    "message": "Advanced SRS Training"
+  },
+  "premium_feat_practice": {
+    "message": "Study flashcards with no daily review limits using spaced repetition."
+  },
+  "premium_feat_games_title": {
+    "message": "All Mini-Games Unlocked"
+  },
+  "premium_feat_games": {
+    "message": "Access all 6 vocabulary mini-games and full learning vault."
+  },
+  "premium_feat_export_title": {
+    "message": "Anki & JSON Export"
+  },
+  "premium_feat_export": {
+    "message": "Export all saved words directly to Anki deck or JSON backup format."
+  },
+  "premium_welcome_btn": {
+    "message": "Awesome, Let's Start!"
+  },
+  "profile_sync_status_disabled": {
+    "message": "Connection Active (Sync Disabled)"
+  },
+  "archive_inactive_badge_title": {
+    "message": "Not scanned in subtitles because it is outside the free version limit (Last 50 words)."
+  },
+  "archive_inactive_badge_label": {
+    "message": "Inactive in Subtitles"
+  },
+  "premium_smart_locked_desc": {
+    "message": "You need to upgrade to Premium to use Smart Features (Shadowing, Auto Rewind, Slow Motion, etc.)."
+  },
+  "premium_game_locked_desc": {
+    "message": "You need to upgrade to Premium to play this game."
+  },
+  "premium_modal_title": {
+    "message": "Premium Feature"
+  },
+  "premium_modal_buy_btn": {
+    "message": "Get Premium"
+  },
+  "premium_modal_close_btn": {
+    "message": "Close"
+  },
+  "profile_login_btn": {
+    "message": "Sign in with Google"
+  },
+  "premium_sync_required_desc": {
+    "message": "Your Google account is connected, but you need a Premium membership to use cloud synchronization."
+  },
+  "profile_buy_premium_btn": {
+    "message": "Go Premium"
+  },
+  "profile_manage_subscription_btn": {
+    "message": "Manage Subscription"
+  },
+  "archive_capacity_text": {
+    "message": "Capacity: {count} / 50 Words"
+  },
+  "archive_limit_reached_text": {
+    "message": " (Limit Reached!)"
+  },
+  "archive_go_premium": {
+    "message": "Go Premium"
+  },
+  "archive_limit_modal_title": {
+    "message": "Capacity Limit"
+  },
+  "archive_limit_modal_desc": {
+    "message": "Upgrade to Premium to save more words and unlock all features."
+  },
+  "settings_show_learned_games_title": {
+    "message": "Show Learned Words in Games"
+  },
+  "settings_show_learned_games_desc": {
+    "message": "Keep showing words marked as learned in vocabulary games"
+  },
+  "game_insufficient_unlearned_words": {
+    "message": "You must have at least 4 unlearned words to play this game."
+  },
+  "settings_sub_bg_color": {
+    "message": "Background Color"
+  },
+  "settings_sub_bg_opacity": {
+    "message": "Background Opacity"
+  },
+  "opacity_0": {
+    "message": "0%"
+  },
+  "opacity_25": {
+    "message": "25%"
+  },
+  "opacity_50": {
+    "message": "50%"
+  },
+  "opacity_75": {
+    "message": "75%"
+  },
+  "opacity_85": {
+    "message": "85%"
+  },
+  "opacity_100": {
+    "message": "100%"
+  },
+  "settings_panel_font_size": {
+    "message": "In-Panel Subtitle Font Size"
+  },
+  "settings_panel_font_small": {
+    "message": "Small"
+  },
+  "settings_panel_font_medium": {
+    "message": "Medium"
+  },
+  "settings_panel_font_large": {
+    "message": "Large"
+  },
+  "color_navy": {
+    "message": "Navy Blue"
+  },
+  "color_black": {
+    "message": "Black"
+  },
+  "color_gray": {
+    "message": "Gray"
+  },
+  "color_indigo": {
+    "message": "Indigo"
+  },
+  "color_green": {
+    "message": "Green"
+  },
+  "color_yellow": {
+    "message": "Yellow"
+  },
+  "color_blue": {
+    "message": "Blue"
+  },
+  "color_pink": {
+    "message": "Pink"
+  },
+  "color_custom": {
+    "message": "Custom Color"
+  },
+  "settings_section_games_heading": {
+    "message": "Games"
+  },
+  "settings_game_sound": {
+    "message": "Game Sound Effects"
+  },
+  "settings_game_auto_pronounce": {
+    "message": "Auto Pronunciation"
+  },
+  "settings_game_show_learned": {
+    "message": "Show Learned Words in Games"
+  },
+  "settings_section_language": {
+    "message": "Language"
+  },
+  "settings_reset_all_data": {
+    "message": "Reset All Data"
+  },
+  "settings_reset_all_confirm": {
+    "message": "All your saved words, SRS progress, game stats, and settings will be permanently deleted. Are you sure you want to reset everything?"
+  },
+  "settings_reset_all_done": {
+    "message": "All data has been reset!"
+  },
+  "settings_export_json_success": {
+    "message": "JSON backup downloaded!"
+  },
+  "premium_backup_locked_desc": {
+    "message": "You need to upgrade to Premium to use the data backup feature."
+  },
+  "premium_restore_locked_desc": {
+    "message": "You need to upgrade to Premium to use the backup restore feature."
+  },
+  "premium_anki_locked_desc": {
+    "message": "You need to upgrade to Premium to use the Anki export feature."
+  },
+  "premium_connect_google_first": {
+    "message": "Connect your Google account to continue..."
+  },
+  "premium_google_connect_cancelled": {
+    "message": "Google connection cancelled."
+  },
+  "settings_restore_success_alert": {
+    "message": "Backup restored successfully! Your saved words and settings have been updated."
+  },
+  "menu_title": {
+    "message": "Menu"
+  },
+  "settings_tab_player": {
+    "message": "Player"
+  },
+  "settings_tab_general": {
+    "message": "Settings"
+  },
+  "settings_tab_about": {
+    "message": "About"
+  },
+  "settings_shortcuts_view": {
+    "message": "View Shortcuts"
+  },
+  "settings_tour_replay": {
+    "message": "Replay Tour"
+  },
+  "game_wrong": {
+    "message": "Wrong"
+  },
+  "toast_login_in_progress": {
+    "message": "Signing in..."
+  },
+  "toast_login_tab_opened": {
+    "message": "Google Sign-In page opened. Please select your account in the tab..."
+  },
+  "toast_login_success": {
+    "message": "🎉 Login successful! Account linked."
+  },
+  "toast_logout_success": {
+    "message": "Logged out successfully"
+  },
+  "toast_login_failed": {
+    "message": "Sign-in failed"
+  },
+  "toast_sync_success": {
+    "message": "🎉 Cloud synchronization completed successfully!"
+  },
+  "toast_sync_warning": {
+    "message": "Sync warning: "
+  },
+  "toast_no_words_to_refresh": {
+    "message": "No words found to refresh."
+  },
+  "toast_updating_word_families": {
+    "message": "Updating word families..."
+  },
+  "toast_word_families_updated": {
+    "message": "Word families updated!"
+  },
+  "toast_no_words_to_export": {
+    "message": "No words to export."
+  },
+  "srs_toggle_learned_tooltip": {
+    "message": "Toggle learned status"
+  },
+  "fc_translation": {
+    "message": "Translation"
+  },
+  "achievement_unlocked_title": {
+    "message": "Achievement Unlocked!"
+  },
+  "pool_all": {
+    "message": "Pool: All"
+  },
+  "translating_ellipsis": {
+    "message": "Translating..."
+  },
+  "premium_dual_sub_desc": {
+    "message": "Upgrade to Premium to display both learning and native subtitles simultaneously with Dual Subtitles."
+  },
+  "premium_shadowing_desc": {
+    "message": "Upgrade to Premium to activate Shadowing mode for automated subtitle pauses and speaking practice."
+  },
+  "premium_auto_rewind_desc": {
+    "message": "Upgrade to Premium to enable Auto Rewind and replay video context whenever you save a new word."
+  },
+  "premium_auto_slow_mo_desc": {
+    "message": "Upgrade to Premium to enable Smart Slow-Mo, automatically slowing down playback on challenging vocabulary."
+  },
+  "premium_word_family_desc": {
+    "message": "Upgrade to Premium to explore word families and morphological roots for deeper vocabulary mastery."
+  },
+  "settings_auto_translate_fallback": {
+    "message": "Auto Subtitle Translation (GT)"
+  },
+  "settings_auto_translate_fallback_help": {
+    "message": "If the selected secondary subtitle is not officially available, automatically generate and display it via Google Translate with a [GT] badge."
+  },
+  "source_play_scene_btn": {
+    "message": "Play Scene"
+  },
+  "source_open_start_btn": {
+    "message": "From Start"
+  },
+  "source_copy_link_btn": {
+    "message": "Copy Link"
+  },
+  "toast_link_copied": {
+    "message": "Link Copied!"
+  },
+  "lang_fa": {
+    "message": "Persian"
+  },
+  "platform_local": {
+    "message": "Local video"
+  }
+}

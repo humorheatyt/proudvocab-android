@@ -1,0 +1,107 @@
+/* ProudVocab Desktop – shell layout */
+:root{
+  --panel-w: 400px;
+  --bg: #070a12;
+  --bg2: #0d1220;
+  --line: #1c2437;
+  --text: #e7ecf5;
+  --muted: #8b96ad;
+  --accent: #6ea8fe;
+  --topbar-h: 40px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:"Segoe UI",system-ui,-apple-system,"Noto Sans Arabic","Noto Sans",Roboto,sans-serif;
+  overflow:hidden; display:flex; flex-direction:column;
+  -webkit-font-smoothing:antialiased;
+}
+body.booting #app{opacity:0}
+body.splitting{cursor:col-resize; user-select:none}
+body.splitting iframe{pointer-events:none}
+
+/* ------------------------------------------------------------------ topbar */
+#topbar{
+  height:var(--topbar-h); flex:0 0 var(--topbar-h);
+  display:flex; align-items:center; gap:10px; padding:0 10px;
+  background:linear-gradient(180deg,#101728,#0b1120);
+  border-bottom:1px solid var(--line);
+  user-select:none;
+}
+.brand{display:flex;align-items:center;gap:8px;padding-right:6px}
+.brand-icon{width:18px;height:18px;border-radius:4px}
+.brand-name{font-weight:700;font-size:13px;letter-spacing:.2px}
+.brand-tag{
+  margin-left:6px;font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  color:#0a0f1c;background:linear-gradient(135deg,#8fd3a4,#6ea8fe);padding:2px 5px;border-radius:5px;vertical-align:1px;
+}
+.now-playing{
+  display:flex;align-items:center;gap:6px;min-width:0;max-width:46vw;
+  color:var(--muted);font-size:12px;
+  background:#0a0f1c;border:1px solid var(--line);border-radius:7px;padding:4px 9px;
+}
+.now-playing svg{flex:0 0 auto;opacity:.8}
+#now-playing-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;direction:ltr}
+.now-playing.has-video{color:#cfe0ff;border-color:#243456}
+.topbar-spacer{flex:1 1 auto}
+.panel-status{
+  font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#7ce0a6;
+  border:1px solid #1f4d35;background:#0d2019;border-radius:20px;padding:2px 8px;
+}
+.panel-status.off{color:#e0a37c;border-color:#4d331f;background:#20170d}
+.tb-btn{
+  display:flex;align-items:center;gap:6px;
+  background:#0a0f1c;border:1px solid var(--line);color:var(--muted);
+  border-radius:8px;padding:5px 9px;font-size:11.5px;font-weight:600;cursor:pointer;
+  transition:.14s ease;
+}
+.tb-btn:hover{color:var(--text);border-color:#2c3b5c;background:#111a2e}
+.tb-btn.active{color:#dce9ff;border-color:#33507f;background:#152238}
+
+/* -------------------------------------------------------------------- layout */
+#app{flex:1 1 auto;display:flex;min-height:0;overflow:hidden;position:relative}
+#stage{flex:1 1 auto;min-width:0;position:relative;background:#000}
+#stage iframe{width:100%;height:100%;border:0;display:block;background:#000}
+
+#splitter{
+  flex:0 0 5px;width:5px;cursor:col-resize;background:var(--line);
+  position:relative;transition:background .15s;
+}
+#splitter:hover,#splitter:active{background:#33507f}
+#splitter::after{content:"";position:absolute;inset:0 -3px;}
+
+#panel-wrap{
+  flex:0 0 var(--panel-w);width:var(--panel-w);min-width:0;
+  background:var(--bg2);border-left:1px solid var(--line);
+  transition:transform .22s ease, margin-right .22s ease, opacity .18s ease;
+  position:relative;overflow:hidden;
+}
+#panel-wrap iframe{width:100%;height:100%;border:0;display:block;background:#0d1220}
+
+body.panel-hidden #panel-wrap{
+  transform:translateX(102%);
+  margin-right:calc(-1 * var(--panel-w));
+  opacity:0;pointer-events:none;
+}
+body.panel-hidden #splitter{display:none}
+
+/* the background/service-worker frame – rendered but invisible */
+.bg-frame{
+  position:fixed;left:-2000px;top:0;width:800px;height:600px;
+  border:0;visibility:hidden;pointer-events:none;opacity:0;
+}
+
+/* boot splash */
+#boot{
+  position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:14px;background:var(--bg);z-index:50;
+  transition:opacity .35s ease;font-size:13px;color:var(--muted);
+}
+#boot.gone{opacity:0;pointer-events:none}
+#boot .spin{
+  width:26px;height:26px;border-radius:50%;
+  border:2.5px solid #1d2942;border-top-color:var(--accent);
+  animation:spin .9s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}

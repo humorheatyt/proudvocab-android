@@ -1,0 +1,151 @@
+name: Android APK Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: Release tag to create (for example v0.1.0)
+        required: true
+        default: v0.1.0
+        type: string
+      prerelease:
+        description: Mark this GitHub Release as a prerelease
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    name: Build and publish APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android 35 SDK packages
+        run: sdkmanager --install 'platform-tools' 'platforms;android-35' 'build-tools;35.0.0'
+
+      - name: Set up Gradle cache
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Select release version
+        id: release
+        shell: bash
+        env:
+          INPUT_TAG: ${{ inputs.tag_name }}
+        run: |
+          set -euo pipefail
+          if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+            TAG="$INPUT_TAG"
+          else
+            TAG="$GITHUB_REF_NAME"
+          fi
+          if [[ ! "$TAG" =~ ^v?[0-9]+\.[0-9]+\.[0-9]+([.-][A-Za-z0-9.-]+)?$ ]]; then
+            echo "Invalid release tag: $TAG" >&2
+            exit 1
+          fi
+          VERSION="${TAG#v}"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare optional stable signing key
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          if [[ -z "$ANDROID_KEYSTORE_BASE64" ]]; then
+            echo "No release keystore secret configured; the fallback APK will use the CI debug key." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          if [[ -z "$ANDROID_KEYSTORE_PASSWORD" || -z "$ANDROID_KEY_ALIAS" || -z "$ANDROID_KEY_PASSWORD" ]]; then
+            echo "The keystore was provided but one or more signing secrets are missing." >&2
+            exit 1
+          fi
+          KEYSTORE="$RUNNER_TEMP/proudvocab-release.jks"
+          printf '%s' "$ANDROID_KEYSTORE_BASE64" | base64 --decode > "$KEYSTORE"
+          chmod 600 "$KEYSTORE"
+          echo "PV_RELEASE_STORE_FILE=$KEYSTORE" >> "$GITHUB_ENV"
+
+      - name: Run parser, bridge and project checks
+        run: |
+          node --test test/*.test.mjs
+          find app/src/main/assets/www -type f -name '*.js' -print0 \
+            | xargs -0 -n1 node --check
+
+      - name: Build and lint release APK
+        env:
+          PV_RELEASE_STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          PV_RELEASE_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          PV_RELEASE_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          chmod +x ./gradlew
+          ./gradlew --no-daemon clean testDebugUnitTest lint assembleRelease \
+            -PversionCode="${GITHUB_RUN_NUMBER}" \
+            -PversionName="${{ steps.release.outputs.version }}"
+
+      - name: Verify and checksum APK
+        id: apk
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          APK=app/build/outputs/apk/release/app-release.apk
+          test -s "$APK"
+          unzip -t "$APK" >/dev/null
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep -F "package: name='app.proudvocab.android'"
+          cp "$APK" "dist/ProudVocab-Android-${{ steps.release.outputs.version }}.apk"
+          (cd dist && sha256sum "ProudVocab-Android-${{ steps.release.outputs.version }}.apk" > SHA256SUMS.txt)
+
+      - name: Create GitHub Release and attach APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          IS_PRERELEASE: ${{ inputs.prerelease }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          NOTES="$RUNNER_TEMP/release-notes.md"
+          cat > "$NOTES" <<'EOF'
+          ProudVocab Android APK for Android 9 (API 28) and newer.
+
+          - Install the APK manually on Android. The app uses Android's system document picker and does not request broad storage access.
+          - For best playback compatibility, use MP4 video with H.264 video and AAC audio.
+          - The APK is sideload-only; it is not a Google Play Store release.
+          EOF
+          if [[ -z "$ANDROID_KEYSTORE_BASE64" ]]; then
+            cat >> "$NOTES" <<'EOF'
+
+          **Signing:** No private release keystore was configured. This APK is signed with the CI debug key for testing. Different CI runners may use different debug keys, so a later APK may require uninstalling this test build first. Configure the `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, and `ANDROID_KEY_PASSWORD` repository secrets for stable, update-in-place releases.
+          EOF
+          fi
+          ARGS=()
+          if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" && "$IS_PRERELEASE" == "true" ]]; then
+            ARGS+=(--prerelease)
+          fi
+          gh release create "${{ steps.release.outputs.tag }}" \
+            "dist/ProudVocab-Android-${{ steps.release.outputs.version }}.apk" \
+            dist/SHA256SUMS.txt \
+            --target "$GITHUB_SHA" \
+            --title "ProudVocab Android ${{ steps.release.outputs.version }}" \
+            --notes-file "$NOTES" \
+            "${ARGS[@]}"

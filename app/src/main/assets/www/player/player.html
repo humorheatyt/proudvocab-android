@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>ProudVocab Player</title>
+
+<!-- the shim has to run before anything that touches `chrome.*` -->
+<script>window.__PV_ROLE__ = "player"; window.pvBridge = window.top.pvBridge;</script>
+<script src="../ext/chrome-shim.js"></script>
+
+<!-- extension engine styles (word chips, tooltips, overlay) -->
+<link rel="stylesheet" href="../ext/content/inject.css">
+<link rel="stylesheet" href="player.css">
+<link rel="stylesheet" href="../android-mobile.css">
+</head>
+<body>
+
+<div id="pv-stage">
+
+  <!-- ══ the container the engine attaches its overlay to ══ -->
+  <div id="pv-player-container">
+    <video id="pv-video" preload="metadata" playsinline></video>
+
+    <!-- the "native" caption layer: player.js writes the active SRT cue here,
+         the engine's MutationObserver picks it up (== .ytp-caption-window-container) -->
+    <div id="pv-caption-host" class="pv-caption-host" aria-hidden="true"></div>
+
+    <div id="pv-bigplay" class="pv-hidden" title="Play">
+      <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+
+    <div id="pv-toast" class="pv-hidden"></div>
+
+    <!-- ══ empty state / drop zone ══ -->
+    <div id="pv-empty">
+      <div class="empty-card">
+        <div class="empty-ico">
+          <svg viewBox="0 0 24 24" width="46" height="46" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2.5" y="4.5" width="19" height="15" rx="3"/>
+            <path d="m10 9 5 3-5 3z" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <h1 data-t="empty_title">Open a local video</h1>
+        <p data-t="empty_hint">Drop a video file here, or pick one from disk. Add an <b>.srt</b> subtitle and every word
+          in it becomes clickable – with translation, CEFR level and spaced-repetition review.</p>
+
+        <div class="empty-actions">
+          <button class="btn primary" id="empty-open-video">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            <span data-t="btn_open_video">Open video</span>
+          </button>
+          <button class="btn" id="empty-open-sub">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M7 15h4m3 0h3M7 11h10"/></svg>
+            <span data-t="btn_open_subtitle">Open SRT</span>
+          </button>
+          <button class="btn ghost" id="empty-open-folder">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M4 20V6a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v12"/></svg>
+            <span data-t="btn_open_folder">Folder as playlist</span>
+          </button>
+        </div>
+
+        <div class="empty-drop" data-t="empty_drop">…or drop video + subtitle files anywhere in this window</div>
+
+        <div id="empty-recent" class="empty-recent"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ player controls (sibling of the observed container) ══ -->
+  <div id="pv-controls" class="pv-hidden">
+
+    <div id="pv-progress" title="Seek">
+      <canvas id="pv-cue-ticks"></canvas>
+      <div class="pv-progress-bg"><div id="pv-buffered"></div><div id="pv-played"></div><div id="pv-knob"></div></div>
+      <div id="pv-hover-time" class="pv-hidden"></div>
+    </div>
+
+    <div id="pv-bar">
+      <button class="ctl" id="btn-play" data-t="tip_playpause" title="Play/Pause (Space)">
+        <svg class="i-play" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="i-pause pv-hidden" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      </button>
+
+      <button class="ctl" id="btn-prev-cue" data-t="tip_prev_cue" title="Previous subtitle line (Shift+↑)">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7 6h2v12H7zM18 6v12l-8-6z"/></svg>
+      </button>
+      <button class="ctl" id="btn-replay-cue" data-t="tip_replay_cue" title="Replay this line (R)">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+      </button>
+      <button class="ctl" id="btn-next-cue" data-t="tip_next_cue" title="Next subtitle line (Shift+↓)">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15 6h2v12h-2zM6 6v12l8-6z"/></svg>
+      </button>
+
+      <div class="ctl-time"><span id="t-cur">0:00</span><span class="sep">/</span><span id="t-dur">0:00</span></div>
+
+      <div class="bar-spacer"></div>
+
+      <div class="vol-wrap">
+        <button class="ctl" id="btn-mute" data-t="tip_mute" title="Mute (M)">
+          <svg class="i-vol" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          <svg class="i-muted pv-hidden" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m16 9 5 6M21 9l-5 6"/></svg>
+        </button>
+        <input id="pv-volume" type="range" min="0" max="1" step="0.02" value="1" title="Volume (↑/↓)">
+      </div>
+
+      <button class="ctl text" id="btn-rate" title="Playback speed ([ / ])">1×</button>
+
+      <button class="ctl text" id="btn-cc" title="Subtitles (S)">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M9.5 10.5A2.5 2.5 0 1 0 9.5 14M16 10.5A2.5 2.5 0 1 0 16 14"/></svg>
+        <span id="cc-badge" class="badge pv-hidden">0</span>
+      </button>
+
+      <button class="ctl" id="btn-files" data-t="tip_files" title="Files &amp; playlist (L)">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      </button>
+
+      <button class="ctl" id="btn-ontop" data-t="tip_ontop" title="Always on top">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5"/><path d="M9 3h6l-1 6 3 3v2H7v-2l3-3z"/></svg>
+      </button>
+
+      <button class="ctl" id="btn-fullscreen" data-t="tip_fullscreen" title="Full screen (F)">
+        <svg class="i-fs" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        <svg class="i-fs-exit pv-hidden" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+      </button>
+    </div>
+
+    <!-- ══ popups ══ -->
+    <div id="pv-popup-cc" class="pv-popup pv-hidden">
+      <div class="pop-head">
+        <span data-t="cc_title">Subtitles</span>
+        <button class="pop-x" data-close>✕</button>
+      </div>
+      <div class="pop-body">
+        <div id="cc-track-list" class="track-list"></div>
+        <div class="pop-row">
+          <button class="mini" id="cc-load">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            <span data-t="cc_load">Load SRT / VTT…</span>
+          </button>
+          <button class="mini" id="cc-off" data-t="cc_off">Off</button>
+        </div>
+
+        <div class="pop-sep"></div>
+        <div class="pop-field">
+          <label data-t="cc_lang">Subtitle language</label>
+          <select id="cc-lang"></select>
+        </div>
+
+        <div class="pop-field">
+          <label data-t="cc_delay">Sync offset</label>
+          <div class="stepper">
+            <button class="mini" id="cc-delay-down">−0.25s</button>
+            <span id="cc-delay-val">0.00 s</span>
+            <button class="mini" id="cc-delay-up">+0.25s</button>
+            <button class="mini ghost" id="cc-delay-reset" data-t="cc_delay_reset">reset</button>
+          </div>
+        </div>
+
+        <label class="pop-check">
+          <input type="checkbox" id="cc-auto" checked>
+          <span data-t="cc_auto">Auto-load matching .srt next to the video</span>
+        </label>
+        <label class="pop-check">
+          <input type="checkbox" id="cc-show-plain">
+          <span data-t="cc_show_plain">Also show a plain (non-interactive) caption</span>
+        </label>
+      </div>
+    </div>
+
+    <div id="pv-popup-files" class="pv-popup pv-hidden">
+      <div class="pop-head">
+        <span data-t="files_title">Files &amp; playlist</span>
+        <button class="pop-x" data-close>✕</button>
+      </div>
+      <div class="pop-body">
+        <div class="pop-row">
+          <button class="mini" id="f-open-video"><span data-t="btn_open_video">Open video</span></button>
+          <button class="mini" id="f-open-folder"><span data-t="btn_open_folder">Folder</span></button>
+        </div>
+        <div class="pop-label" data-t="files_playlist">Playlist</div>
+        <div id="f-playlist" class="track-list"></div>
+        <div class="pop-label" data-t="files_recent">Recent</div>
+        <div id="f-recent" class="track-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── subtitle engine (original extension code) ───────────────────────── -->
+<script src="srt.js"></script>
+<script src="../ext/content/utils_common.js"></script>
+<script src="../ext/content/phrasal_verbs.js"></script>
+<script src="../ext/content/idioms.js"></script>
+<script src="LocalAdapter.js"></script>
+<script src="../ext/content/inject_common.js"></script>
+<!-- ── desktop player ─────────────────────────────────────────────────── -->
+<script src="player.js"></script>
+</body>
+</html>

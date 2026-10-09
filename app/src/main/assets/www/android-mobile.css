@@ -1,0 +1,107 @@
+/* Android phone/tablet layout and WebView touch targets. */
+:root { color-scheme: dark; }
+button, input, select, textarea { touch-action: manipulation; }
+
+/* The desktop split pane becomes a video-first stack on a phone in portrait. */
+@media (max-width: 760px) {
+  #topbar {
+    height: 42px;
+    flex-basis: 42px;
+    gap: 6px;
+    padding: 0 8px;
+  }
+  .brand { gap: 6px; padding-right: 0; }
+  .brand-icon { width: 20px; height: 20px; }
+  .brand-name { font-size: 12px; }
+  .brand-tag { font-size: 8px; padding: 2px 4px; margin-left: 3px; }
+  .now-playing { max-width: 34vw; padding: 4px 6px; font-size: 10px; }
+  .panel-status { display: none; }
+  .tb-btn { min-width: 36px; height: 34px; padding: 0 7px; justify-content: center; }
+  .tb-btn span { font-size: 10px; }
+
+  #app { flex-direction: column; }
+  #stage { flex: 0 0 clamp(190px, 39vh, 48vh); width: 100%; min-height: 180px; }
+  #splitter { display: none !important; }
+  #panel-wrap {
+    flex: 1 1 0;
+    width: 100%;
+    min-height: 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+  #panel-wrap iframe { width: 100%; height: 100%; }
+  body.panel-hidden #panel-wrap {
+    flex: 0 0 0;
+    width: 100%;
+    height: 0;
+    margin: 0;
+    transform: none;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .now-playing { display: none; }
+  .topbar-spacer { display: block; }
+  .tb-btn span { display: none; }
+  .brand-name { font-size: 11px; }
+}
+
+/* Keep all player actions reachable, while removing the desktop-only volume
+   slider and floating-window button that have no useful phone equivalent. */
+@media (max-width: 760px) {
+  #pv-controls { padding: 18px 6px 5px; }
+  #pv-progress { height: 20px; margin-bottom: 3px; }
+  #pv-progress .pv-progress-bg { top: 8px; }
+  #pv-progress:hover .pv-progress-bg { top: 6px; }
+  #pv-cue-ticks { height: 18px; }
+  #pv-bar { gap: 1px; overflow-x: auto; scrollbar-width: none; }
+  #pv-bar::-webkit-scrollbar { display: none; }
+  .ctl { width: 32px; height: 36px; border-radius: 9px; }
+  .ctl.text { padding: 0 6px; font-size: 11px; }
+  .ctl-time { padding: 0 3px; font-size: 10px; }
+  .bar-spacer { flex: 1 1 4px; min-width: 4px; }
+  .vol-wrap, #btn-ontop { display: none !important; }
+  .pv-popup {
+    left: 8px;
+    right: 8px;
+    bottom: 54px;
+    width: auto;
+    max-height: min(250px, calc(100% - 64px));
+    border-radius: 12px;
+  }
+  .pop-body { padding: 10px; }
+  #pv-empty { padding: 12px; }
+  .empty-card h1 { font-size: 17px; }
+  .empty-card p { font-size: 11px; line-height: 1.55; margin-bottom: 12px; }
+  .empty-actions { gap: 7px; margin-bottom: 8px; }
+  .empty-actions .btn { min-height: 40px; padding: 8px 10px; font-size: 11px; }
+  .empty-drop { display: none; }
+  .rc-item { min-height: 42px; }
+  #pv-bigplay { width: 62px; height: 62px; }
+  #pv-toast { font-size: 11px; max-width: 92%; }
+}
+
+/* Remove the old paid-state decoration; entitlement checks are local/offline. */
+body.pv-android .premium-locked {
+  opacity: 1 !important;
+  cursor: pointer !important;
+}
+body.pv-android .premium-lock-overlay { display: none !important; pointer-events: none !important; }
+body.pv-android .premium-pro-tag { display: none !important; }
+body.pv-android #premium-modal,
+body.pv-android #premium-welcome-modal { display: none !important; }
+body.pv-android .pv-android-sync-note {
+  margin: 8px 2px 0;
+  padding: 9px 10px;
+  color: #becbe2;
+  background: rgba(110, 168, 254, .08);
+  border: 1px solid rgba(110, 168, 254, .2);
+  border-radius: 10px;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

@@ -1,0 +1,22 @@
+# Android/Gradle
+.gradle/
+**/build/
+local.properties
+*.iml
+.idea/
+
+# JavaScript tooling
+node_modules/
+
+# Release artifacts and signing material
+*.apk
+*.aab
+*.jks
+*.keystore
+release/
+dist/
+
+# Editor/OS files
+.DS_Store
+Thumbs.db
+*.swp

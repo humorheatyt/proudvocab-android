@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrimeVocab</title>
+
+  <script>window.__PV_ROLE__ = "panel";</script>
+  <script src="../chrome-shim.js"></script>
+  <script src="../../android-export.js"></script>
+  <link rel="stylesheet" href="panel.css">
+  <link rel="stylesheet" href="../desktop-panel.css">
+  <link rel="stylesheet" href="../../android-mobile.css">
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- ── MENÜ SLIDE-OVER ÇEKMECESİ (Menu Drawer) ── -->
+    <div class="srs-overlay" id="menuOverlay">
+      <div class="srs-overlay-header">
+        <button class="nav-icon" id="menuCloseBtn" data-i18n-title="srs_btn_back_tooltip" title="Geri">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <span class="srs-overlay-title" data-i18n="menu_title">Menü</span>
+      </div>
+
+      <div class="subtabs" id="menuSubtabs" data-target-class="menu-view">
+        <button class="subtab active" data-view="gorunum" id="subtab-platform-settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="14" rx="2.5"/><polygon points="10 8.5 15 11.5 10 14.5 10 8.5" fill="currentColor" stroke="none"/></svg>
+          <span data-i18n="settings_tab_player">Oynatıcı</span>
+        </button>
+        <button class="subtab" data-view="ayarlar" id="subtab-general-settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span data-i18n="settings_tab_general">Ayarlar</span>
+        </button>
+        <button class="subtab" data-view="hakkinda" id="subtab-about-settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <span data-i18n="settings_tab_about">Hakkında</span>
+        </button>
+      </div>
+
+      <!-- ═══ OYNATICI (GÖRÜNÜM) SEKME İÇERİĞİ ═══ -->
+      <div class="settings-scroll menu-view active" id="settings-tab-platform" data-view="gorunum">
+
+        <!-- Oynatıcı Filtresi (Sticky Header) -->
+        <div class="platform-filter-sticky-wrap">
+          <div class="menu-subhead" data-i18n="settings_platform_filter_title" style="margin: 0 2px 2px;">Oynatıcı Filtresi</div>
+          <div class="settings-card" style="padding: 10px 12px; gap: 8px;">
+            <div class="platform-filter-row" id="platform-filter-buttons">
+              <button class="platform-filter-btn2 on active" data-platform="local" data-val="lc" type="button">
+                <span class="platform-ico">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="m10 9 5 3-5 3z" fill="currentColor" stroke="none"/></svg>
+                </span>
+                <span data-i18n="platform_local">Local video</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1. Çeviri Dilleri -->
+        <div class="menu-subhead" data-i18n="settings_section_languages">Çeviri Dilleri</div>
+        <div class="settings-card settings-card-divided">
+          <!-- Öğrenilen Dil -->
+          <div class="settings-block">
+            <div class="setting-ico-row">
+              <span class="setting-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </span>
+              <div class="settings-card-label" data-i18n="settings_source_lang">Öğrenilen Dil</div>
+            </div>
+            <div class="material-select-wrap" id="sourceLangSelectWrap">
+              <button type="button" class="material-select-trigger" id="sourceLangTrigger">
+                <span class="material-select-val" id="sourceLangLabel">İngilizce</span>
+                <svg class="material-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="material-select-menu" id="sourceLangMenu">
+                <button type="button" class="material-select-opt" data-val="fa"><span data-i18n="lang_fa">فارسی</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt on" data-val="en"><span data-i18n="lang_en">İngilizce</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="es"><span data-i18n="lang_es">İspanyolca</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="de"><span data-i18n="lang_de">Almanca</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="fr"><span data-i18n="lang_fr">Fransızca</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="it"><span data-i18n="lang_it">İtalyanca</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="ru"><span data-i18n="lang_ru">Rusça</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="pt"><span data-i18n="lang_pt">Portekizce</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="ar"><span data-i18n="lang_ar">Arapça</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="zh"><span data-i18n="lang_zh">Çince</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="ja"><span data-i18n="lang_ja">Japonca</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="ko"><span data-i18n="lang_ko">Korece</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="nl"><span data-i18n="lang_nl">Hollandaca</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="pl"><span data-i18n="lang_pl">Lehçe</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="sv"><span data-i18n="lang_sv">İsveççe</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="uk"><span data-i18n="lang_uk">Ukraynaca</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="hi"><span data-i18n="lang_hi">Hintçe</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="tr"><span data-i18n="lang_tr">Türkçe</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+              </div>
+              <select id="source-lang-select" style="display:none;">
+                <option value="fa">فارسی</option>
+                <option value="en">İngilizce</option>
+                <option value="es">İspanyolca</option>
+                <option value="de">Almanca</option>
+                <option value="fr">Fransızca</option>
+                <option value="it">İtalyanca</option>
+                <option value="ru">Rusça</option>
+                <option value="pt">Portekizce</option>
+                <option value="ar">Arapça</option>
+                <option value="zh">Çince</option>
+                <option value="ja">Japonca</option>
+                <option value="ko">Korece</option>
+                <option value="nl">Hollandaca</option>
+                <option value="pl">Lehçe</option>
+                <option value="sv">İsveççe</option>
+                <option value="uk">Ukraynaca</option>
+                <option value="hi">Hintçe</option>
+                <option value="tr">Türkçe</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Ana Dilin -->
+          <div class="settings-block">
+            <div class="setting-ico-row">
+              <span class="setting-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9z"/></svg>
+              </span>
+              <div class="settings-card-label" data-i18n="settings_target_lang">Ana Dilin (Çeviri Hedefi)</div>
+            </div>
+            <div class="material-select-wrap" id="targetLangSelectWrap">
+              <button type="button" class="material-select-trigger" id="targetLangTrigger">
+                <span class="material-select-val" id="targetLangLabel">Türkçe</span>
+                <svg class="material-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="material-select-menu" id="targetLangMenu">
+                <button type="button" class="material-select-opt" data-val="fa"><span data-i18n="lang_fa">فارسی</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt on" data-val="tr"><span data-i18n="lang_tr">Türkçe</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="en"><span data-i18n="lang_en">İngilizce</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="de"><span data-i18n="lang_de">Almanca</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="fr"><span data-i18n="lang_fr">Fransızca</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="es"><span data-i18n="lang_es">İspanyolca</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="it"><span data-i18n="lang_it">İtalyanca</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="ru"><span data-i18n="lang_ru">Rusça</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="pt"><span data-i18n="lang_pt">Portekizce</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="ar"><span data-i18n="lang_ar">Arapça</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="zh"><span data-i18n="lang_zh">Çince</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="ja"><span data-i18n="lang_ja">Japonca</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="ko"><span data-i18n="lang_ko">Korece</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="nl"><span data-i18n="lang_nl">Hollandaca</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="pl"><span data-i18n="lang_pl">Lehçe</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="sv"><span data-i18n="lang_sv">İsveççe</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="uk"><span data-i18n="lang_uk">Ukraynaca</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="hi"><span data-i18n="lang_hi">Hintçe</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+              </div>
+              <select id="target-lang-select" style="display:none;">
+                <option value="fa">فارسی</option>
+                <option value="tr">Türkçe</option>
+                <option value="en">İngilizce</option>
+                <option value="de">Almanca</option>
+                <option value="fr">Fransızca</option>
+                <option value="es">İspanyolca</option>
+                <option value="it">İtalyanca</option>
+                <option value="ru">Rusça</option>
+                <option value="pt">Portekizce</option>
+                <option value="ar">Arapça</option>
+                <option value="zh">Çince</option>
+                <option value="ja">Japonca</option>
+                <option value="ko">Korece</option>
+                <option value="nl">Hollandaca</option>
+                <option value="pl">Lehçe</option>
+                <option value="sv">İsveççe</option>
+                <option value="uk">Ukraynaca</option>
+                <option value="hi">Hintçe</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Altyazı Görünümü -->
+        <div class="menu-subhead" data-i18n="settings_section_screen_sub">Altyazı Görünümü</div>
+        <div class="settings-card settings-card-divided">
+          <!-- Ekran Punto Büyüklüğü -->
+          <div class="settings-block">
+            <div class="setting-ico-row">
+              <span class="setting-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h6M4 12h10M4 17h16"/></svg>
+              </span>
+              <div class="settings-card-label" data-i18n="settings_font_size">Ekran Altyazı Boyutu</div>
+            </div>
+            <div class="segmented" id="fontsize-segmented" data-group="sheet-fontsize">
+              <div class="seg-thumb"></div>
+              <button data-val="18" type="button" data-i18n="settings_font_small">Küçük</button>
+              <button data-val="22" type="button" class="on" data-i18n="settings_font_medium">Orta</button>
+              <button data-val="26" type="button" data-i18n="settings_font_large">Büyük</button>
+              <button data-val="30" type="button" data-i18n="settings_font_xlarge">Çok Büyük</button>
+            </div>
+          </div>
+
+          <!-- Panel İçi Punto Büyüklüğü -->
+          <div class="settings-block">
+            <div class="setting-ico-row">
+              <span class="setting-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2.2"/><path d="M9 4v16"/></svg>
+              </span>
+              <div class="settings-card-label" data-i18n="settings_panel_font_size">Panel İçi Altyazı Boyutu</div>
+            </div>
+            <div class="segmented" id="panel-fontsize-segmented" data-group="sheet-panelfont">
+              <div class="seg-thumb"></div>
+              <button data-val="12" type="button" data-i18n="settings_panel_font_small">Küçük</button>
+              <button data-val="14" type="button" class="on" data-i18n="settings_panel_font_medium">Orta</button>
+              <button data-val="16" type="button" data-i18n="settings_panel_font_large">Büyük</button>
+            </div>
+          </div>
+
+          <!-- Pozisyon -->
+          <div class="settings-block">
+            <div class="setting-ico-row">
+              <span class="setting-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4"/></svg>
+              </span>
+              <div class="settings-card-label" data-i18n="settings_position">Ekran Pozisyonu</div>
+            </div>
+            <div class="segmented" id="position-segmented" data-group="sheet-position">
+              <div class="seg-thumb"></div>
+              <button data-val="5" type="button" data-i18n="settings_pos_bottom">Alt</button>
+              <button data-val="12" type="button" class="on" data-i18n="settings_pos_normal">Normal</button>
+              <button data-val="20" type="button" data-i18n="settings_pos_midbottom">Orta-Alt</button>
+              <button data-val="30" type="button" data-i18n="settings_pos_middle">Orta</button>
+            </div>
+          </div>
+
+          <!-- Arkaplan Rengi & Şeffaflık -->
+          <div class="settings-block">
+            <div class="setting-ico-row">
+              <span class="setting-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="8" cy="10" r="1.2" fill="currentColor"/><circle cx="12" cy="7.5" r="1.2" fill="currentColor"/><circle cx="16" cy="10" r="1.2" fill="currentColor"/><circle cx="13" cy="15" r="1.2" fill="currentColor"/></svg>
+              </span>
+              <div class="settings-card-label" data-i18n="settings_sub_bg_color">Arkaplan Rengi</div>
+            </div>
+            <div class="color-swatch-row" id="bg-color-options">
+              <div class="swatch-indicator"></div>
+              <button class="color-swatch on" data-bg="#0a0f1e" style="background:#0a0f1e" data-i18n-title="color_navy" title="Lacivert" type="button"></button>
+              <button class="color-swatch" data-bg="#000000" style="background:#000000" data-i18n-title="color_black" title="Siyah" type="button"></button>
+              <button class="color-swatch" data-bg="#1f2937" style="background:#1f2937" data-i18n-title="color_gray" title="Gri" type="button"></button>
+              <button class="color-swatch" data-bg="#1e1b4b" style="background:#1e1b4b" data-i18n-title="color_indigo" title="İndigo" type="button"></button>
+              <button class="color-swatch" data-bg="#064e3b" style="background:#064e3b" data-i18n-title="color_green" title="Yeşil" type="button"></button>
+              <span class="custom-color-row">
+                <button type="button" class="color-swatch color-picker-trigger" id="bgColorTrigger" style="background:#0a0f1e" data-i18n-title="color_custom" title="Özel Renk"></button>
+                <div class="color-popover" id="bgColorPopover">
+                  <div class="cp-sv" id="bgColorSV">
+                    <div class="cp-sv-handle" id="bgColorSVHandle"></div>
+                  </div>
+                  <div class="cp-hue" id="bgColorHue">
+                    <div class="cp-hue-handle" id="bgColorHueHandle"></div>
+                  </div>
+                  <div class="cp-hex-row">
+                    <span class="cp-hex-prefix">#</span>
+                    <input type="text" class="cp-hex-input" id="bgColorHexInput" value="0A0F1E" maxlength="6">
+                  </div>
+                </div>
+              </span>
+            </div>
+            <div class="settings-row" style="margin-top:10px">
+              <span class="settings-row-title" style="font-size:12px;" data-i18n="settings_sub_bg_opacity">Arkaplan Şeffaflığı</span>
+              <span style="font-size:12px;color:var(--accent-text);font-weight:700" id="bg-opacity-val">%85</span>
+            </div>
+            <input type="range" id="bg-opacity-slider" class="opacity-slider" min="0" max="100" step="1" value="85">
+          </div>
+        </div>
+
+        <!-- 3. Gelişmiş Altyazı & Vurgular -->
+        <div class="menu-subhead" data-i18n="settings_section_advanced_sub">Gelişmiş Altyazı</div>
+        <div class="settings-card settings-card-divided">
+          <!-- Çift Altyazı -->
+          <div class="settings-block">
+            <div class="setting-ico-row">
+              <span class="setting-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 2 8l10 5 10-5-10-5z"/><path d="M2 13l10 5 10-5"/></svg>
+              </span>
+              <div class="settings-row">
+                <div>
+                  <div class="settings-row-title" data-i18n="settings_dual_sub">Çift Altyazı (Dual Subtitles)</div>
+                  <div class="settings-row-help" data-i18n="settings_dual_sub_help">İki farklı altyazı track'i (ör. İngilizce + Türkçe) yüklüyse ikincisini otomatik okur. Yoksa Google Translate kullanır.</div>
+                </div>
+                <label class="switch2"><input type="checkbox" id="dual-subtitles-toggle" checked><span class="track"></span></label>
+              </div>
+            </div>
+            <div id="dual-sub-color-row" class="settings-collapsible">
+              <div class="settings-collapsible-inner">
+                <div class="color-swatch-row" id="dual-sub-color-options">
+                  <div class="swatch-indicator"></div>
+                  <button class="color-swatch on" data-color="#cbd5e1" style="background:#cbd5e1" data-i18n-title="color_gray" title="Gri" type="button"></button>
+                  <button class="color-swatch" data-color="#fef08a" style="background:#fef08a" data-i18n-title="color_yellow" title="Sarı" type="button"></button>
+                  <button class="color-swatch" data-color="#60a5fa" style="background:#60a5fa" data-i18n-title="color_blue" title="Mavi" type="button"></button>
+                  <button class="color-swatch" data-color="#34d399" style="background:#34d399" data-i18n-title="color_green" title="Yeşil" type="button"></button>
+                  <button class="color-swatch" data-color="#f472b6" style="background:#f472b6" data-i18n-title="color_pink" title="Pembe" type="button"></button>
+                  <span class="custom-color-row">
+                    <button type="button" class="color-swatch color-picker-trigger" id="dualColorTrigger" style="background:#cbd5e1" data-i18n-title="color_custom" title="Özel Renk"></button>
+                    <div class="color-popover" id="dualColorPopover">
+                      <div class="cp-sv" id="dualColorSV">
+                        <div class="cp-sv-handle" id="dualColorSVHandle"></div>
+                      </div>
+                      <div class="cp-hue" id="dualColorHue">
+                        <div class="cp-hue-handle" id="dualColorHueHandle"></div>
+                      </div>
+                      <div class="cp-hex-row">
+                        <span class="cp-hex-prefix">#</span>
+                        <input type="text" class="cp-hex-input" id="dualColorHexInput" value="CBD5E1" maxlength="6">
+                      </div>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Otomatik Altyazı Çevirisi (GT) -->
+          <div class="settings-block">
+            <div class="setting-ico-row">
+              <span class="setting-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+              </span>
+              <div class="settings-row">
+                <div>
+                  <div class="settings-row-title" data-i18n="settings_auto_translate_fallback">Otomatik Altyazı Çevirisi (GT)</div>
+                  <div class="settings-row-help" data-i18n="settings_auto_translate_fallback_help">İçerikte seçili ikinci dil altyazısı resmi olarak yoksa, Google Translate ile otomatik oluşturup [GT] olarak gösterir.</div>
+                </div>
+                <label class="switch2"><input type="checkbox" id="auto-translate-fallback-toggle" checked><span class="track"></span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Deyimleri Vurgula -->
+          <div class="settings-block">
+            <div class="setting-ico-row">
+              <span class="setting-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l6-6 4 4-6 6z"/><path d="M3 21l4-1 8-8-3-3-8 8z"/></svg>
+              </span>
+              <div class="settings-row">
+                <div>
+                  <div class="settings-row-title" data-i18n="settings_highlight_idioms">Deyimleri &amp; Kalıpları Vurgula</div>
+                  <div class="settings-row-help" data-i18n="settings_highlight_idioms_help">Altyazılardaki yaygın deyimleri ve kalıpları (piece of cake, under the weather vb.) otomatik algılar ve vurgular.</div>
+                </div>
+                <label class="switch2"><input type="checkbox" id="highlight-idioms-toggle" checked><span class="track"></span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Akıllı Öğrenme Modları -->
+        <div class="menu-subhead" data-i18n="settings_section_smart">Akıllı Öğrenme Modları</div>
+
+        <div class="smart-yt-note" id="asr-smart-note" data-supported-platforms="youtube">
+          <div class="smart-yt-note-row">
+            <span>⚠️</span>
+            <span data-i18n="settings_yt_smart_note">Bu özellikler YouTube'da yalnızca kanala özel (orijinal) altyazılarda çalışır. Otomatik oluşturulan (ASR) altyazılarda devre dışı kalır.</span>
+          </div>
+          <div class="settings-row" style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(245,158,11,.15)">
+            <span style="font-size:12px;font-weight:700;color:#fbbf24" data-i18n="settings_yt_allow_asr">ASR Altyazılarda da İzin Ver (Deneysel)</span>
+            <label class="switch2"><input type="checkbox" id="allow-smart-on-asr-toggle"><span class="track"></span></label>
+          </div>
+        </div>
+
+        <div class="settings-card settings-card-divided">
+          <!-- Shadowing -->
+          <div class="settings-block">
+            <div class="setting-ico-row">
+              <span class="setting-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+              </span>
+              <div class="settings-row">
+                <div>
+                  <div class="settings-row-title" data-i18n="settings_shadowing">Shadowing Modu</div>
+                  <div class="settings-row-help" data-i18n="settings_shadowing_help">Her altyazı satırı sonunda videoyu otomatik duraklatır. Space ile devam et.</div>
+                </div>
+                <label class="switch2"><input type="checkbox" id="shadowing-toggle"><span class="track"></span></label>
+              </div>
+            </div>
+            <div id="shadowing-mode-row" class="settings-collapsible">
+              <div class="settings-collapsible-inner" style="margin-top:8px">
+                <div class="settings-card-label" style="margin-bottom:6px" data-i18n="settings_shadowing_mode">Mod</div>
+                <div class="segmented" id="shadowing-mode-segmented" data-group="sheet-shadow-mode">
+                  <div class="seg-thumb"></div>
+                  <button data-val="standard" type="button" class="on" data-i18n="settings_shadowing_standard">Standart</button>
+                  <button data-val="smart" type="button" data-i18n="settings_shadowing_smart">Akıllı</button>
+                </div>
+                <div class="settings-row-help" style="margin-top:6px" data-i18n="settings_shadowing_smart_help">Akıllı: yalnızca C1/C2 seviyesi kelime, zor işaretlenmiş kelime, deyim veya phrasal verb içeren cümlelerde durur.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Otomatik Geri Sarma -->
+          <div class="settings-block">
+            <div class="setting-ico-row">
+              <span class="setting-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 19V5l-8 7 8 7z"/><path d="M22 19V5l-8 7 8 7z"/></svg>
+              </span>
+              <div class="settings-row">
+                <div>
+                  <div class="settings-row-title" data-i18n="settings_auto_rewind">Kelime Kaydında Geri Sarma</div>
+                  <div class="settings-row-help" data-i18n="settings_auto_rewind_help">Kelime sözlüğe eklendiğinde video geri sarılır.</div>
+                </div>
+                <label class="switch2"><input type="checkbox" id="auto-rewind-toggle"><span class="track"></span></label>
+              </div>
+            </div>
+            <div id="auto-rewind-sec-row" class="settings-collapsible">
+              <div class="settings-collapsible-inner" style="margin-top:8px">
+                <div class="settings-card-label" style="margin-bottom:6px" data-i18n="settings_rewind_seconds">Geri Sarma Süresi</div>
+                <div class="segmented" id="rewind-sec-segmented" data-group="sheet-rewind">
+                  <div class="seg-thumb"></div>
+                  <button data-val="2" type="button">2s</button>
+                  <button data-val="3" type="button" class="on">3s</button>
+                  <button data-val="5" type="button">5s</button>
+                  <button data-val="8" type="button">8s</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Otomatik Yavaş Oynatma -->
+          <div class="settings-block">
+            <div class="setting-ico-row">
+              <span class="setting-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 13l3.5-3.5M9 5h6"/></svg>
+              </span>
+              <div class="settings-row">
+                <div>
+                  <div class="settings-row-title" data-i18n="settings_auto_slow_mo">Zor Kelimelerde Yavaş Oynatma</div>
+                  <div class="settings-row-help" data-i18n="settings_auto_slow_mo_help">Sözlüğünüzdeki seçili seviyelerdeki kelimeler altyazıda geçtiğinde hızı otomatik düşürür.</div>
+                </div>
+                <label class="switch2"><input type="checkbox" id="auto-slowmo-toggle"><span class="track"></span></label>
+              </div>
+            </div>
+            <div id="auto-slowmo-details-row" class="settings-collapsible">
+              <div class="settings-collapsible-inner" style="margin-top:8px">
+                <div class="settings-card-label" style="margin-bottom:6px" data-i18n="settings_auto_slow_mo_speed">Yavaş Oynatma Hızı</div>
+                <div class="segmented" id="slowmo-speed-segmented" data-group="sheet-slowspeed">
+                  <div class="seg-thumb"></div>
+                  <button data-val="0.5" type="button">0.5x</button>
+                  <button data-val="0.7" type="button">0.7x</button>
+                  <button data-val="0.75" type="button" class="on">0.75x</button>
+                  <button data-val="0.8" type="button">0.8x</button>
+                  <button data-val="0.85" type="button">0.85x</button>
+                  <button data-val="0.9" type="button">0.9x</button>
+                </div>
+                <div class="settings-card-label" style="margin-top:10px;margin-bottom:6px" data-i18n="settings_auto_slow_mo_levels">Yavaşlatılacak Seviyeler</div>
+                <div class="level-check-grid" id="slowmo-level-checks">
+                  <button class="level-check" data-level="A1" style="--c:var(--cefr-a1)" type="button">A1</button>
+                  <button class="level-check" data-level="A2" style="--c:var(--cefr-a2)" type="button">A2</button>
+                  <button class="level-check" data-level="B1" style="--c:var(--cefr-b1)" type="button">B1</button>
+                  <button class="level-check" data-level="B2" style="--c:var(--cefr-b2)" type="button">B2</button>
+                  <button class="level-check" data-level="C1" style="--c:var(--cefr-c1)" type="button">C1</button>
+                  <button class="level-check" data-level="C2" style="--c:var(--cefr-c2)" type="button">C2</button>
+                  <button class="level-check" data-level="phrasal" style="--c:var(--cefr-phrasal)" type="button" data-i18n="settings_auto_slow_mo_level_phrasal">Phrasal</button>
+                  <button class="level-check" data-level="idiom" style="--c:var(--cefr-idiom)" type="button" data-i18n="settings_auto_slow_mo_level_idiom">Deyim</button>
+                  <button class="level-check" data-level="collocation" style="--c:var(--cefr-col)" type="button" data-i18n="settings_auto_slow_mo_level_collocation">Eş Dizim</button>
+                  <button class="level-check" data-level="hard" style="--c:var(--danger)" type="button" data-i18n="settings_auto_slow_mo_level_hard">Zor</button>
+                  <button class="level-check" data-level="other" style="--c:var(--cefr-unknown)" type="button" data-i18n="settings_auto_slow_mo_level_other">Diğer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Oynatıcı & Video -->
+        <div class="menu-subhead" data-i18n="settings_section_video">Oynatıcı &amp; Video</div>
+        <div class="settings-card settings-card-divided">
+          <!-- Sinema Modu -->
+          <div class="settings-block">
+            <div class="setting-ico-row">
+              <span class="setting-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M10 9.3v5.4l5-2.7z"/></svg>
+              </span>
+              <div class="settings-row">
+                <div>
+                  <div class="settings-row-title" data-i18n="settings_cinema_mode">Sinema Modu</div>
+                  <div class="settings-row-help" data-i18n="settings_cinema_help">Ekranda yalnızca altyazı kalır, tüm kontroller gizlenir.</div>
+                </div>
+                <label class="switch2"><input type="checkbox" id="cinema-mode-toggle"><span class="track"></span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Prime Video: IMDb Panelini Gizle -->
+          <div class="settings-block" data-supported-platforms="prime">
+            <div class="setting-ico-row">
+              <span class="setting-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s4-7 10-7c1.4 0 2.7.3 3.9.9M22 12s-1.4 2.4-3.8 4.3M9.9 4.9 2 13M14.1 9.9 22 12"/><path d="M1 1l22 22"/></svg>
+              </span>
+              <div class="settings-row">
+                <div>
+                  <div class="settings-row-title" data-i18n="settings_hide_imdb">IMDb Panelini Gizle</div>
+                  <div class="settings-row-help" data-i18n="settings_hide_imdb_help">Prime Video'da X-Ray oyuncu listesini ve ekran karartısını gizler.</div>
+                </div>
+                <label class="switch2"><input type="checkbox" id="hide-imdb-toggle"><span class="track"></span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Prime Video: Yönlendirme Alan Adı -->
+          <div class="settings-block" data-supported-platforms="prime">
+            <div class="setting-ico-row">
+              <span class="setting-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9z"/></svg>
+              </span>
+              <div class="settings-card-label" data-i18n="settings_prime_domain_title">Prime Video Yönlendirme Alan Adı</div>
+            </div>
+            <div class="material-select-wrap" id="primeDomainSelectWrap">
+              <button type="button" class="material-select-trigger" id="primeDomainTrigger">
+                <span class="material-select-val" id="primeDomainLabel">Kayıtlı Alan Adı (Varsayılan)</span>
+                <svg class="material-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="material-select-menu" id="primeDomainMenu">
+                <button type="button" class="material-select-opt on" data-val="default"><span>Kayıtlı Alan Adı (Varsayılan)</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="primevideo.com"><span>primevideo.com</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="amazon.com"><span>amazon.com</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="amazon.de"><span>amazon.de</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="amazon.co.uk"><span>amazon.co.uk</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="amazon.com.tr"><span>amazon.com.tr</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="amazon.fr"><span>amazon.fr</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="amazon.es"><span>amazon.es</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="amazon.it"><span>amazon.it</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="amazon.ca"><span>amazon.ca</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="amazon.co.jp"><span>amazon.co.jp</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+              </div>
+              <select id="prime-domain-select" style="display:none;">
+                <option value="default" data-i18n="settings_prime_domain_default">Kayıtlı Alan Adı (Varsayılan)</option>
+                <option value="primevideo.com">primevideo.com</option>
+                <option value="amazon.com">amazon.com</option>
+                <option value="amazon.de">amazon.de</option>
+                <option value="amazon.co.uk">amazon.co.uk</option>
+                <option value="amazon.com.tr">amazon.com.tr</option>
+                <option value="amazon.fr">amazon.fr</option>
+                <option value="amazon.es">amazon.es</option>
+                <option value="amazon.it">amazon.it</option>
+                <option value="amazon.ca">amazon.ca</option>
+                <option value="amazon.co.jp">amazon.co.jp</option>
+              </select>
+            </div>
+            <div class="settings-row-help" style="margin-top:6px" data-i18n="settings_prime_domain_help">Sözlükteki Prime Video linklerine tıklandığında açılacak varsayılan alan adını belirleyin.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ AYARLAR SEKME İÇERİĞİ ═══ -->
+      <div class="settings-scroll menu-view" id="settings-tab-general" data-view="ayarlar">
+        <!-- Aktif Platformlar -->
+        <div class="menu-subhead" data-i18n="settings_section_platforms">Aktif Platformlar</div>
+        <div class="settings-card">
+          <div class="setting-ico-row">
+            <span class="setting-ico">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.77C18.26 5 12 5 12 5s-6.26 0-7.82.42A2.5 2.5 0 0 0 2.42 7.2C2 8.76 2 12 2 12s0 3.24.42 4.81a2.5 2.5 0 0 0 1.76 1.77C5.74 19 12 19 12 19s6.26 0 7.82-.42a2.5 2.5 0 0 0 1.76-1.77C22 15.24 22 12 22 12s0-3.24-.42-4.81zM10 15V9l5.2 3-5.2 3z"/></svg>
+            </span>
+            <div class="settings-row">
+              <div class="settings-row-title">YouTube</div>
+              <label class="switch2"><input type="checkbox" id="enable-youtube-toggle" checked><span class="track"></span></label>
+            </div>
+          </div>
+          <div class="setting-ico-row">
+            <span class="setting-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2.5"/><path d="M10 8l5 2.5-5 2.5V8z" fill="currentColor" stroke="none"/><path d="M5 20c4.5 2 9.5 2 14 0"/></svg>
+            </span>
+            <div class="settings-row">
+              <div class="settings-row-title">Amazon Prime</div>
+              <label class="switch2"><input type="checkbox" id="enable-prime-toggle" checked><span class="track"></span></label>
+            </div>
+          </div>
+          <div class="setting-ico-row">
+            <span class="setting-ico">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.5 3h3.5v18H5.5z" opacity="0.75"/><path d="M15 3h3.5v18H15z" opacity="0.75"/><path d="M5.5 3h3.8l9.2 17.5V21H15L5.5 3.5V3z"/></svg>
+            </span>
+            <div class="settings-row">
+              <div class="settings-row-title">Netflix</div>
+              <label class="switch2"><input type="checkbox" id="enable-netflix-toggle" checked><span class="track"></span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Genel / Arayüz (Quick Access) -->
+        <div id="quick-access-settings-group">
+          <div class="menu-subhead" data-i18n="settings_section_general">Genel</div>
+          <div class="settings-card">
+            <div class="setting-ico-row">
+              <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
+              <div class="settings-row">
+                <div class="settings-row-title" data-i18n="settings_show_quick_access">Hızlı Erişim Butonunu Göster</div>
+                <label class="switch2"><input type="checkbox" id="show-quick-access-toggle" checked><span class="track"></span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kelime Oyunları -->
+        <div class="menu-subhead" data-i18n="settings_section_games_heading">Oyunlar</div>
+        <div class="settings-card">
+          <div class="setting-ico-row">
+            <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></span>
+            <div class="settings-row">
+              <div class="settings-row-title" data-i18n="settings_game_sound">Oyun Sesi</div>
+              <label class="switch2"><input type="checkbox" id="games-sound-toggle" checked><span class="track"></span></label>
+            </div>
+          </div>
+          <div class="setting-ico-row">
+            <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1M12 18v4M9 22h6"/></svg></span>
+            <div class="settings-row">
+              <div class="settings-row-title" data-i18n="settings_game_auto_pronounce">Otomatik Seslendirme</div>
+              <label class="switch2"><input type="checkbox" id="games-auto-pronounce-toggle"><span class="track"></span></label>
+            </div>
+          </div>
+          <div class="setting-ico-row">
+            <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+            <div class="settings-row">
+              <div class="settings-row-title" data-i18n="settings_game_show_learned">Öğrenilenleri Oyunlarda Göster</div>
+              <label class="switch2"><input type="checkbox" id="games-show-learned-toggle" checked><span class="track"></span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dil -->
+        <div class="menu-subhead" data-i18n="settings_section_language">Dil</div>
+        <div class="settings-card">
+          <div class="setting-ico-row">
+            <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9z"/></svg></span>
+            <div class="settings-card-label" data-i18n="settings_app_lang">Eklenti Dili</div>
+          </div>
+          <div style="margin-top:8px">
+            <div class="material-select-wrap" id="appLangSelectWrap">
+              <button type="button" class="material-select-trigger" id="appLangTrigger">
+                <span class="material-select-val" id="appLangLabel">Türkçe</span>
+                <svg class="material-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="material-select-menu" id="appLangMenu">
+                <button type="button" class="material-select-opt on" data-val="tr"><span>Türkçe</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="en"><span>English</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="de"><span>Deutsch</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="es"><span>Español</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+                <button type="button" class="material-select-opt" data-val="fr"><span>Français</span> <svg class="check-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M4 12l5 5L20 6"/></svg></button>
+              </div>
+              <select id="app-lang-select" style="display:none;">
+                <option value="tr">Türkçe</option>
+                <option value="en">English</option>
+                <option value="de">Deutsch</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Veri & Sıfırlama -->
+        <div class="menu-subhead" data-i18n="settings_section_data">Veri &amp; Sıfırlama</div>
+        <div class="settings-card">
+          <button class="dropdown-item" id="export-json-btn" type="button">
+            <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></span>
+            <span class="dropdown-item-label" data-i18n="settings_backup_title">Sözlüğü yedekle (.json)</span>
+          </button>
+          <button class="dropdown-item" id="import-json-btn" type="button">
+            <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 15V3M7 8l5-5 5 5M20.5 15v4a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2v-4"/></svg></span>
+            <span class="dropdown-item-label" data-i18n="settings_restore_title">Yedekten geri yükle</span>
+          </button>
+          <button class="dropdown-item" id="anki-export-btn" type="button">
+            <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="14" height="13" rx="2.5"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/></svg></span>
+            <span class="dropdown-item-label" data-i18n="settings_anki_export_title">Anki için kelimeleri aktar (.txt)</span>
+          </button>
+          <input type="file" id="import-json-file" accept=".json" style="display:none;">
+          <div class="dropdown-sep"></div>
+          <button class="dropdown-item" id="reset-srs-btn" type="button">
+            <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-1.19"/></svg></span>
+            <span class="dropdown-item-label" data-i18n="settings_reset_srs">Tekrar aralığını (SRS) sıfırla</span>
+          </button>
+          <button class="dropdown-item" id="reset-streak-btn" type="button">
+            <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span>
+            <span class="dropdown-item-label" data-i18n="settings_reset_streak">Günlük seri (Streak) ilerlemesini sıfırla</span>
+          </button>
+          <button class="dropdown-item" id="reset-games-btn" type="button">
+            <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="8" width="20" height="10" rx="5"/><path d="M7 11v4M5 13h4"/><circle cx="15.5" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="18" cy="14.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+            <span class="dropdown-item-label" data-i18n="settings_reset_games">Oyun ve başarımları sıfırla</span>
+          </button>
+          <div class="dropdown-sep"></div>
+          <button class="dropdown-item danger" id="reset-all-data-btn" type="button">
+            <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span>
+            <span class="dropdown-item-label" data-i18n="settings_reset_all_data">Tüm verileri sıfırla</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ═══ HAKKINDA SEKME İÇERİĞİ ═══ -->
+      <div class="settings-scroll menu-view" id="settings-tab-about" data-view="hakkinda" style="display:none;">
+        <div class="settings-card settings-card-divided">
+          <div class="settings-block" style="align-items:center;text-align:center;gap:8px;padding-top:4px;">
+            <img src="../icons/icon48.png" alt="PrimeVocab" style="width:44px;height:44px;object-fit:contain;">
+            <div>
+              <div style="font-size:15px;font-weight:800;color:var(--text)">PrimeVocab</div>
+              <div style="font-size:11.5px;color:var(--text-mute);margin-top:2px">v1.3.6</div>
+            </div>
+            <div style="font-size:12px;color:#94a3b8;line-height:1.5;font-weight:500;padding:0 4px" data-i18n="info_desc">PrimeVocab, video izlerken çift altyazı ve aralıklı tekrar yöntemiyle dil öğrenmenizi sağlayan akıllı bir eklentidir.</div>
+          </div>
+
+          <div class="settings-block">
+            <div class="setting-ico-row">
+              <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
+              <div class="settings-row" style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+                <span class="settings-row-title" style="font-size:12px;" data-i18n="info_developer">Geliştirici</span>
+                <span style="font-size:12px;color:var(--text-dim);font-weight:700">Tolga KASAP</span>
+              </div>
+            </div>
+            <div class="setting-ico-row">
+              <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6.5 9 6.5 9-6.5"/></svg></span>
+              <div class="settings-row" style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+                <span class="settings-row-title" style="font-size:12px;" data-i18n="info_contact">İletişim</span>
+                <a href="mailto:primevocabextension@gmail.com" target="_blank" style="font-size:12px;color:var(--accent-text);font-weight:700;text-decoration:none">primevocabextension@gmail.com</a>
+              </div>
+            </div>
+            <div class="setting-ico-row">
+              <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 4.6 3.2 8.4 8 9 4.8-.6 8-4.4 8-9V6l-8-3z"/></svg></span>
+              <div class="settings-row" style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+                <span class="settings-row-title" style="font-size:12px;" data-i18n="info_legal">Gizlilik &amp; Koşullar</span>
+                <a href="https://tolgatk.notion.site/PrimeVocab-Product-Landing-Legal-Hub-35d117fa341b4a03ad1ecddb9ac6c522" target="_blank" style="font-size:12px;color:var(--accent-text);font-weight:700;text-decoration:none" data-i18n="info_legal_view">Oku</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <button type="button" class="dropdown-item" id="menu-shortcuts-btn">
+            <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9h2M7 12h2M11 9h6M11 12h6M7 15h10"/></svg></span>
+            <span class="dropdown-item-label" data-i18n="settings_shortcuts_view">Kısayolları Görüntüle</span>
+            <svg class="dropdown-item-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="14" height="14"><path d="m9 6 6 6-6 6"/></svg>
+          </button>
+          <div class="dropdown-sep"></div>
+          <button type="button" class="dropdown-item" id="menu-tour-btn">
+            <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l6 2 10-3-2 10 3 6-10-2-6 3z"/></svg></span>
+            <span class="dropdown-item-label" data-i18n="settings_tour_replay">Kısa Tanıtımı Tekrar Oynat</span>
+            <svg class="dropdown-item-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="14" height="14"><path d="m9 6 6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-top">
+        <div class="logo">
+          <img class="logo-icon" src="../icons/icon32.png" alt="PrimeVocab"
+            style="width: 20px; height: 20px; object-fit: contain;">
+          <span class="logo-text">PrimeVocab</span>
+        </div>
+        <div class="header-actions">
+          <button class="avatar-btn" id="profile-btn" data-i18n-title="profile_btn_title" title="Profil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="14" height="14"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6.2 7-6.2s7 2.6 7 6.2"/></svg>
+            <span class="avatar-dot" id="profile-avatar-dot"></span>
+          </button>
+          <button class="icon-btn" id="menu-btn" data-i18n-title="tab_settings" title="Menü">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" width="14" height="14"><line x1="4" y1="7" x2="16" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="13" y2="17"/></svg>
+          </button>
+          <button class="close-panel-btn" id="close-sidepanel-btn" data-i18n-title="tooltip_close_panel" title="Paneli kapat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="tabs">
+        <button class="tab active" id="tab-subtitle" data-tab="subtitle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><rect x="3" y="6" width="18" height="12" rx="2.2"/><path d="M7 14h3M13 14h4M7 10.5h6"/></svg>
+          <span data-i18n="tab_subtitle">Altyazı</span>
+        </button>
+        <button class="tab" id="tab-archive" data-tab="archive">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H12v16H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H12v16h6.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>
+          <span data-i18n="tab_archive">Sözlük</span>
+          <span class="badge" id="archive-badge" style="display:none">0</span>
+        </button>
+        <button class="tab" id="tab-review" data-tab="review">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg>
+          <span data-i18n="tab_review">Çalışma</span>
+          <span class="badge badge-due" id="review-badge" style="display:none">0</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Kısayol overlay -->
+    <div class="shortcuts-overlay" id="shortcuts-overlay" style="display:none">
+      <div class="shortcuts-modal">
+        <div class="shortcuts-header">
+          <div class="shortcuts-title-wrap">
+            <div class="shortcuts-title-icon">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#818cf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="3" ry="3"/>
+                <path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M6 12h.01M10 12h.01M14 12h.01M18 12h.01M8 16h8"/>
+              </svg>
+            </div>
+            <span class="shortcuts-title-text" data-i18n="shortcuts_title">Kısayollar</span>
+          </div>
+          <button class="shortcuts-close-btn" id="shortcuts-close" aria-label="Kapat">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+        <div class="shortcuts-body">
+          <div class="shortcuts-col">
+            <div class="shortcuts-col-title" data-i18n="shortcuts_pv">Oynatıcı Kısayolları</div>
+            <div class="shortcut-row"><kbd>Space</kbd><span data-i18n="shortcuts_pv_play">Oynat / Durdur</span></div>
+            <div class="shortcut-row"><kbd>F</kbd><span data-i18n="shortcuts_pv_fullscreen">Tam ekran</span></div>
+            <div class="shortcut-row"><kbd>→</kbd><span data-i18n="shortcuts_pv_fwd">10sn ileri</span></div>
+            <div class="shortcut-row"><kbd>←</kbd><span data-i18n="shortcuts_pv_rwd">10sn geri</span></div>
+            <div class="shortcut-row"><kbd>↑ ↓</kbd><span data-i18n="shortcuts_pv_volume">Ses</span></div>
+            <div class="shortcut-row"><kbd>M</kbd><span data-i18n="shortcuts_pv_mute">Sessiz</span></div>
+          </div>
+          <div class="shortcuts-col">
+            <div class="shortcuts-col-title">PrimeVocab</div>
+            <div class="shortcut-row"><kbd id="kbd-open-panel-key">Alt+Shift+K</kbd><span data-i18n="cmd_open_panel">Paneli aç/kapat</span></div>
+            <div class="shortcut-row"><kbd class="customizable-kbd" id="kbd-nav-seekforward" data-shortcut="seekForward">Alt+→</kbd><span id="shortcuts-seek-fwd-label">5sn ileri</span></div>
+            <div class="shortcut-row"><kbd class="customizable-kbd" id="kbd-nav-seekback" data-shortcut="seekBack">Alt+←</kbd><span id="shortcuts-seek-back-label">5sn geri</span></div>
+            <div class="shortcut-row shortcut-seek-duration-row">
+              <span class="seek-duration-label" data-i18n="seek_duration_label">Atlama süresi</span>
+              <div class="seek-duration-stepper">
+                <button type="button" class="seek-step-btn" id="seek-step-minus">−</button>
+                <input type="number" id="seek-seconds-input" min="1" max="10" value="5" /><span class="seek-unit" data-i18n="seek_duration_unit">sn</span>
+                <button type="button" class="seek-step-btn" id="seek-step-plus">+</button>
+              </div>
+            </div>
+            <div class="shortcut-row"><kbd class="customizable-kbd" id="kbd-nav-left"
+                data-shortcut="navLeft">Numpad4</kbd><span data-i18n="shortcut_pv_word_left">Kelime Gezin (Sol)</span>
+            </div>
+            <div class="shortcut-row"><kbd class="customizable-kbd" id="kbd-nav-right"
+                data-shortcut="navRight">Numpad6</kbd><span data-i18n="shortcut_pv_word_right">Kelime Gezin (Sağ)</span>
+            </div>
+            <div class="shortcut-row"><kbd class="customizable-kbd" id="kbd-nav-up"
+                data-shortcut="navUp">Numpad8</kbd><span data-i18n="shortcut_pv_word_up">Kelime Gezin (Yukarı)</span>
+            </div>
+            <div class="shortcut-row"><kbd class="customizable-kbd" id="kbd-nav-down"
+                data-shortcut="navDown">Numpad2</kbd><span data-i18n="shortcut_pv_word_down">Kelime Gezin (Aşağı)</span>
+            </div>
+            <div class="shortcut-row"><kbd class="customizable-kbd" id="kbd-nav-save"
+                data-shortcut="navSave">Numpad5</kbd><span data-i18n="shortcut_pv_word_save">Kelimeyi Kaydet</span>
+            </div>
+            <div class="shortcut-row"><kbd class="customizable-kbd" id="kbd-nav-cancel"
+                data-shortcut="navCancel">Numpad0</kbd><span data-i18n="shortcut_pv_word_cancel">İptal / Devam et</span>
+            </div>
+            <div class="shortcut-row shortcut-muted" id="shortcuts-customize-label-row"><span data-i18n="shortcuts_pv_custom">Kısayolları
+                özelleştir:</span></div>
+            <div class="shortcut-row shortcut-muted" id="shortcuts-customize-link-row"><a href="#"
+                id="shortcuts-customize-link">chrome://extensions/shortcuts</a></div>
+          </div>
+        </div>
+        <div class="shortcuts-footer">
+          <button id="kbd-reset-btn" class="shortcuts-reset-btn">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            <span data-i18n="shortcuts_reset">Varsayılana Sıfırla</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profil — sağdan kayan, Menü/Kelimeler ile aynı srs-overlay kalıbı -->
+    <div class="srs-overlay" id="profile-overlay">
+      <div class="srs-overlay-header">
+        <button class="nav-icon" id="profile-close" data-i18n-title="srs_btn_back_tooltip" title="Geri">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+        <span class="srs-overlay-title" data-i18n="profile_title">Profil Bilgisi</span>
+      </div>
+
+      <div class="settings-scroll" style="display:flex;flex-direction:column;gap:12px">
+        <div class="settings-card" style="align-items:center;text-align:center;display:flex;flex-direction:column;gap:6px">
+          <div id="profile-avatar-container" style="width:52px;height:52px;border-radius:50%;background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--accent-text);box-shadow:0 8px 22px rgba(99,102,241,.25)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="24" height="24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.7 3.2-6.4 7-6.4s7 2.7 7 6.4"/></svg>
+          </div>
+          <div id="profile-username" style="font-size:15px;font-weight:800;color:var(--text);margin-top:2px;" data-i18n="profile_user_title">Kullanıcı</div>
+          <div id="profile-email" style="font-size:12px;font-weight:600;color:var(--text-dim);" data-i18n="profile_local_user">Yerel Kullanıcı</div>
+          <span id="profile-membership-badge" style="margin-top:4px;font-size:10px;font-weight:800;letter-spacing:.05em;color:var(--accent-text);background:var(--surface-2);border:1px solid var(--border-soft);padding:3px 10px;border-radius:999px">FREE</span>
+        </div>
+
+        <div class="settings-card">
+          <button type="button" class="setting-ico-row" id="profileSeeAllAchBtn" style="width:100%;background:none;border:none;padding:0;margin:0;cursor:pointer;text-align:left;font-family:var(--font);">
+            <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4h10v4a5 5 0 0 1-10 0V4z"/><path d="M7 5H4a3 3 0 0 0 3 3M17 5h3a3 3 0 0 1-3 3"/><path d="M12 13v4M8 20h8"/></svg></span>
+            <div style="display:flex;align-items:center;justify-content:space-between;flex:1;min-width:0;">
+              <div style="font-size:12px;font-weight:600;color:var(--text-dim);"><span data-i18n="profile_achievements_label">Başarımlar ve İlerleme</span> <span id="profile-level" style="color:var(--text-mute);font-weight:600">· Sev. 1</span></div>
+              <svg class="dropdown-item-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="14" height="14" style="color:var(--text-mute);flex-shrink:0;"><path d="m9 6 6 6-6 6"/></svg>
+            </div>
+          </button>
+          <div class="dropdown-sep"></div>
+          <div class="setting-ico-row">
+            <span class="setting-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.4-1.5A5 5 0 0 0 6.5 19h11z"/></svg></span>
+            <div class="settings-row">
+              <span class="settings-row-title" style="font-size:12px;" data-i18n="profile_sync_title">Senkronizasyon</span>
+              <span id="profile-sync-status" style="font-size:12px;color:var(--text-mute);font-weight:700" data-i18n="profile_sync_status_unlinked">Kapalı</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:2px">
+          <!-- Premium Ol Butonu -->
+          <button type="button" class="btn btn-premium" id="profile-buy-premium-btn" style="display:none;">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" stroke="none"><path d="M3 18h18l-1.6-9-4.9 3.4L12 6l-2.5 6.4L4.6 9 3 18z"/></svg>
+            <span data-i18n="profile_buy_premium_btn">Premium Ol</span>
+          </button>
+
+          <!-- Aboneliği Yönet Butonu -->
+          <button type="button" class="btn btn-secondary" id="profile-manage-subscription-btn" style="display:none;">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="profile_manage_subscription_btn">Aboneliği Yönet</span>
+          </button>
+
+          <!-- Giriş Butonu -->
+          <button type="button" class="btn btn-primary" id="profile-login-btn">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+            <span data-i18n="profile_login_btn">Google ile Giriş Yap</span>
+          </button>
+
+          <!-- Şimdi Eşitle Butonu -->
+          <button type="button" class="btn btn-secondary" id="profile-sync-now-btn" style="display:none;">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-1.19"/></svg>
+            <span data-i18n="profile_sync_now">Şimdi Senkronize Et</span>
+          </button>
+
+          <!-- Çıkış Butonu -->
+          <button type="button" class="btn btn-danger" id="profile-logout-btn" style="display:none;">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+            <span data-i18n="profile_logout">Çıkış Yap</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- ── ALTYAZI PANELİ ── -->
+    <div class="panel active" id="panel-subtitle">
+
+      <!-- Durum çubuğu -->
+      <div class="status-bar" id="status-bar">
+        <span class="status-dot" id="status-dot"></span>
+        <span class="status-text" id="status-text" data-i18n="status_waiting">Altyazı bekleniyor...</span>
+        <button type="button" class="cinema-toggle" id="cinemaToggleBtn" title="Sinema Modu" data-i18n-title="settings_cinema">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M10 9.3v5.4l5-2.7z"/></svg>
+        </button>
+      </div>
+
+      <!-- Altyazı alanı -->
+      <div class="subtitle-section">
+        <div class="section-label-row">
+          <div class="section-label" data-i18n="label_current_sub">Güncel Altyazı</div>
+          <div class="sub-legend-wrap">
+            <button class="legend-btn" id="sub-legend-btn" type="button" data-i18n-title="sub_legend_tooltip" title="Altyazı renk açıklamaları">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="12" height="12"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+              <span data-i18n="sub_legend_colors">Renkler</span>
+            </button>
+            <div class="legend-popover" id="sub-legend-popover">
+              <div class="legend-row"><span class="legend-dot" style="background:#22c55e"></span><span data-i18n="sub_legend_saved">Kaydedilen kelime</span></div>
+              <div class="legend-row"><span class="legend-dot" style="background:#a855f7"></span><span data-i18n="sub_legend_phrasal">Phrasal verb</span></div>
+              <div class="legend-row"><span class="legend-dot" style="background:#fb923c"></span><span data-i18n="sub_legend_idiom">Deyim</span></div>
+              <div class="legend-row"><span class="legend-dot" style="background:#38bdf8"></span><span data-i18n="sub_legend_collocation">Eş dizim</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtitle-box" id="subtitle-box">
+          <div class="empty-state" id="empty-subtitle">
+            <div class="empty-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2.5" y="4" width="19" height="16" rx="3.5"/>
+                <path d="M7 9.5h3.5M7 14.5h3.5M13.5 9.5h3.5M13.5 14.5h3.5"/>
+              </svg>
+            </div>
+            <p data-i18n="empty_sub_title">Altyazı bekleniyor…</p>
+            <small data-i18n="empty_sub_help">Altyazılı bir video oynatın.</small>
+          </div>
+          <div class="transcript-list" id="transcript-list" style="display: none; width: 100%;"></div>
+        </div>
+      </div>
+
+      <!-- Oturum Özeti (Kaydedilen kelime sayısı) -->
+      <div class="session-pill" id="sub-session-pill" style="display:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M12 3v18M3 12h18"/></svg>
+        <span id="sub-session-pill-text">Bu videoda <b id="sub-session-word-count">0</b> yeni kelime kaydettin</span>
+      </div>
+
+      <!-- İpucu -->
+      <div class="hint-line" id="hint">
+        <span data-i18n="hint_word_click">Çevirisini görmek ve kaydetmek için bir kelimeye dokunun</span>
+      </div>
+    </div>
+
+    <!-- ── SÖZLÜK PANELİ ── -->
+    <div class="panel" id="panel-archive">
+      <div class="archive-sticky-controls" id="archive-sticky-controls">
+        <!-- Arama -->
+        <div class="search-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="archive-search" class="archive-search-input" data-i18n-placeholder="archive_search_placeholder" placeholder="Kelime ara…" autocomplete="off" />
+          <button type="button" class="search-clear-btn" id="archive-search-clear" data-i18n-title="btn_clear" title="Temizle" style="display:none">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <!-- Filtreler & İşlemler Satırı -->
+        <div class="filter-row" style="position:relative">
+          <!-- Seviye / Tür Filtresi -->
+          <div class="chip-select-wrap">
+            <div class="chip-select" id="lvlSelect" data-i18n-title="filter_level_tooltip" title="Seviye ve tür filtresi">
+              <svg class="chip-select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16l-6 8v6l-4-2v-4z"/></svg>
+              <span id="lvlSelectLabel" data-i18n="filter_all">Tümü</span>
+              <svg class="chip-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="level-popover" id="lvlPopover">
+              <span class="lvl-chip on" style="--c:var(--accent)" data-level="all" data-label="Tümü" data-i18n="filter_all">Tümü</span>
+              <span class="lvl-chip" style="--c:var(--danger)" data-level="hard" data-label="Zor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg> <span data-i18n="filter_hard">Zor</span></span>
+              <span class="lvl-chip" style="--c:var(--cefr-a1)" data-level="A1" data-label="A1">A1</span>
+              <span class="lvl-chip" style="--c:var(--cefr-a2)" data-level="A2" data-label="A2">A2</span>
+              <span class="lvl-chip" style="--c:var(--cefr-b1)" data-level="B1" data-label="B1">B1</span>
+              <span class="lvl-chip" style="--c:var(--cefr-b2)" data-level="B2" data-label="B2">B2</span>
+              <span class="lvl-chip" style="--c:var(--cefr-c1)" data-level="C1" data-label="C1">C1</span>
+              <span class="lvl-chip" style="--c:var(--cefr-c2)" data-level="C2" data-label="C2">C2</span>
+              <span class="lvl-chip" style="--c:var(--cefr-phrasal)" data-level="phrasal" data-label="Phrasal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg> <span data-i18n="badge_phrasal">Phrasal</span></span>
+              <span class="lvl-chip" style="--c:var(--cefr-idiom)" data-level="idiom" data-label="Deyim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"/></svg> <span data-i18n="badge_idiom">Deyim</span></span>
+              <span class="lvl-chip" style="--c:var(--cefr-col)" data-level="COL" data-label="Eş Dizim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> <span data-i18n="badge_collocation">Eş Dizim</span></span>
+              <span class="lvl-chip" style="--c:var(--cefr-unknown)" data-level="??" data-label="Diğer" data-i18n="filter_other">Diğer</span>
+            </div>
+          </div>
+
+          <!-- Sıralama Filtresi -->
+          <div class="chip-select-wrap">
+            <div class="chip-select" id="sortSelect" data-i18n-title="filter_sort_tooltip" title="Sıralama ölçütü">
+              <svg class="chip-select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4v16M7 4 3 8M7 4l4 4M17 20V4M17 20l4-4M17 20l-4-4"/></svg>
+              <span id="sortSelectLabel" data-i18n="sort_newest">En Yeni</span>
+              <svg class="chip-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="sort-popover" id="sortPopover">
+              <button class="sort-opt on" data-sort="newest" data-label="En Yeni"><span data-i18n="sort_newest">En Yeni</span> <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12l5 5L20 6"/></svg></button>
+              <button class="sort-opt" data-sort="oldest" data-label="En Eski"><span data-i18n="sort_oldest">En Eski</span> <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12l5 5L20 6"/></svg></button>
+              <button class="sort-opt" data-sort="az" data-label="A → Z"><span>A → Z</span> <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12l5 5L20 6"/></svg></button>
+              <button class="sort-opt" data-sort="za" data-label="Z → A"><span>Z → A</span> <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12l5 5L20 6"/></svg></button>
+            </div>
+          </div>
+
+          <!-- Kaynak (Dizi / Film) Filtresi -->
+          <div class="chip-select-wrap" id="sourceSelectWrap" style="display:none">
+            <div class="chip-select" id="sourceSelect" data-i18n-title="filter_source_tooltip" title="Kaynak video/dizi filtresi">
+              <svg class="chip-select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="5" width="19" height="13" rx="2"/><path d="M8 20h8M12 18v2"/></svg>
+              <span class="chip-select-label" id="sourceSelectLabel" data-i18n="select_all_sources">Tüm kaynaklar</span>
+              <svg class="chip-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="source-popover" id="sourcePopover"></div>
+          </div>
+
+          <!-- Etiket Filtresi -->
+          <div class="chip-select-wrap" id="tagFilterWrap" style="display:none">
+            <div class="chip-select" id="tagSelect" data-i18n-title="filter_tag_tooltip" title="Etiket filtresi">
+              <svg class="chip-select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 12.5 12.9 4.8a2 2 0 0 0-1.4-.6H5a1 1 0 0 0-1 1v6.5c0 .5.2 1 .6 1.4l7.7 7.7c.8.8 2 .8 2.8 0l5.5-5.5c.8-.8.8-2 0-2.8Z"/><circle cx="8" cy="8.5" r="1.3" fill="currentColor" stroke="none"/></svg>
+              <span class="chip-select-label" id="tagSelectLabel" data-i18n="select_all_tags">Tüm etiketler</span>
+              <svg class="chip-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="level-popover" id="tagPopover"></div>
+          </div>
+
+          <!-- Araçlar / Taşma Menüsü (⋯) -->
+          <div class="tools-wrap">
+            <button class="icon-btn" id="toolsBtn" data-i18n-title="archive_tools_btn" title="İşlemler">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg>
+            </button>
+            <div class="dropdown" id="toolsMenu" style="min-width:220px">
+              <div class="dropdown-toggle-row">
+                <span class="dropdown-label-group">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 15 5 5 5-5M7 9l5-5 5 5"/></svg>
+                  <span data-i18n="archive_tool_expand_all">Tüm Detayları Aç</span>
+                </span>
+                <label class="switch2">
+                  <input type="checkbox" id="expandFeatureToggle">
+                  <span class="track"></span>
+                </label>
+              </div>
+              <div class="dropdown-toggle-row">
+                <span class="dropdown-label-group">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="3"/><circle cx="6" cy="19" r="3"/><circle cx="18" cy="19" r="3"/><path d="M12 8v4M6 16v-1a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v1"/></svg>
+                  <span data-i18n="archive_tool_word_family">Kelime Ailesi</span>
+                </span>
+                <label class="switch2">
+                  <input type="checkbox" id="familyFeatureToggle">
+                  <span class="track"></span>
+                </label>
+              </div>
+              <div class="dropdown-toggle-row">
+                <span class="dropdown-label-group">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 12.5 12.9 4.8a2 2 0 0 0-1.4-.6H5a1 1 0 0 0-1 1v6.5c0 .5.2 1 .6 1.4l7.7 7.7c.8.8 2 .8 2.8 0l5.5-5.5c.8-.8.8-2 0-2.8Z"/><circle cx="8" cy="8.5" r="1.3" fill="currentColor" stroke="none"/></svg>
+                  <span data-i18n="archive_tool_tagging">Kelime Etiketleme</span>
+                </span>
+                <label class="switch2">
+                  <input type="checkbox" id="tagFeatureToggle" checked>
+                  <span class="track"></span>
+                </label>
+              </div>
+              <div class="dropdown-sep"></div>
+              <button class="dropdown-item" id="flashcard-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="14" height="13" rx="2.5"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/></svg>
+                <span data-i18n="archive_tool_review_practice">Tekrar Antrenmanı</span>
+              </button>
+              <button class="dropdown-item" id="refresh-families-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-1.19"/></svg>
+                <span data-i18n="archive_tool_refresh_families">Aile bilgisini yenile</span>
+              </button>
+              <button class="dropdown-item" id="export-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                <span data-i18n="archive_tool_export">Sözlüğü dışa aktar</span>
+              </button>
+              <div class="dropdown-sep"></div>
+              <button class="dropdown-item danger" id="clear-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M10 11v6M14 11v6"/></svg>
+                <span data-i18n="archive_tool_clear">Sözlüğü temizle</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <datalist id="global-tags-datalist"></datalist>
+
+      <!-- Kelime Listesi -->
+      <div class="word-list" id="word-list">
+        <div class="empty-state" id="empty-archive">
+          <div class="empty-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+              <path d="M6 6h10M6 10h10M6 14h6"/>
+            </svg>
+          </div>
+          <p data-i18n="empty_archive_title">Henüz kelime eklenmedi</p>
+          <small data-i18n="empty_archive_help">Altyazıdan kelimelere tıklayarak sözlüğe ekleyin</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ÇALIŞMA PANELİ (SRS) ── -->
+    <div class="panel" id="panel-review">
+
+      <!-- Alt Sekmeler -->
+      <div class="review-subtabs" id="review-subtabs">
+        <button class="review-subtab active" id="subtab-srs" data-subtab="srs">
+          <svg class="subtab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="7" width="14" height="11" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2"/></svg>
+          <span data-i18n="subtab_srs">Antrenman</span>
+        </button>
+        <button class="review-subtab" id="subtab-games" data-subtab="games">
+          <svg class="subtab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="8" width="20" height="10" rx="5"/><path d="M7 11v4M5 13h4"/><circle cx="15.5" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="18" cy="14.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <span data-i18n="subtab_games">Oyunlar</span>
+        </button>
+        <button class="review-subtab" id="subtab-achievements" data-subtab="achievements">
+          <svg class="subtab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4h10v4a5 5 0 0 1-10 0V4z"/><path d="M7 5H4a3 3 0 0 0 3 3M17 5h3a3 3 0 0 1-3 3"/><path d="M12 13v4M8 20h8"/></svg>
+          <span data-i18n="subtab_achievements">Başarımlar</span>
+        </button>
+      </div>
+
+      <!-- Antrenman (SRS) Alanı -->
+      <div id="review-training-content" class="review-training-content">
+        <!-- Özet ekranı -->
+        <div id="srs-home" class="srs-home-layout">
+          <div class="stat-row" id="srs-stats-row">
+            <div class="stat-card" id="srs-stat-due">
+              <div class="stat-card-top">
+                <div class="stat-icon-badge stat-icon-orange">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="stat-num stat-num-orange" id="srs-due-count">0</div>
+              </div>
+              <div class="stat-label" data-i18n="srs_stat_due">Bugün Bekliyor</div>
+            </div>
+
+            <div class="stat-card" id="srs-stat-total">
+              <div class="stat-card-top">
+                <div class="stat-icon-badge stat-icon-indigo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </div>
+                <div class="stat-num stat-num-indigo" id="srs-total-count">0</div>
+              </div>
+              <div class="stat-label" data-i18n="srs_stat_total">Toplam Kelime</div>
+            </div>
+
+            <div class="stat-card" id="srs-stat-streak">
+              <div class="stat-card-top">
+                <div class="stat-icon-badge stat-icon-amber">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                </div>
+                <div class="stat-num stat-num-amber" id="srs-streak-count">0</div>
+              </div>
+              <div class="stat-label" data-i18n="srs_stat_streak">Gün Serisi</div>
+            </div>
+          </div>
+
+          <div class="srs-actions-group">
+            <button type="button" class="resume-main-btn" id="srs-start-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span data-i18n="srs_start_btn">Çalışmaya Başla</span>
+            </button>
+            <button type="button" class="resume-discard-btn" id="srs-words-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="15" height="15"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              <span data-i18n="srs_study_list_btn">Kelimeler & İlerleme</span>
+            </button>
+          </div>
+
+          <div class="srs-empty" id="srs-empty" style="display:none">
+            <div class="srs-result-badge">
+              <div class="srs-badge-glow"></div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                <path d="M4 22h16"/>
+                <path d="M10 14.66V17c0 .55-.45 1-1 1H7.5"/>
+                <path d="M14 14.66V17c0 .55.45 1 1 1h1.5"/>
+                <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+              </svg>
+            </div>
+            <p class="srs-empty-title" data-i18n="srs_completed">Bugünkü çalışma tamamlandı!</p>
+            <small class="srs-empty-desc" id="srs-empty-next"></small>
+          </div>
+
+          <div class="srs-next-info" id="srs-next-info" style="display:none">
+            <span id="srs-next-text"></span>
+          </div>
+
+          <!-- Aktivite ısı haritası -->
+          <div class="srs-heatmap-section" id="srs-heatmap-section" style="display:none">
+            <div class="srs-heatmap-header">
+              <div class="srs-heatmap-title-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span class="srs-heatmap-title" data-i18n="srs_heatmap_title">Son 12 Hafta Aktivitesi</span>
+              </div>
+              <div class="srs-heatmap-legend">
+                <span class="heatmap-legend-label" data-i18n="heatmap_less">Az</span>
+                <span class="heatmap-cell" style="background:var(--hm-1)"></span>
+                <span class="heatmap-cell" style="background:var(--hm-2)"></span>
+                <span class="heatmap-cell" style="background:var(--hm-3)"></span>
+                <span class="heatmap-cell" style="background:var(--hm-4)"></span>
+                <span class="heatmap-legend-label" data-i18n="heatmap_more">Çok</span>
+              </div>
+            </div>
+            <div class="srs-heatmap-grid" id="srs-heatmap-grid"></div>
+          </div>
+
+          <!-- Antrenman Ayarları -->
+          <div class="srs-settings-section-wrap">
+            <div class="srs-settings-title-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="14" height="14"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              <span data-i18n="srs_settings_title">Çalışma Ayarları</span>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-label" data-i18n="srs_settings_new_limit">Günlük Yeni Kart Limiti</div>
+              <div class="settings-card-help" data-i18n="srs_settings_new_limit_help">Sözlüğünüzde çok kelime olsa bile günde en fazla bu kadar yeni kart çıkar. Vadesi gelen eski kartlar bu limite dahil değildir.</div>
+              <div class="segmented" id="srs-new-limit-group">
+                <div class="seg-thumb"></div>
+                <button type="button" class="setting-btn" data-value="5">5</button>
+                <button type="button" class="setting-btn active" data-value="10">10</button>
+                <button type="button" class="setting-btn" data-value="20">20</button>
+                <button type="button" class="setting-btn" data-value="50">50</button>
+                <button type="button" class="setting-btn" data-value="0" data-i18n="srs_unlimited">Sınırsız</button>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <div class="settings-card-label" data-i18n="srs_settings_session_limit">Oturum Kart Limiti</div>
+              <div class="settings-card-help" data-i18n="srs_settings_session_limit_help">Oturum başına maksimum kart sayısı. Limit dolunca oturum biter.</div>
+              <div class="segmented" id="srs-session-limit-group">
+                <div class="seg-thumb"></div>
+                <button type="button" class="setting-btn" data-value="10">10</button>
+                <button type="button" class="setting-btn active" data-value="20">20</button>
+                <button type="button" class="setting-btn" data-value="30">30</button>
+                <button type="button" class="setting-btn" data-value="0" data-i18n="srs_unlimited">Sınırsız</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kart ekranı (Mockup 3D Flip Card) -->
+        <div id="srs-session" class="game-play" style="display:none">
+          <div class="game-play-header">
+            <button class="game-exit-btn" id="srs-quit-btn" data-i18n-title="srs_btn_back_tooltip" title="Geri Dön">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="15" height="15" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <span class="game-play-title" id="srs-play-title" data-i18n="srs_study_session">Çalışma Oturumu</span>
+            <div class="score-chip" id="srs-session-progress-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="color:#818cf8;flex-shrink:0;"><rect x="2" y="7" width="20" height="14" rx="2.5"/><path d="M16 3H8"/></svg>
+              <span id="srs-session-progress">0 / 0</span>
+            </div>
+          </div>
+          <div class="progress-track" style="margin-top:2px;margin-bottom:8px">
+            <div class="progress-fill" id="srs-session-bar" style="width:0%"></div>
+          </div>
+
+          <!-- Çalışma Kartı Sahnesi -->
+          <div id="srs-card-stage">
+            <div class="srs-flip-outer">
+              <div class="srs-flip-inner" id="srs-flip-inner">
+                <!-- Ön Yüz -->
+                <div class="srs-mock-card srs-flip-face" id="srs-card-front">
+                  <div class="srs-card-meta-row">
+                    <span class="srs-mock-badge" id="srs-card-level"></span>
+                    <span class="srs-mock-pin" id="srs-card-interval">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="11" height="11"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+                      <span id="srs-card-interval-text"></span>
+                    </span>
+                  </div>
+                  <div class="srs-mock-word" id="srs-card-word"></div>
+                  <div class="srs-mock-ctx" id="srs-card-context-wrap">
+                    <svg class="ctx-quote-icon" viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    <span id="srs-card-context"></span>
+                  </div>
+                  <!-- Emoji İpucu Kapsayıcısı -->
+                  <div id="srs-card-hint-container" style="display:none;margin:4px 0;display:flex;flex-direction:column;align-items:center;">
+                    <button type="button" class="srs-hint-btn" id="srs-hint-btn" data-i18n="srs_card_hint_btn">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7zM9 21h6"/></svg>
+                      <span>İpucu Göster</span>
+                    </button>
+                    <div id="srs-card-hint-emoji" style="display:none;margin-top:8px;">
+                      <img id="srs-card-hint-img" src="" style="width:70px;height:70px;object-fit:contain;" alt="İpucu">
+                    </div>
+                  </div>
+                  <button type="button" class="srs-hero-reveal-btn" id="srs-reveal-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span data-i18n="srs_card_reveal_btn">Çeviriyi Göster</span>
+                  </button>
+                </div>
+
+                <!-- Arka Yüz -->
+                <div class="srs-mock-card srs-flip-face back" id="srs-card-back">
+                  <div class="srs-card-meta-row">
+                    <span class="srs-mock-badge" id="srs-card-level-back"></span>
+                    <span class="srs-mock-pin" id="srs-card-interval-back">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="11" height="11"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+                      <span id="srs-card-interval-back-text"></span>
+                    </span>
+                  </div>
+                  <div class="srs-mock-word" id="srs-card-word-back"></div>
+                  <div class="srs-mock-trans" id="srs-card-translation"></div>
+                  <div class="srs-mock-ctx" id="srs-card-context-back-wrap">
+                    <svg class="ctx-quote-icon" viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    <span id="srs-card-context-back"></span>
+                  </div>
+
+                  <div style="width:100%;margin-top:auto;">
+                    <div class="rate-row">
+                      <button type="button" class="rate-btn rate-again" id="srs-rate-again" style="--rc-bg:rgba(239,68,68,.12);--rc-fg:#fca5a5;--rc-bd:rgba(239,68,68,.28)">
+                        <span class="rate-label" data-i18n="srs_rate_again">Bilmedim</span>
+                        <span class="rate-int" id="srs-int-again">10dk</span>
+                      </button>
+                      <button type="button" class="rate-btn rate-hard" id="srs-rate-hard" style="--rc-bg:rgba(249,115,22,.12);--rc-fg:#fdba74;--rc-bd:rgba(249,115,22,.28)">
+                        <span class="rate-label" data-i18n="srs_rate_hard">Zor</span>
+                        <span class="rate-int" id="srs-int-hard">1g</span>
+                      </button>
+                      <button type="button" class="rate-btn rate-good" id="srs-rate-good" style="--rc-bg:rgba(99,102,241,.14);--rc-fg:#a5b4fc;--rc-bd:rgba(99,102,241,.32)">
+                        <span class="rate-label" data-i18n="srs_rate_good">İyi</span>
+                        <span class="rate-int" id="srs-int-good">3g</span>
+                      </button>
+                      <button type="button" class="rate-btn rate-easy" id="srs-rate-easy" style="--rc-bg:rgba(16,185,129,.14);--rc-fg:#86efac;--rc-bd:rgba(16,185,129,.32)">
+                        <span class="rate-label" data-i18n="srs_rate_easy">Kolay</span>
+                        <span class="rate-int" id="srs-int-easy">7g</span>
+                      </button>
+                    </div>
+                    <button type="button" class="learned-link" id="srs-rate-learned">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="13" height="13"><path d="M20 6L9 17l-5-5"/></svg>
+                      <span data-i18n="srs_rate_learned_link">Bunu biliyorum, bir daha sorma</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Kısayol Bilgilendirme Çubuğu (Standart En Alt Bilgi Satırı) -->
+            <div class="hint-line srs-bottom-hint" id="srs-persistent-bottom-hint">
+              <span><kbd>Space</kbd> <span data-i18n="srs_shortcut_flip">Çeviri</span> &nbsp;•&nbsp; <kbd>1-4</kbd> <span data-i18n="srs_shortcut_rate">Değerlendirme</span></span>
+            </div>
+          </div>
+
+          <!-- Oturum sonu (Modern Hero & Stats Grid) -->
+          <div id="srs-result" class="srs-result-container" style="display:none">
+            <div class="srs-result-hero">
+              <div class="srs-result-badge">
+                <div class="srs-badge-glow"></div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                  <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                  <path d="M4 22h16"/>
+                  <path d="M10 14.66V17c0 .55-.45 1-1 1H7.5"/>
+                  <path d="M14 14.66V17c0 .55.45 1 1 1h1.5"/>
+                  <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                </svg>
+              </div>
+              <h2 class="srs-result-title" data-i18n="srs_result_title">Oturum Tamamlandı!</h2>
+              <p class="srs-result-subtitle" data-i18n="srs_result_subtitle">Bugünkü çalışma hedefini başarıyla tamamladın.</p>
+            </div>
+
+            <!-- Modern İstatistik Grid'i -->
+            <div class="srs-stats-grid" id="srs-result-stats"></div>
+
+            <!-- Alt Butonlar -->
+            <div class="srs-result-actions">
+              <button type="button" class="srs-result-btn primary" id="srs-back-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span data-i18n="srs_result_back_btn">Ana Sayfaya Dön</span>
+              </button>
+              <button type="button" class="srs-result-btn secondary" id="srs-result-words-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                <span data-i18n="srs_view_words_btn">Kelimeleri İncele</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kelimeler & İlerleme — tam ekran liste görünümü -->
+        <div class="srs-overlay" id="srs-words-overlay">
+          <div class="srs-overlay-header">
+            <button type="button" class="nav-icon" id="srs-words-close-btn" data-i18n-title="srs_btn_back_tooltip" title="Geri">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <span class="srs-overlay-title" data-i18n="srs_overlay_title">Kelimeler &amp; İlerleme</span>
+            <span class="srs-overlay-count" id="srs-words-total-badge">0</span>
+          </div>
+
+          <!-- Arama -->
+          <div class="search-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="srs-words-search" class="archive-search-input" data-i18n-placeholder="archive_search_placeholder" placeholder="Kelime ara…" autocomplete="off" />
+            <button type="button" class="search-clear-btn" id="srs-words-search-clear" data-i18n-title="btn_clear" title="Temizle" style="display:none">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+
+          <div style="position:relative;">
+            <div class="chip-select" id="srs-sort-select">
+              <svg class="chip-select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4v16M7 4 3 8M7 4l4 4M17 20V4M17 20l4-4M17 20l-4-4"/></svg>
+              <span id="srs-sort-label" data-i18n="srs_sort_time_asc">Süreye Göre Artan (En Yakın)</span>
+              <svg class="chip-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="sort-popover" id="srs-sort-popover">
+              <button type="button" class="sort-opt on" data-sort="time-asc" data-label="Süreye Göre Artan (En Yakın)"><span data-i18n="srs_sort_time_asc">Süreye Göre Artan (En Yakın)</span> <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12l5 5L20 6"/></svg></button>
+              <button type="button" class="sort-opt" data-sort="time-desc" data-label="Süreye Göre Azalan (En Uzak)"><span data-i18n="srs_sort_time_desc">Süreye Göre Azalan (En Uzak)</span> <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12l5 5L20 6"/></svg></button>
+              <button type="button" class="sort-opt" data-sort="alphabetical" data-label="Kelime (A → Z)"><span data-i18n="srs_sort_alphabetical">Kelime (A → Z)</span> <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12l5 5L20 6"/></svg></button>
+              <button type="button" class="sort-opt" data-sort="learned-first" data-label="Öğrenilenler Önce"><span data-i18n="srs_sort_learned_first">Öğrenilenler Önce</span> <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12l5 5L20 6"/></svg></button>
+              <button type="button" class="sort-opt" data-sort="new-first" data-label="Yeni Kartlar Önce"><span data-i18n="srs_sort_new_first">Yeni Kartlar Önce</span> <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12l5 5L20 6"/></svg></button>
+            </div>
+          </div>
+
+          <!-- Kelime listesi -->
+          <div id="srs-words-list" class="srs-word-list">
+            <!-- Kelimeler JS ile doldurulacak -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Oyunlar Alanı -->
+      <div id="review-games-content" style="display: none; flex-direction: column; gap: 12px; flex: 1; overflow-y: auto; padding: 0;">
+        <!-- Oyun Devam Etme Paneli -->
+        <div id="resume-game-container" class="resume-game-container" style="display: none;">
+          <div class="resume-game-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="resume-game-header">
+            <div id="resume-game-title" class="resume-game-title" data-i18n="game_resume_title">Devam Eden Oyun</div>
+            <p id="resume-game-desc" class="resume-game-desc"></p>
+          </div>
+          <div class="resume-game-actions">
+            <button type="button" class="resume-main-btn" id="resume-game-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span data-i18n="game_resume_btn">Kaldığım Yerden Devam Et</span>
+            </button>
+            <button type="button" class="resume-discard-btn" id="discard-game-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              <span data-i18n="game_discard_btn">Yeni Oyun Başlat</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Oyun Seçim Ekranı (Games Hub) -->
+        <div id="games-hub" style="display: flex; flex-direction: column; gap: 12px;">
+          <!-- Çalışma Havuzu Seçimi (Modern Popover) -->
+          <div class="filter-row" style="position:relative;margin-bottom:4px">
+            <div class="anchor" style="position:relative;display:inline-block;">
+              <button type="button" class="chip-select" id="poolSelect">
+                <span id="poolSelectDot" class="pool-select-dot"></span>
+                <span id="poolSelectLabel" class="chip-select-label">Havuz: Tümü</span>
+                <svg class="chip-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="sort-popover pool-popover" id="poolPopover">
+                <button type="button" class="sort-opt pool-chip on" data-val="all">
+                  <span class="pool-dot" style="background:#94a3b8;"></span>
+                  <span data-i18n="game_pool_all">Tümü</span>
+                </button>
+                <button type="button" class="sort-opt pool-chip" data-val="words">
+                  <span class="pool-dot" style="background:#22c55e;"></span>
+                  <span data-i18n="game_pool_words">Sadece Kelimeler</span>
+                </button>
+                <button type="button" class="sort-opt pool-chip" data-val="collocation">
+                  <span class="pool-dot" style="background:#38bdf8;"></span>
+                  <span data-i18n="game_pool_collocation">Sadece Eş Dizimler</span>
+                </button>
+                <button type="button" class="sort-opt pool-chip" data-val="phrasal">
+                  <span class="pool-dot" style="background:#a855f7;"></span>
+                  <span data-i18n="game_pool_phrasal">Sadece Phrasal Verb'ler</span>
+                </button>
+                <button type="button" class="sort-opt pool-chip" data-val="idiom">
+                  <span class="pool-dot" style="background:#fb923c;"></span>
+                  <span data-i18n="game_pool_idiom">Sadece Deyimler</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6 Oyun Kartı (2 Sütun Izgara) -->
+          <div class="games-grid2" id="games-grid">
+            <div class="game-tile" data-game="multiple_choice" data-color="#a5b4fc">
+              <div class="game-tile-icon" style="background:linear-gradient(135deg, rgba(99,102,241,0.26), rgba(139,92,246,0.1));border:1px solid rgba(129,140,248,0.42);color:#c7d2fe;box-shadow:0 4px 12px -2px rgba(99,102,241,0.32), inset 0 1px 1px rgba(255,255,255,0.3);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg>
+              </div>
+              <div class="game-tile-title" data-i18n="game_mc_title">Çoktan Seçmeli</div>
+              <div class="game-tile-desc" data-i18n="game_mc_desc">Doğru çeviriyi 4 seçenek arasından bulun.</div>
+            </div>
+
+            <div class="game-tile" data-game="fill_blank" data-color="#7dd3fc">
+              <div class="game-tile-icon" style="background:linear-gradient(135deg, rgba(56,189,248,0.26), rgba(14,165,233,0.1));border:1px solid rgba(56,189,248,0.42);color:#7dd3fc;box-shadow:0 4px 12px -2px rgba(56,189,248,0.32), inset 0 1px 1px rgba(255,255,255,0.3);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+              </div>
+              <div class="game-tile-title" data-i18n="game_blank_title">Boşluk Doldurma</div>
+              <div class="game-tile-desc" data-i18n="game_blank_desc">Cümledeki boşluğa gelecek doğru kelimeyi bulun.</div>
+            </div>
+
+            <div class="game-tile" data-game="scramble" data-color="#c9a3fb">
+              <div class="game-tile-icon" style="background:linear-gradient(135deg, rgba(168,85,247,0.26), rgba(192,132,252,0.1));border:1px solid rgba(168,85,247,0.42);color:#d8b4fe;box-shadow:0 4px 12px -2px rgba(168,85,247,0.32), inset 0 1px 1px rgba(255,255,255,0.3);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l6.6-8.6c.8-1.1 2-1.7 3.3-1.7H22"/><path d="m18 2 4 4-4 4"/><path d="M2 6h1.4c1.3 0 2.5.6 3.3 1.7l6.6 8.6c.8 1.1 2 1.7 3.3 1.7H22"/><path d="m18 22 4-4-4-4"/></svg>
+              </div>
+              <div class="game-tile-title" data-i18n="game_scramble_title">Kelime Karıştırma</div>
+              <div class="game-tile-desc" data-i18n="game_scramble_desc">Karışık harflerden doğru kelimeyi oluşturun.</div>
+            </div>
+
+            <div class="game-tile" data-game="match" data-color="#86efac">
+              <div class="game-tile-icon" style="background:linear-gradient(135deg, rgba(34,197,94,0.26), rgba(16,185,129,0.1));border:1px solid rgba(34,197,94,0.42);color:#86efac;box-shadow:0 4px 12px -2px rgba(34,197,94,0.32), inset 0 1px 1px rgba(255,255,255,0.3);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="8" height="14" rx="2.5"/><rect x="14" y="5" width="8" height="14" rx="2.5"/><path d="M6 10h0M18 10h0M6 14h0M18 14h0"/></svg>
+              </div>
+              <div class="game-tile-title" data-i18n="game_match_title">Kelime Eşleştirme</div>
+              <div class="game-tile-desc" data-i18n="game_match_desc">Kelimeleri anlamlarıyla eşleştirin.</div>
+            </div>
+
+            <div class="game-tile" data-game="dictation" data-color="#fdba74">
+              <div class="game-tile-icon" style="background:linear-gradient(135deg, rgba(249,115,22,0.26), rgba(234,88,12,0.1));border:1px solid rgba(249,115,22,0.42);color:#fdba74;box-shadow:0 4px 12px -2px rgba(249,115,22,0.32), inset 0 1px 1px rgba(255,255,255,0.3);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+              </div>
+              <div class="game-tile-title" data-i18n="game_dictation_title">Dinle ve Yaz</div>
+              <div class="game-tile-desc" data-i18n="game_dictation_desc">Duyduğunuz kelimeyi dinleyip doğru şekilde yazın.</div>
+            </div>
+
+            <div class="game-tile" data-game="context_choice" data-color="#f9a8d4">
+              <div class="game-tile-icon" style="background:linear-gradient(135deg, rgba(244,114,182,0.26), rgba(236,72,153,0.1));border:1px solid rgba(244,114,182,0.42);color:#f9a8d4;box-shadow:0 4px 12px -2px rgba(244,114,182,0.32), inset 0 1px 1px rgba(255,255,255,0.3);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="8" rx="2"/><rect x="14" y="3" width="7" height="8" rx="2"/><rect x="3" y="13" width="7" height="8" rx="2"/><rect x="14" y="13" width="7" height="8" rx="2"/></svg>
+              </div>
+              <div class="game-tile-title" data-i18n="game_context_title">Hafıza Kartları</div>
+              <div class="game-tile-desc" data-i18n="game_context_desc">Kelimeleri karşılıkları ile eşleştirerek kartları açın.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aktif Oyun Sahnesi (Game Play Area) -->
+        <div id="game-play-area" class="game-play" style="display:none">
+          <div class="game-play-header">
+            <button class="game-exit-btn" id="game-exit-btn" data-i18n-title="srs_btn_back_tooltip" title="Geri Dön">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="15" height="15" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <span class="game-play-title" id="game-play-title">Oyun</span>
+            <div class="score-chip" id="game-play-score">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" style="color:#fbbf24;flex-shrink:0;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span>0 Puan</span>
+            </div>
+          </div>
+          <div class="progress-track" style="margin-top:2px">
+            <div class="progress-fill" id="game-progress-bar" style="width:0%"></div>
+          </div>
+          <div class="game-stage" id="game-stage">
+            <!-- Oyun sahneleri JS ile buraya yüklenecek -->
+          </div>
+          <div class="game-bottom-hint" id="game-persistent-bottom-hint" style="display:none;">
+            <span id="game-persistent-bottom-hint-text"></span>
+          </div>
+        </div>
+
+        <!-- Öğrenme İstatistikleri -->
+        <div id="games-stats-container" class="stats-main-container">
+          <div class="stats-main-header">
+            <div class="stats-main-header-left">
+              <div class="stats-header-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M18 20V10M12 20V4M6 20v-6"/>
+                </svg>
+              </div>
+              <span class="stats-header-title" data-i18n="stats_title">Öğrenme İstatistikleri</span>
+            </div>
+          </div>
+
+          <!-- Oyun Performansı (3 Modern Kart) -->
+          <div class="stat-row" id="stats-game-cards"></div>
+
+          <!-- CEFR Seviye Dağılımı -->
+          <div class="stats-main-header" style="margin-top: 6px;">
+            <div class="stats-main-header-left">
+              <div class="stats-header-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/>
+                </svg>
+              </div>
+              <span class="stats-header-title" data-i18n="stats_level_dist">CEFR Seviye Dağılımı</span>
+            </div>
+          </div>
+          <div class="stats-card-container">
+            <div class="stats-chart-wrap">
+              <canvas id="stats-cefr-canvas" width="140" height="140" class="stats-ring-canvas"></canvas>
+              <div id="stats-cefr-legend" class="stats-ring-legend"></div>
+            </div>
+          </div>
+
+          <!-- Kelime Büyümesi -->
+          <div class="stats-main-header" style="margin-top: 6px;">
+            <div class="stats-main-header-left">
+              <div class="stats-header-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+                </svg>
+              </div>
+              <span class="stats-header-title" data-i18n="stats_vocab_growth">Kelime Büyümesi — Son 30 Gün</span>
+            </div>
+          </div>
+          <div class="stats-card-container">
+            <canvas id="stats-growth-canvas" class="stats-growth-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Başarımlar Alanı -->
+      <div id="review-achievements-content" style="display: none; flex-direction: column; flex: 1; overflow-y: auto; padding: 0 2px 24px;">
+        <div class="ach-sticky-header">
+          <div class="exp-hero">
+            <div class="exp-hero-label" data-i18n="user_exp_label">Toplam Puanınız</div>
+            <div class="exp-hero-value" id="user-exp-display">0</div>
+            <div class="exp-hero-level" id="user-exp-level">Seviye 1</div>
+            <div class="exp-bar-track"><div class="exp-bar-fill" id="user-exp-bar" style="width: 0%;"></div></div>
+          </div>
+          <div class="section-label eyebrow" id="achievements-count-label" style="margin: 4px 2px 0;">Başarımlar · 0 / 42</div>
+        </div>
+
+        <div id="achievements-grid" class="ach-grid"></div>
+      </div>
+    </div>
+
+    <!-- Achievement Toast -->
+    <div id="achievement-toast" class="achievement-toast" style="display:none;">
+      <div class="achievement-toast-icon" id="achievement-toast-icon">🏆</div>
+      <div class="achievement-toast-body">
+        <div class="achievement-toast-label" data-i18n="achievement_unlocked_title">Başarım Kazanıldı!</div>
+        <div class="achievement-toast-title" id="achievement-toast-title"></div>
+      </div>
+    </div>
+    <!-- ── FLASH CARD MODAL ── -->
+    <div class="fc-overlay" id="fc-overlay" style="display:none">
+      <div class="fc-flip-outer" id="fc-flip-outer">
+        <div class="fc-flip-inner" id="fc-flip-inner">
+          <!-- Ön Yüz -->
+          <div class="fc-modal fc-flip-face" id="fc-front">
+            <div class="fc-header">
+              <span class="fc-progress" id="fc-progress">1 / 10</span>
+              <button type="button" class="close-panel-btn fc-close" id="fc-close" data-i18n-title="modal_btn_close" title="Kapat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M6 6l12 12M18 6L6 18"/></svg>
+              </button>
+            </div>
+            <div class="fc-body">
+              <div class="fc-level-badge" id="fc-level-badge"></div>
+              <div class="fc-word" id="fc-word" lang="en"></div>
+              <div class="fc-context" id="fc-context"></div>
+            </div>
+            <button type="button" class="fc-reveal-btn" id="fc-reveal-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              <span data-i18n="srs_card_reveal_btn">Çeviriyi Göster</span>
+            </button>
+          </div>
+          <!-- Arka Yüz -->
+          <div class="fc-modal fc-flip-face back" id="fc-back">
+            <div class="fc-header">
+              <span class="fc-progress" id="fc-progress-back">1 / 10</span>
+              <button type="button" class="close-panel-btn fc-close" id="fc-close-back" data-i18n-title="modal_btn_close" title="Kapat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M6 6l12 12M18 6L6 18"/></svg>
+              </button>
+            </div>
+            <div class="fc-body">
+              <div class="fc-level-badge" id="fc-level-badge-back"></div>
+              <div class="fc-word" id="fc-word-back" lang="en"></div>
+              <div class="fc-translation" id="fc-translation"></div>
+              <div class="fc-context" id="fc-context-back"></div>
+            </div>
+            <div class="fc-actions">
+              <button type="button" class="fc-btn fc-again" id="fc-again" data-i18n="fc_again_btn">Tekrar</button>
+              <button type="button" class="fc-btn fc-good" id="fc-good" data-i18n="fc_good_btn">Bildim</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sonuç Ekranı -->
+      <div class="fc-modal fc-done-modal" id="fc-done" style="display:none">
+        <div class="srs-result-hero" style="padding: 6px 0 2px;">
+          <div class="srs-result-badge" style="width: 52px; height: 52px; margin: 0 auto 10px;">
+            <div class="srs-badge-glow"></div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+              <path d="M4 22h16"/>
+              <path d="M10 14.66V17c0 .55-.45 1-1 1H7.5"/>
+              <path d="M14 14.66V17c0 .55.45 1 1 1h1.5"/>
+              <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+            </svg>
+          </div>
+          <h2 class="srs-result-title" data-i18n="fc_done_title">Tebrikler!</h2>
+          <p class="srs-result-subtitle" id="fc-done-sub"></p>
+        </div>
+
+        <div class="srs-stats-grid" id="fc-done-stats" style="margin: 6px 0 10px; width: 100%; grid-template-columns: repeat(3, 1fr);"></div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; margin-top: 4px;">
+          <button type="button" class="srs-result-btn primary" id="fc-retry-missed-btn" style="height: 44px; margin: 0; display: none; background: linear-gradient(135deg, #f59e0b, #ea580c); border-color: rgba(245, 158, 11, 0.4); box-shadow: 0 8px 24px -6px rgba(234, 88, 12, 0.55);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="15" height="15"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            <span>Bilemediklerimi Tekrar Et</span>
+          </button>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%;">
+            <button type="button" class="srs-result-btn primary" id="fc-restart-btn" style="height: 44px; margin: 0;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="15" height="15"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+              <span data-i18n="fc_restart_btn">Tümünü Başlat</span>
+            </button>
+            <button type="button" class="srs-result-btn secondary" id="fc-done-close-btn" style="height: 44px; margin: 0;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="15" height="15"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <span data-i18n="modal_btn_close">Kapat</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PREMİUM BAŞARI HOŞ GELDİN MODALI ── -->
+    <div class="custom-confirm-overlay" id="premium-welcome-modal" style="display:none">
+      <div class="premium-welcome-card">
+        <div class="premium-crown-badge">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="url(#prem-crown-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <defs>
+              <linearGradient id="prem-crown-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#818cf8"/>
+                <stop offset="0.5" stop-color="#c084fc"/>
+                <stop offset="1" stop-color="#38bdf8"/>
+              </linearGradient>
+            </defs>
+            <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14v2H5v-2z"/>
+          </svg>
+        </div>
+        <div class="premium-welcome-title" data-i18n="premium_welcome_title">Premium'a Hoş Geldiniz!</div>
+        <div class="premium-welcome-desc" data-i18n="premium_welcome_desc">Tüm sınırlar kaldırıldı! PrimeVocab'in tüm gelişmiş ayrıcalıklarına artık sınırsız erişebilirsiniz:</div>
+
+        <div class="premium-feature-list">
+          <div class="premium-feature-item">
+            <div class="premium-feat-icon">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#818cf8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <div class="premium-feat-text">
+              <strong data-i18n="premium_feat_limit_title">Sınırsız Kelime Havuzu</strong>
+              <span data-i18n="premium_feat_limit">50 kelime limiti kalktı, dilediğiniz kadar kelime kaydedin.</span>
+            </div>
+          </div>
+          <div class="premium-feature-item">
+            <div class="premium-feat-icon">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#818cf8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <div class="premium-feat-text">
+              <strong data-i18n="premium_feat_sync_title">Google Drive Bulut Eşitleme</strong>
+              <span data-i18n="premium_feat_sync">Tüm cihazlarınızdaki kelimeleri ve serilerinizi otomatik senkronize edin.</span>
+            </div>
+          </div>
+          <div class="premium-feature-item">
+            <div class="premium-feat-icon">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#818cf8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <div class="premium-feat-text">
+              <strong data-i18n="premium_feat_practice_title">Gelişmiş SRS Alıştırmaları</strong>
+              <span data-i18n="premium_feat_practice">Günlük sınır olmadan kelime kartı ve hafıza antrenmanları yapın.</span>
+            </div>
+          </div>
+          <div class="premium-feature-item">
+            <div class="premium-feat-icon">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#818cf8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <div class="premium-feat-text">
+              <strong data-i18n="premium_feat_games_title">Tüm Mini Oyunlar Aktif</strong>
+              <span data-i18n="premium_feat_games">6 mini oyunun tamamına ve tüm kelime arşivine erişin.</span>
+            </div>
+          </div>
+          <div class="premium-feature-item">
+            <div class="premium-feat-icon">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#818cf8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <div class="premium-feat-text">
+              <strong data-i18n="premium_feat_export_title">Anki & JSON Dışa Aktarım</strong>
+              <span data-i18n="premium_feat_export">Kelimelerinizi tek tıkla Anki ve JSON yedek formatında dışa aktarın.</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="premium-welcome-btn" id="premium-welcome-close-btn" data-i18n="premium_welcome_btn">Harika, Başlayalım!</button>
+      </div>
+    </div>
+
+    <!-- ── KAPASİTE / PREMİUM UYARI MODALI ── -->
+    <div class="custom-confirm-overlay" id="premium-modal" style="display:none">
+      <div class="premium-welcome-card" style="max-width: 310px;">
+        <div class="premium-crown-badge" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.22), rgba(168, 85, 247, 0.16)); border-color: rgba(168, 85, 247, 0.3); box-shadow: 0 10px 25px -4px rgba(99, 102, 241, 0.45);">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#818cf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <div class="premium-welcome-title" id="premium-modal-title" style="color: #c084fc; font-size: 16px;" data-i18n="premium_modal_title">Kapasite Sınırına Ulaşıldı</div>
+        <div class="premium-welcome-desc" id="premium-modal-message" style="margin-bottom: 16px;" data-i18n="premium_modal_message">
+          Ücretsiz sürümde en fazla 50 kelime kaydedebilirsiniz. Daha fazla kelime eklemek veya Google Drive yedekleme özelliğini kullanmak için Premium sürüme geçin.
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
+          <button class="premium-welcome-btn" id="premium-modal-buy-btn" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); box-shadow: 0 4px 15px rgba(99, 102, 241, 0.45);" data-i18n="premium_modal_buy_btn">Premium Satın Al</button>
+          <button class="onboarding-btn secondary" id="premium-modal-close-btn" style="width: 100%; height: 38px; border-radius: 12px;" data-i18n="premium_modal_close_btn">Kapat</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CUSTOM CONFIRM MODAL ── -->
+    <div class="custom-confirm-overlay" id="custom-confirm-overlay" style="display:none">
+      <div class="custom-confirm-modal">
+        <div class="confirm-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+        </div>
+        <div class="confirm-header">
+          <div class="confirm-title" id="custom-confirm-title" data-i18n="game_quit_title">Oyundan Çıkılsın mı?</div>
+          <div class="confirm-desc" id="custom-confirm-message" data-i18n="game_quit_confirm">Oyundan çıkmak istediğinize emin misiniz? İlerlemeniz silinecek.</div>
+        </div>
+        <div class="custom-confirm-actions">
+          <button type="button" class="custom-confirm-btn cancel" id="custom-confirm-cancel" data-i18n="game_btn_cancel">Vazgeç</button>
+          <button type="button" class="custom-confirm-btn confirm" id="custom-confirm-ok" data-i18n="game_btn_quit">Çık</button>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- Closes .app -->
+
+  <!-- Sidebar floating inline dictionary tooltip -->
+  <div class="sidebar-tooltip" id="sidebar-tooltip" style="display: none;">
+    <div class="sidebar-tooltip-content" style="flex-direction: column; gap: 0;">
+      <div class="sidebar-tooltip-main-row" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%;">
+        <div class="sidebar-tooltip-body">
+          <div class="sidebar-tooltip-meta">
+            <span class="sidebar-tooltip-word" id="sidebar-tooltip-word"></span>
+            <span class="sidebar-tooltip-cefr-badge" id="sidebar-tooltip-cefr-badge" style="display:none"></span>
+            <span class="sidebar-tooltip-pos" id="sidebar-tooltip-pos" style="display:none"></span>
+          </div>
+          <div class="sidebar-tooltip-trans" id="sidebar-tooltip-trans">...</div>
+        </div>
+        <button type="button" class="sidebar-tooltip-save" id="sidebar-tooltip-save" data-i18n-title="sidebar_tooltip_save_title">
+          <svg class="icon-save-bookmark-empty" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          <svg class="icon-save-bookmark-filled" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        </button>
+      </div>
+      <div class="sidebar-tooltip-col-row" id="sidebar-tooltip-col-row" style="display:none; align-items: center; justify-content: space-between; gap: 12px; width: 100%; border-top: 1px solid rgba(255,255,255,0.12); margin-top: 8px; padding-top: 8px;">
+        <div class="sidebar-tooltip-body">
+          <div class="sidebar-tooltip-meta">
+            <span class="sidebar-tooltip-word" id="sidebar-tooltip-col-phrase" style="color:#38bdf8"></span>
+            <span class="sidebar-tooltip-cefr-badge" id="sidebar-tooltip-col-badge"></span>
+          </div>
+          <div class="sidebar-tooltip-trans" id="sidebar-tooltip-col-trans">...</div>
+        </div>
+        <button type="button" class="sidebar-tooltip-save" id="sidebar-tooltip-col-save" data-i18n-title="sidebar_tooltip_save_title">
+          <svg class="icon-save-bookmark-empty" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          <svg class="icon-save-bookmark-filled" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Heatmap Modern Floating Tooltip -->
+  <div class="heatmap-floating-tooltip" id="heatmap-floating-tooltip" style="display: none;"></div>
+
+  <!-- Global Modern Floating Tooltip (Glassmorphism) -->
+  <div class="pv-global-tooltip" id="pv-global-tooltip" style="display: none;"></div>
+
+  <script src="../content/utils_common.js"></script>
+  <script src="../content/phrasal_verbs.js"></script>
+  <script src="../content/idioms.js"></script>
+  <script src="apiClient.js"></script>
+  <script src="panel_utils.js"></script>
+  <script src="panel_subtitles.js"></script>
+  <script src="panel_archive.js"></script>
+  <script src="panel_review.js"></script>
+  <script src="panel_games.js"></script>
+  <script src="panel_settings.js"></script>
+  <script src="panel_sync.js"></script>
+  <script src="panel_core.js"></script>
+  <script src="panel_onboarding.js"></script>
+  <script src="../panel-desktop.js"></script>
+  <script src="../../android-panel.js"></script>
+</body>
+
+</html>

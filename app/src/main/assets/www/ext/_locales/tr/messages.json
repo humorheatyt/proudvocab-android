@@ -1,0 +1,2075 @@
+{
+  "ext_name": {
+    "message": "PrimeVocab - Çift Altyazılı Kelime Öğrenme Eklentisi"
+  },
+  "ext_desc": {
+    "message": "Amazon Prime Video, Netflix ve YouTube üzerinde çift altyazı, akıllı duraklatma ve aralıklı tekrar (SRS) kelime öğrenme aracı."
+  },
+  "open_panel": {
+    "message": "PrimeVocab Panelini Aç"
+  },
+  "cmd_open_panel": {
+    "message": "PrimeVocab panelini aç/kapat"
+  },
+  "cmd_seek_back": {
+    "message": "Geri sar"
+  },
+  "cmd_seek_forward": {
+    "message": "İleri sar"
+  },
+  "cmd_seek_forward_tpl": {
+    "message": "$SEC$ saniye ileri sar",
+    "placeholders": {
+      "sec": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "cmd_seek_back_tpl": {
+    "message": "$SEC$ saniye geri sar",
+    "placeholders": {
+      "sec": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "seek_duration_label": {
+    "message": "Atlama süresi"
+  },
+  "seek_duration_unit": {
+    "message": "sn"
+  },
+  "app_title": {
+    "message": "PrimeVocab"
+  },
+  "word_count_lbl": {
+    "message": "Kelime"
+  },
+  "empty_state_title": {
+    "message": "Henüz kelime kaydetmediniz."
+  },
+  "empty_state_help": {
+    "message": "Prime Video izlerken altyazıdaki kelimelere tıklayarak buraya ekleyebilirsiniz."
+  },
+  "btn_export": {
+    "message": "Dışa Aktar (CSV)"
+  },
+  "btn_clear": {
+    "message": "Tümünü Temizle"
+  },
+  "confirm_clear_all": {
+    "message": "Tüm kayıtlı kelimeleri silmek istediğinize emin misiniz?"
+  },
+  "alert_no_words": {
+    "message": "Dışa aktarılacak kelime bulunamadı."
+  },
+  "translation_none": {
+    "message": "Çeviri yok"
+  },
+  "translation_label": {
+    "message": "Çeviri"
+  },
+  "tab_subtitle": {
+    "message": "Altyazı"
+  },
+  "tab_settings": {
+    "message": "Ayarlar"
+  },
+  "tab_archive": {
+    "message": "Sözlük"
+  },
+  "tab_review": {
+    "message": "Çalışma"
+  },
+  "shortcuts_title": {
+    "message": "Kısayollar"
+  },
+  "shortcuts_pv": {
+    "message": "Oynatıcı Kısayolları"
+  },
+  "shortcuts_pv_play": {
+    "message": "Oynat / Durdur"
+  },
+  "shortcuts_pv_fullscreen": {
+    "message": "Tam ekran"
+  },
+  "shortcuts_pv_fwd": {
+    "message": "10sn ileri"
+  },
+  "shortcuts_pv_rwd": {
+    "message": "10sn geri"
+  },
+  "shortcuts_pv_volume": {
+    "message": "Ses"
+  },
+  "shortcuts_pv_mute": {
+    "message": "Sessiz"
+  },
+  "shortcuts_pv_custom": {
+    "message": "Kısayolları özelleştir:"
+  },
+  "status_waiting": {
+    "message": "Altyazı bekleniyor..."
+  },
+  "status_connected": {
+    "message": "Yerel videoya bağlı"
+  },
+  "label_current_sub": {
+    "message": "Güncel Altyazı"
+  },
+  "empty_sub_title": {
+    "message": "Altyazı bekleniyor..."
+  },
+  "empty_sub_help": {
+    "message": "Altyazılı bir video oynatın."
+  },
+  "hint_word_click": {
+    "message": "Çevirisini görmek ve kaydetmek için bir kelimeye dokunun"
+  },
+  "sub_legend_colors": {
+    "message": "Renkler"
+  },
+  "sub_legend_tooltip": {
+    "message": "Altyazı renk açıklamaları"
+  },
+  "sub_legend_saved": {
+    "message": "Kaydedilen kelime"
+  },
+  "sub_legend_phrasal": {
+    "message": "Phrasal verb"
+  },
+  "sub_legend_idiom": {
+    "message": "Deyim"
+  },
+  "sub_legend_collocation": {
+    "message": "Eş dizim"
+  },
+  "sub_session_saved_words": {
+    "message": "Bu videoda {count} yeni kelime kaydettin"
+  },
+  "tooltip_seek_to_time": {
+    "message": "Bu zamana git"
+  },
+  "tooltip_translate_sentence": {
+    "message": "Cümleyi çevir"
+  },
+  "badge_phrasal": {
+    "message": "PHRASAL"
+  },
+  "badge_idiom": {
+    "message": "DEYİM"
+  },
+  "badge_collocation": {
+    "message": "EŞ DİZİM"
+  },
+  "btn_review": {
+    "message": "Tekrar"
+  },
+  "btn_refresh_families": {
+    "message": "Kelime ailelerini yenile"
+  },
+  "settings_show_quick_access": {
+    "message": "Hızlı Erişim Butonunu Göster"
+  },
+  "settings_show_quick_access_help": {
+    "message": "Panel kapalıyken video üzerinde paneli açmak için yarı saydam bir simge gösterir. Tıklayınca paneli açar."
+  },
+  "tooltip_quick_access": {
+    "message": "PrimeVocab Panelini Aç"
+  },
+  "btn_toggle_family": {
+    "message": ""
+  },
+  "btn_clear_short": {
+    "message": "Tümünü sil"
+  },
+  "search_placeholder": {
+    "message": "Kelime ara..."
+  },
+  "filter_all": {
+    "message": "Tümü"
+  },
+  "filter_hard": {
+    "message": "Zor"
+  },
+  "filter_idiom": {
+    "message": "Deyim"
+  },
+  "filter_collocation": {
+    "message": "Eş Dizim"
+  },
+  "shortcuts_reset": {
+    "message": "Varsayılana Sıfırla"
+  },
+  "sort_newest": {
+    "message": "En Yeni"
+  },
+  "sort_oldest": {
+    "message": "En Eski"
+  },
+  "sort_az": {
+    "message": "A → Z"
+  },
+  "sort_za": {
+    "message": "Z → A"
+  },
+  "select_all_sources": {
+    "message": "Tüm kaynaklar"
+  },
+  "empty_archive_title": {
+    "message": "Henüz kelime eklenmedi"
+  },
+  "empty_archive_help": {
+    "message": "Altyazıdan kelimelere tıklayarak sözlüğe ekleyin"
+  },
+  "srs_stat_due": {
+    "message": "Bugün bekliyor"
+  },
+  "srs_stat_total": {
+    "message": "Toplam kelime"
+  },
+  "srs_stat_streak": {
+    "message": "Gün serisi"
+  },
+  "srs_best_streak": {
+    "message": "{count}"
+  },
+  "srs_weekly_title": {
+    "message": "Haftalık Kelime"
+  },
+  "srs_start_btn": {
+    "message": "Çalışmaya Başla"
+  },
+  "srs_completed": {
+    "message": "Bugünkü çalışma tamamlandı!"
+  },
+  "srs_settings_title": {
+    "message": "Çalışma Ayarları"
+  },
+  "srs_settings_new_limit": {
+    "message": "Günlük Yeni Kart Limiti"
+  },
+  "srs_settings_new_limit_help": {
+    "message": "Sözlüğünüzde çok kelime olsa bile günde en fazla bu kadar yeni kart çıkar. Vadesi gelen eski kartlar bu limite dahil değildir."
+  },
+  "srs_settings_session_limit": {
+    "message": "Oturum Kart Limiti"
+  },
+  "srs_settings_session_limit_help": {
+    "message": "Oturum başına maksimum kart sayısı. Limit dolunca oturum biter, kalan kartlar yarına taşınmaz."
+  },
+  "srs_unlimited": {
+    "message": "Sınırsız"
+  },
+  "srs_next_card": {
+    "message": "Sonraki kart: "
+  },
+  "srs_next_in_minutes": {
+    "message": "{count} dakika sonra"
+  },
+  "srs_next_in_hours": {
+    "message": "{count} saat sonra"
+  },
+  "srs_next_in_days": {
+    "message": "{count} gün sonra"
+  },
+  "srs_add_words_first": {
+    "message": "Sözlüğe kelime ekleyin."
+  },
+  "srs_new_cards_done": {
+    "message": "Bugünkü yeni kart tanıtıldı. Yarın devam!"
+  },
+  "srs_card_hint_btn": {
+    "message": "İpucu Göster"
+  },
+  "srs_card_reveal_btn": {
+    "message": "Çeviriyi Göster"
+  },
+  "srs_rate_again": {
+    "message": "Bilmedim"
+  },
+  "srs_rate_hard": {
+    "message": "Zor"
+  },
+  "srs_rate_good": {
+    "message": "İyi"
+  },
+  "srs_rate_easy": {
+    "message": "Kolay"
+  },
+  "srs_rate_learned": {
+    "message": "Öğrendim"
+  },
+  "srs_rate_learned_interval": {
+    "message": "Sorma"
+  },
+  "srs_result_title": {
+    "message": "Oturum Tamamlandı"
+  },
+  "srs_result_total": {
+    "message": "Toplam kart"
+  },
+  "srs_result_back_btn": {
+    "message": "Ana Sayfaya Dön"
+  },
+  "srs_study_list_btn": {
+    "message": "Kelimeler & İlerleme"
+  },
+  "srs_overlay_title": {
+    "message": "Çalışma Listesi"
+  },
+  "srs_sort_time_asc": {
+    "message": "Süreye Göre Artan (En Yakın)"
+  },
+  "srs_sort_time_desc": {
+    "message": "Süreye Göre Azalan (En Uzak)"
+  },
+  "srs_sort_alphabetical": {
+    "message": "Kelime (A → Z)"
+  },
+  "srs_sort_learned_first": {
+    "message": "Öğrenilenler Önce"
+  },
+  "srs_sort_new_first": {
+    "message": "Yeni Kartlar Önce"
+  },
+  "srs_no_words_review": {
+    "message": "Çalışma listesinde henüz kelime yok."
+  },
+  "srs_status_learned": {
+    "message": "Öğrenildi"
+  },
+  "srs_status_new": {
+    "message": "Yeni"
+  },
+  "srs_status_due": {
+    "message": "Sırası Geldi"
+  },
+  "srs_status_tomorrow": {
+    "message": "Yarın"
+  },
+  "srs_status_days_later": {
+    "message": "{days}g sonra"
+  },
+  "srs_status_weeks_later": {
+    "message": "{weeks}h sonra"
+  },
+  "srs_status_months_later": {
+    "message": "{months}ay sonra"
+  },
+  "srs_status_today": {
+    "message": "Bugün"
+  },
+  "srs_study_session": {
+    "message": "Çalışma Oturumu"
+  },
+  "srs_shortcut_flip": {
+    "message": "Çeviri"
+  },
+  "srs_shortcut_rate": {
+    "message": "Değerlendirme"
+  },
+  "srs_rate_learned_link": {
+    "message": "Bunu biliyorum, bir daha sorma"
+  },
+  "srs_result_subtitle": {
+    "message": "Bugünkü çalışma hedefini başarıyla tamamladın."
+  },
+  "srs_stat_completed_100": {
+    "message": "100% Tamamlandı"
+  },
+  "srs_view_words_btn": {
+    "message": "Kelimeleri İncele"
+  },
+  "srs_heatmap_reviewed_count": {
+    "message": "{count} kelime tekrar edildi"
+  },
+  "srs_heatmap_no_activity": {
+    "message": "Aktivite yok"
+  },
+  "srs_btn_back_tooltip": {
+    "message": "Geri Dön"
+  },
+  "fc_modal_title": {
+    "message": "Flash Card Modu"
+  },
+  "fc_done_title": {
+    "message": "Tebrikler!"
+  },
+  "fc_done_sub": {
+    "message": "{score} / {total} kelime bilindi"
+  },
+  "fc_restart_btn": {
+    "message": "Tekrar Başlat"
+  },
+  "fc_stat_total": {
+    "message": "Toplam"
+  },
+  "fc_stat_remembered": {
+    "message": "Bildim"
+  },
+  "fc_stat_accuracy": {
+    "message": "Başarı"
+  },
+  "fc_done_perfect": {
+    "message": "Kusursuz! {total} kelimenin tamamını bildin."
+  },
+  "fc_done_mixed": {
+    "message": "{total} kelimeden {correct} doğru yaptın ({incorrect} tekrar gereken)."
+  },
+  "fc_done_completed": {
+    "message": "{total} kelimelik pratik oturumunu tamamladın."
+  },
+  "fc_retry_missed_count": {
+    "message": "Bilemediklerimi Tekrar Et ({count})"
+  },
+  "fc_again_btn": {
+    "message": "Tekrar"
+  },
+  "fc_good_btn": {
+    "message": "Bildim"
+  },
+  "settings_section_general": {
+    "message": "Genel"
+  },
+  "settings_section_languages": {
+    "message": "Çeviri Dilleri"
+  },
+  "settings_source_lang": {
+    "message": "Öğrenilen Dil"
+  },
+  "settings_target_lang": {
+    "message": "Ana Dilin (Çeviri Hedefi)"
+  },
+  "settings_section_overlay": {
+    "message": "Altyazı Görünümü"
+  },
+  "settings_section_screen_sub": {
+    "message": "Altyazı Görünümü"
+  },
+  "settings_section_advanced_sub": {
+    "message": "Gelişmiş Altyazı"
+  },
+  "settings_font_size": {
+    "message": "Punto Büyüklüğü"
+  },
+  "settings_position": {
+    "message": "Pozisyon"
+  },
+  "settings_dual_sub": {
+    "message": "Çift Altyazı"
+  },
+  "settings_dual_sub_help": {
+    "message": "İki farklı altyazı track'i (ör. İngilizce + Türkçe) yüklüyse ikincisini otomatik okur. Yoksa Google Translate kullanır."
+  },
+  "settings_font_small": {
+    "message": "Küçük"
+  },
+  "settings_font_medium": {
+    "message": "Orta"
+  },
+  "settings_font_large": {
+    "message": "Büyük"
+  },
+  "settings_font_xlarge": {
+    "message": "Çok Büyük"
+  },
+  "settings_pos_bottom": {
+    "message": "Alt"
+  },
+  "settings_pos_normal": {
+    "message": "Normal"
+  },
+  "settings_pos_midbottom": {
+    "message": "Orta-Alt"
+  },
+  "settings_pos_middle": {
+    "message": "Orta"
+  },
+  "settings_section_panel": {
+    "message": "Panel Altyazısı"
+  },
+  "settings_section_panel_sub": {
+    "message": "Panel Altyazısı"
+  },
+  "settings_section_smart": {
+    "message": "Akıllı Özellikler"
+  },
+  "settings_highlight_idioms": {
+    "message": "Deyimleri Vurgula"
+  },
+  "settings_highlight_idioms_help": {
+    "message": "Altyazılardaki yaygın deyimleri ve kalıpları (piece of cake, under the weather vb.) otomatik algılar ve vurgular."
+  },
+  "settings_shadowing": {
+    "message": "Shadowing Modu"
+  },
+  "settings_shadowing_help": {
+    "message": "Her altyazı satırı sonunda video durur. Space ile devam et."
+  },
+  "settings_shadowing_mode": {
+    "message": "Mod"
+  },
+  "settings_shadowing_standard": {
+    "message": "Standart"
+  },
+  "settings_shadowing_smart": {
+    "message": "Akıllı"
+  },
+  "settings_shadowing_smart_help": {
+    "message": "Akıllı: yalnızca C1/C2 seviyesi kelime, zor işaretlenmiş kelime, deyim veya phrasal verb içeren cümlelerde durur."
+  },
+  "settings_auto_rewind": {
+    "message": "Otomatik Geri Sarma"
+  },
+  "settings_auto_rewind_help": {
+    "message": "Kelime sözlüğe eklendiğinde video geri sarılır."
+  },
+  "settings_rewind_seconds": {
+    "message": "Geri Sarma Süresi"
+  },
+  "settings_auto_slow_mo": {
+    "message": "Otomatik Yavaş Oynatma"
+  },
+  "settings_auto_slow_mo_help": {
+    "message": "Sözlüğünüzdeki seçili seviyelerdeki kelimeler altyazıda geçtiğinde video oynatma hızını otomatik düşürür."
+  },
+  "settings_auto_slow_mo_speed": {
+    "message": "Yavaş Oynatma Hızı"
+  },
+  "settings_auto_slow_mo_levels": {
+    "message": "Yavaşlatılacak Seviyeler"
+  },
+  "settings_auto_slow_mo_level_other": {
+    "message": "Diğer (Tanımsız)"
+  },
+  "settings_auto_slow_mo_level_hard": {
+    "message": "Zor"
+  },
+  "settings_auto_slow_mo_level_phrasal": {
+    "message": "Phrasal"
+  },
+  "settings_auto_slow_mo_level_idiom": {
+    "message": "Deyim"
+  },
+  "settings_auto_slow_mo_level_collocation": {
+    "message": "Eş Dizim"
+  },
+  "settings_yt_smart_note": {
+    "message": "Bu özellikler YouTube'da yalnızca kanala özel (orijinal) altyazılarda çalışır. Otomatik oluşturulan (ASR) altyazılarda devre dışı kalır."
+  },
+  "settings_yt_allow_asr": {
+    "message": "ASR Altyazılarda da İzin Ver (Deneysel)"
+  },
+  "settings_yt_asr_warning": {
+    "message": "Uyarı: Bu seçenek kararsız oynatmaya, sürekli duraksamalara veya hatalı geri sarmalara yol açabilir."
+  },
+  "settings_section_video": {
+    "message": "Video"
+  },
+  "settings_hide_imdb": {
+    "message": "IMDb Panelini Gizle"
+  },
+  "settings_hide_imdb_help": {
+    "message": "X-Ray oyuncu listesini ve ekran karartısını gizler."
+  },
+  "settings_cinema": {
+    "message": "Sinema Modu"
+  },
+  "settings_cinema_mode": {
+    "message": "Sinema Modu"
+  },
+  "settings_cinema_help": {
+    "message": "Ekranda yalnızca altyazı kalır, tüm kontroller gizlenir."
+  },
+  "settings_prime_domain": {
+    "message": "Prime Video Yönlendirme Alan Adı"
+  },
+  "settings_prime_domain_help": {
+    "message": "Sözlükteki Prime Video linklerine tıklandığında açılacak varsayılan alan adını belirleyin. Farklı ülkelerin Amazon mağazaları arasında geçiş yapmak için kullanışlıdır."
+  },
+  "settings_prime_domain_option_default": {
+    "message": "Kayıtlı Alan Adı (Varsayılan)"
+  },
+  "settings_section_data": {
+    "message": "Veri"
+  },
+  "settings_section_language": {
+    "message": "Dil"
+  },
+  "settings_section_games_heading": {
+    "message": "Oyunlar"
+  },
+  "settings_reset_srs": {
+    "message": "SRS İlerlemesini Sıfırla"
+  },
+  "settings_reset_srs_help": {
+    "message": "Kelimeler silinmez, sadece çalışma geçmişi (aralık, tekrar sayısı, zorluk) sıfırlanır."
+  },
+  "settings_reset_srs_btn": {
+    "message": "SRS Sıfırla"
+  },
+  "settings_reset_srs_confirm": {
+    "message": "SRS ilerlemeniz sıfırlanacak. Kelimeler silinmeyecek. Devam?"
+  },
+  "settings_reset_srs_done": {
+    "message": "SRS ilerlemeniz sıfırlandı."
+  },
+  "settings_reset_streak": {
+    "message": "Gün İlerlemesini Sıfırla"
+  },
+  "settings_reset_streak_help": {
+    "message": "Güncel gün seriniz ve en yüksek gün seriniz (rekor) sıfırlanır."
+  },
+  "settings_reset_streak_btn": {
+    "message": "Seriyi Sıfırla"
+  },
+  "settings_reset_streak_confirm": {
+    "message": "Gün serisi ve rekor verileriniz tamamen sıfırlanacak. Devam etmek istiyor musunuz?"
+  },
+  "settings_reset_streak_done": {
+    "message": "Gün serisi ve rekor verileriniz sıfırlandı."
+  },
+  "settings_refresh_families_toast": {
+    "message": "{updated} / {total} kelime güncellendi"
+  },
+  "settings_refresh_families_empty": {
+    "message": "Sözlükte henüz kelime yok."
+  },
+  "settings_toast_saved": {
+    "message": "Kaydedildi"
+  },
+  "settings_word_family_visible": {
+    "message": "Kelime Aileleri"
+  },
+  "csv_header": {
+    "message": "Kelime,Çeviri,Cümle (Bağlam),Zor,Tekrar Sayısı"
+  },
+  "archive_export_confirm": {
+    "message": "Dışa aktarılacak kelime bulunamadı."
+  },
+  "archive_clear_confirm": {
+    "message": "Tüm kayıtlı kelimeleri silmek istediğinize emin misiniz?"
+  },
+  "archive_clear_title": {
+    "message": "Sözlüğü Temizle"
+  },
+  "seek_seekable_badge": {
+    "message": "Bu saniyeye git"
+  },
+  "seek_translate_badge": {
+    "message": "Cümleyi çevir"
+  },
+  "gt_auto_translate_tooltip": {
+    "message": "Google Çeviri (Otomatik Çeviri)"
+  },
+  "srs_stat_streak_days": {
+    "message": "Gün serisi"
+  },
+  "word_list_no_results": {
+    "message": "Eşleşen kelime bulunamadı."
+  },
+  "archive_word_family_lbl": {
+    "message": "Kelime Ailesi"
+  },
+  "archive_search_placeholder": {
+    "message": "Kelime ara…"
+  },
+  "archive_search_count_placeholder": {
+    "message": "{count} kelime içinde ara…"
+  },
+  "filter_other": {
+    "message": "Diğer"
+  },
+  "select_all_tags": {
+    "message": "Tüm etiketler"
+  },
+  "filter_level_tooltip": {
+    "message": "Seviye ve tür filtresi"
+  },
+  "filter_sort_tooltip": {
+    "message": "Sıralama ölçütü"
+  },
+  "filter_source_tooltip": {
+    "message": "Kaynak video/dizi filtresi"
+  },
+  "filter_tag_tooltip": {
+    "message": "Etiket filtresi"
+  },
+  "archive_tools_btn": {
+    "message": "İşlemler"
+  },
+  "archive_tool_expand_all": {
+    "message": "Tüm Detayları Aç"
+  },
+  "archive_tool_word_family": {
+    "message": "Kelime Ailesi"
+  },
+  "archive_tool_tagging": {
+    "message": "Kelime Etiketleme"
+  },
+  "archive_tool_review_practice": {
+    "message": "Tekrar Antrenmanı"
+  },
+  "archive_tool_refresh_families": {
+    "message": "Aile bilgisini yenile"
+  },
+  "archive_tool_export": {
+    "message": "Sözlüğü dışa aktar"
+  },
+  "archive_tool_clear": {
+    "message": "Sözlüğü temizle"
+  },
+  "tooltip_speak": {
+    "message": "Seslendir"
+  },
+  "tooltip_double_click_edit": {
+    "message": "Düzenlemek için çift tıkla"
+  },
+  "archive_card_tools_tooltip": {
+    "message": "İşlemler"
+  },
+  "archive_card_add_tag": {
+    "message": "Etiket ekle"
+  },
+  "archive_card_mark_hard": {
+    "message": "Zor Olarak İşaretle"
+  },
+  "archive_card_unmark_hard": {
+    "message": "Zor İşaretini Kaldır"
+  },
+  "archive_card_go_to_source": {
+    "message": "Kaynağa git"
+  },
+  "archive_card_delete": {
+    "message": "Sil"
+  },
+  "archive_source_season": {
+    "message": "Sezon"
+  },
+  "archive_no_match_title": {
+    "message": "Eşleşen kelime bulunamadı"
+  },
+  "search_no_results": {
+    "message": "Eşleşen kelime bulunamadı."
+  },
+  "archive_no_match_help": {
+    "message": "Filtreleri veya arama terimini değiştirmeyi deneyin"
+  },
+  "archive_remove_tag_tooltip": {
+    "message": "Etiketi kaldır"
+  },
+  "archive_click_for_translation": {
+    "message": "çevirisi için tıkla"
+  },
+  "archive_hard_badge_label": {
+    "message": "ZOR"
+  },
+  "archive_tag_placeholder": {
+    "message": "etiket…"
+  },
+  "source_popup_added_time": {
+    "message": "⏱ {time} sırasında eklendi"
+  },
+  "source_popup_added_url": {
+    "message": "Videoya git ↗"
+  },
+  "source_popup_title_unknown": {
+    "message": "Bilinmiyor"
+  },
+  "srs_heatmap_title": {
+    "message": "Son 12 Hafta"
+  },
+  "sidebar_tooltip_save_title": {
+    "message": "Sözlüğe Ekle"
+  },
+  "srs_chart_summary_comparison": {
+    "message": "Bu hafta {thisWeek} kelime  •  Geçen hafta {lastWeek}"
+  },
+  "srs_chart_summary_single": {
+    "message": "Bu hafta {thisWeek} kelime eklendi"
+  },
+  "settings_app_lang": {
+    "message": "Eklenti Dili"
+  },
+  "settings_lang_auto": {
+    "message": "Otomatik (Tarayıcı Dili)"
+  },
+  "settings_color_title": {
+    "message": "Çeviri rengi:"
+  },
+  "interval_10m": {
+    "message": "10 dk"
+  },
+  "interval_hours_abbr": {
+    "message": " sa"
+  },
+  "interval_days_abbr": {
+    "message": " gün"
+  },
+  "interval_months_abbr": {
+    "message": " ay"
+  },
+  "interval_years_abbr": {
+    "message": " yıl"
+  },
+  "loading": {
+    "message": "Yükleniyor..."
+  },
+  "tooltip_hide_family": {
+    "message": "Kelime ailelerini gizle"
+  },
+  "tooltip_show_family": {
+    "message": "Kelime ailelerini göster"
+  },
+  "alert_no_words_dictionary": {
+    "message": "Sözlükte henüz kelime yok."
+  },
+  "alert_no_words_filter": {
+    "message": "Bu filtre için kelime bulunamadı."
+  },
+  "shortcut_pv_word_nav": {
+    "message": "Kelime gezin (Sol / Sağ)"
+  },
+  "shortcut_pv_word_save": {
+    "message": "Kelimeyi kaydet"
+  },
+  "shortcut_pv_word_cancel": {
+    "message": "İptal / devam et"
+  },
+  "lang_tr": {
+    "message": "Türkçe"
+  },
+  "lang_en": {
+    "message": "İngilizce"
+  },
+  "lang_de": {
+    "message": "Almanca"
+  },
+  "lang_fr": {
+    "message": "Fransızca"
+  },
+  "lang_es": {
+    "message": "İspanyolca"
+  },
+  "lang_it": {
+    "message": "İtalyanca"
+  },
+  "lang_ru": {
+    "message": "Rusça"
+  },
+  "lang_pt": {
+    "message": "Portekizce"
+  },
+  "lang_ar": {
+    "message": "Arapça"
+  },
+  "lang_zh": {
+    "message": "Çince"
+  },
+  "lang_ja": {
+    "message": "Japonca"
+  },
+  "lang_ko": {
+    "message": "Korece"
+  },
+  "lang_nl": {
+    "message": "Hollandaca"
+  },
+  "lang_pl": {
+    "message": "Lehçe (Polonca)"
+  },
+  "lang_sv": {
+    "message": "İsveççe"
+  },
+  "lang_uk": {
+    "message": "Ukraynaca"
+  },
+  "lang_hi": {
+    "message": "Hintçe"
+  },
+  "translation_failed": {
+    "message": "Çeviri alınamadı"
+  },
+  "error": {
+    "message": "Hata"
+  },
+  "tooltip_hard_badge": {
+    "message": "3+ kez bilemedin"
+  },
+  "tooltip_cefr_unknown": {
+    "message": "Seviye belirlenemedi (Özel isim, yazım hatası veya nadir kelime)"
+  },
+  "tooltip_pronounce": {
+    "message": "Telaffuz"
+  },
+  "tooltip_delete": {
+    "message": "Sil"
+  },
+  "tooltip_expand_context": {
+    "message": "Tıkla: genişlet/daralt"
+  },
+  "level_unknown": {
+    "message": "Seviye belirlenemedi"
+  },
+  "heatmap_less": {
+    "message": "Az"
+  },
+  "heatmap_more": {
+    "message": "Çok"
+  },
+  "heatmap_tooltip": {
+    "message": "{date}: {count} kart"
+  },
+  "chart_this_week": {
+    "message": "bu"
+  },
+  "chart_week_abbr": {
+    "message": "h"
+  },
+  "settings_backup_title": {
+    "message": "Veriyi Yedekle (JSON)"
+  },
+  "settings_restore_title": {
+    "message": "Yedeği Geri Yükle"
+  },
+  "settings_backup_help": {
+    "message": "Tüm kayıtlı kelimelerinizi ve çalışma ilerlemenizi JSON dosyası olarak indirin."
+  },
+  "settings_restore_help": {
+    "message": "Daha önce kaydettiğiniz JSON yedek dosyasını geri yükleyin."
+  },
+  "settings_restore_confirm": {
+    "message": "Uyarı: Mevcut kelimeleriniz ve ayarlarınız silinip yedek dosyasındaki veriler yüklenecek. Devam etmek istiyor musunuz?"
+  },
+  "settings_restore_success": {
+    "message": "Yedek başarıyla geri yüklendi!"
+  },
+  "settings_restore_error": {
+    "message": "Hata: Geçersiz yedek dosyası formatı!"
+  },
+  "shortcut_pv_word_nav_vert": {
+    "message": "Kelime gezin (Yukarı / Aşağı)"
+  },
+  "tooltip_close_panel": {
+    "message": "Paneli Kapat"
+  },
+  "tooltip_show_tags": {
+    "message": "Etiketleri Göster"
+  },
+  "tooltip_hide_tags": {
+    "message": "Etiketleri Gizle"
+  },
+  "tooltip_expand_all": {
+    "message": "Tüm Detayları Aç"
+  },
+  "tooltip_collapse_all": {
+    "message": "Tüm Detayları Kapat"
+  },
+  "tooltip_add_tag": {
+    "message": "Etiket Ekle"
+  },
+  "tag_input_placeholder": {
+    "message": "Etiket..."
+  },
+  "search_placeholder_dynamic": {
+    "message": "{count} kelime içinde ara..."
+  },
+  "all_tags_option": {
+    "message": "Tüm etiketler"
+  },
+  "shortcut_pv_word_left": {
+    "message": "Kelime Gezin (Sol)"
+  },
+  "shortcut_pv_word_right": {
+    "message": "Kelime Gezin (Sağ)"
+  },
+  "shortcut_pv_word_up": {
+    "message": "Kelime Gezin (Yukarı)"
+  },
+  "shortcut_pv_word_down": {
+    "message": "Kelime Gezin (Aşağı)"
+  },
+  "season_label": {
+    "message": "Sezon"
+  },
+  "show_all_seasons": {
+    "message": "Tüm Sezonlar"
+  },
+  "subtab_srs": {
+    "message": "Antrenman"
+  },
+  "subtab_games": {
+    "message": "Oyunlar"
+  },
+  "games_title": {
+    "message": "Mini Oyunlar"
+  },
+  "games_empty_title": {
+    "message": "Yetersiz Kelime"
+  },
+  "games_empty_desc": {
+    "message": "Oyunları oynamak için sözlüğünüzde en az {count} kelime olmalıdır."
+  },
+  "game_pool_title": {
+    "message": "Çalışma Havuzu"
+  },
+  "game_pool_all": {
+    "message": "Tümü"
+  },
+  "game_pool_words": {
+    "message": "Sadece Kelimeler"
+  },
+  "game_pool_collocation": {
+    "message": "Sadece Eş Dizimler"
+  },
+  "game_pool_phrasal": {
+    "message": "Sadece Phrasal Verb'ler"
+  },
+  "game_pool_idiom": {
+    "message": "Sadece Deyimler"
+  },
+  "game_insufficient_filtered_words": {
+    "message": "Bu oyunu oynamak için bu havuzda en az 4 kayıtlı kelimeniz olmalıdır."
+  },
+  "game_mc_title": {
+    "message": "Çoktan Seçmeli"
+  },
+  "game_mc_desc": {
+    "message": "Doğru çeviriyi 4 seçenek arasından bulun."
+  },
+  "game_blank_title": {
+    "message": "Boşluk Doldurma"
+  },
+  "game_blank_desc": {
+    "message": "Cümledeki boşluğa gelecek doğru kelimeyi bulun."
+  },
+  "game_scramble_title": {
+    "message": "Kelime Oluşturma"
+  },
+  "game_scramble_desc": {
+    "message": "Karışık harflerden doğru kelimeyi oluşturun."
+  },
+  "game_match_title": {
+    "message": "Kelime Eşleştirme"
+  },
+  "game_match_desc": {
+    "message": "Kelimeleri Türkçe anlamlarıyla eşleştirin."
+  },
+  "game_btn_play": {
+    "message": "Oyna"
+  },
+  "game_btn_check": {
+    "message": "Kontrol Et"
+  },
+  "game_btn_clear": {
+    "message": "Temizle"
+  },
+  "game_btn_continue": {
+    "message": "Devam Et"
+  },
+  "game_correct": {
+    "message": "Doğru!"
+  },
+  "game_wrong": {
+    "message": "Yanlış"
+  },
+  "game_result_title": {
+    "message": "Oyun Tamamlandı!"
+  },
+  "game_result_perfect": {
+    "message": "Mükemmel! Tüm soruları doğru yanıtladınız."
+  },
+  "game_result_completed": {
+    "message": "Tebrikler! Pratik oturumunu tamamladınız."
+  },
+  "game_result_skipped_words": {
+    "message": "Atlanan Kelimeler ({count})"
+  },
+  "game_stat_score": {
+    "message": "Skor"
+  },
+  "game_stat_accuracy": {
+    "message": "Başarı"
+  },
+  "game_stat_xp": {
+    "message": "XP"
+  },
+  "game_btn_retry": {
+    "message": "Tekrar Oyna"
+  },
+  "game_pool_prefix": {
+    "message": "Havuz"
+  },
+  "game_hint_mc": {
+    "message": "Doğru karşılığı seçin (1-4)"
+  },
+  "game_hint_blank": {
+    "message": "Boşluğa gelecek doğru kelimeyi seçin (1-4)"
+  },
+  "game_hint_scramble": {
+    "message": "Harfleri doğru sırayla dizin"
+  },
+  "game_hint_match": {
+    "message": "Kelimeleri anlamlarıyla eşleştirin (1-0)"
+  },
+  "game_hint_dictation": {
+    "message": "Duyduğunuz kelimeyi yazın · Enter ile kontrol edin"
+  },
+  "game_hint_context": {
+    "message": "Kartları çevirerek eşleştirin (1-0)"
+  },
+  "confirm_title": {
+    "message": "Onay Gerekiyor"
+  },
+  "btn_confirm": {
+    "message": "Onayla"
+  },
+  "game_result_score": {
+    "message": "Skorunuz: {score} / {total}"
+  },
+  "game_result_btn_back": {
+    "message": "Oyunlara Dön"
+  },
+  "game_score_lbl": {
+    "message": "{score} Puan"
+  },
+  "game_quit_title": {
+    "message": "Oyundan Çıkılsın mı?"
+  },
+  "game_quit_confirm": {
+    "message": "Oyundan çıkmak istediğinize emin misiniz? İlerlemeniz silinecek."
+  },
+  "game_btn_quit": {
+    "message": "Çık"
+  },
+  "game_btn_cancel": {
+    "message": "Vazgeç"
+  },
+  "game_resume_title": {
+    "message": "Devam Eden Oyun"
+  },
+  "game_resume_desc": {
+    "message": "{game} oyununda kaldığınız bir oturum var. Devam etmek ister misiniz?"
+  },
+  "game_resume_btn": {
+    "message": "Kaldığım Yerden Devam Et"
+  },
+  "game_discard_btn": {
+    "message": "Yeni Oyun Başlat"
+  },
+  "game_btn_skip": {
+    "message": "Atla"
+  },
+  "settings_section_games": {
+    "message": "Kelime Oyunları"
+  },
+  "settings_games_sound": {
+    "message": "Oyun Ses Efektleri"
+  },
+  "settings_games_sound_help": {
+    "message": "Oyunlarda doğru ve yanlış cevaplarda ses efekti çalar."
+  },
+  "settings_autoplay_sound_title": {
+    "message": "Antrenman Sesleri"
+  },
+  "settings_autoplay_sound_desc": {
+    "message": "Çalışırken antrenmanda otomatik sesleri çal"
+  },
+  "game_dictation_title": {
+    "message": "Dinle ve Yaz"
+  },
+  "game_dictation_desc": {
+    "message": "Duyduğunuz kelimeyi dinleyip doğru şekilde yazın."
+  },
+  "game_dictation_placeholder": {
+    "message": "Kelimeyi buraya yazın..."
+  },
+  "game_dictation_listen": {
+    "message": "Tekrar Dinle"
+  },
+  "game_dictation_correct": {
+    "message": "Harika, doğru heceleme!"
+  },
+  "game_dictation_almost": {
+    "message": "Neredeyse doğru! Doğru yazılışı: {word}"
+  },
+  "game_dictation_wrong": {
+    "message": "Yanlış! Doğrusu: {word}"
+  },
+  "game_context_title": {
+    "message": "Hafıza Kartları"
+  },
+  "game_context_desc": {
+    "message": "Kelimeleri karşılıkları ile eşleştirerek kartları açın."
+  },
+  "game_context_no_words": {
+    "message": "Bu oyun için en az 4 kelime gerekli."
+  },
+  "game_errors_lbl": {
+    "message": "Hata"
+  },
+  "subtab_achievements": {
+    "message": "Başarımlar"
+  },
+  "subtab_stats": {
+    "message": "İstatistik"
+  },
+  "user_exp_label": {
+    "message": "Toplam Puanınız"
+  },
+  "user_exp_word_added": {
+    "message": "Kelime Eklendi"
+  },
+  "user_exp_game_completed": {
+    "message": "Oyun Tamamlandı"
+  },
+  "user_exp_achievement": {
+    "message": "Başarım Kazanıldı"
+  },
+  "achievements_title": {
+    "message": "Başarımlar"
+  },
+  "achievements_empty": {
+    "message": "Henüz başarım kazanılmadı. Oynamaya devam et!"
+  },
+  "achievement_earned_on": {
+    "message": "Kazanıldı:"
+  },
+  "achievement_locked": {
+    "message": "Kilitli"
+  },
+  "ach_first_step_title": {
+    "message": "İlk Adım"
+  },
+  "ach_first_step_desc": {
+    "message": "İlk kelimeyi sözlüğe ekle"
+  },
+  "ach_word_hunter_title": {
+    "message": "Kelime Avcısı"
+  },
+  "ach_word_hunter_desc": {
+    "message": "10 kelime ekle"
+  },
+  "ach_word_expert_title": {
+    "message": "Kelime Uzmanı"
+  },
+  "ach_word_expert_desc": {
+    "message": "150 kelime ekle"
+  },
+  "ach_word_master_title": {
+    "message": "Kelime Ustası"
+  },
+  "ach_word_master_desc": {
+    "message": "300 kelime ekle"
+  },
+  "ach_perfect_game_title": {
+    "message": "Mükemmel Oyun"
+  },
+  "ach_perfect_game_desc": {
+    "message": "Bir oyunda %100 skor al"
+  },
+  "ach_speed_player_title": {
+    "message": "Hız Oyuncusu"
+  },
+  "ach_speed_player_desc": {
+    "message": "20 oyun tamamla"
+  },
+  "ach_game_addict_title": {
+    "message": "Oyun Bağımlısı"
+  },
+  "ach_game_addict_desc": {
+    "message": "100 oyun tamamla"
+  },
+  "ach_ear_master_title": {
+    "message": "Kulak Ustası"
+  },
+  "ach_ear_master_desc": {
+    "message": "Dikte oyununda 25 kelime doğru yaz"
+  },
+  "ach_context_hero_title": {
+    "message": "Bağlam Kahramanı"
+  },
+  "ach_context_hero_desc": {
+    "message": "Sahne eşleştirmede 25 kelime doğru bul"
+  },
+  "ach_hard_conqueror_title": {
+    "message": "Zorlayıcı"
+  },
+  "ach_hard_conqueror_desc": {
+    "message": "10 zor kelimeyi oyunda doğru cevapla"
+  },
+  "ach_word_collector_title": {
+    "message": "Kelime Koleksiyoncusu"
+  },
+  "ach_word_collector_desc": {
+    "message": "50 kelime ekle"
+  },
+  "ach_word_legend_title": {
+    "message": "Kelime Efsanesi"
+  },
+  "ach_word_legend_desc": {
+    "message": "750 kelime ekle"
+  },
+  "ach_word_god_title": {
+    "message": "Dil Dehası"
+  },
+  "ach_word_god_desc": {
+    "message": "1500 kelime ekle"
+  },
+  "ach_perfectionist_title": {
+    "message": "Kusursuzluk Abidesi"
+  },
+  "ach_perfectionist_desc": {
+    "message": "10 oyunda %100 skor al"
+  },
+  "ach_game_rookie_title": {
+    "message": "İlk Deneyim"
+  },
+  "ach_game_rookie_desc": {
+    "message": "1 oyun tamamla"
+  },
+  "ach_game_champion_title": {
+    "message": "Oyun Fatihi"
+  },
+  "ach_game_champion_desc": {
+    "message": "250 oyun tamamla"
+  },
+  "ach_ear_god_title": {
+    "message": "Altın Kulak"
+  },
+  "ach_ear_god_desc": {
+    "message": "Dikte oyununda 100 kelime doğru yaz"
+  },
+  "ach_context_god_title": {
+    "message": "Sahne Yönetmeni"
+  },
+  "ach_context_god_desc": {
+    "message": "Sahne eşleştirmede 100 kelime doğru bul"
+  },
+  "ach_hard_annihilator_title": {
+    "message": "Alev Bükücü"
+  },
+  "ach_hard_annihilator_desc": {
+    "message": "30 zor kelimeyi oyunda doğru cevapla"
+  },
+  "ach_a1_explorer_title": {
+    "message": "Keşifçi"
+  },
+  "ach_a1_explorer_desc": {
+    "message": "25 adet A1/A2 seviye kelime ekle"
+  },
+  "ach_b1_scholar_title": {
+    "message": "Akademisyen"
+  },
+  "ach_b1_scholar_desc": {
+    "message": "35 adet B1/B2 seviye kelime ekle"
+  },
+  "ach_c1_polymath_title": {
+    "message": "Bilge"
+  },
+  "ach_c1_polymath_desc": {
+    "message": "15 adet C1/C2 seviye kelime ekle"
+  },
+  "ach_phrasal_explorer_title": {
+    "message": "Fiil Kaşifi"
+  },
+  "ach_phrasal_explorer_desc": {
+    "message": "5 adet deyimsel fiil (phrasal verb) ekle"
+  },
+  "ach_phrasal_master_title": {
+    "message": "Phrasal Ustası"
+  },
+  "ach_phrasal_master_desc": {
+    "message": "15 adet deyimsel fiil (phrasal verb) ekle"
+  },
+  "ach_phrasal_guru_title": {
+    "message": "Phrasal Gurusu"
+  },
+  "ach_phrasal_guru_desc": {
+    "message": "35 adet deyimsel fiil (phrasal verb) ekle"
+  },
+  "ach_idiom_hunter_title": {
+    "message": "Deyim Avcısı"
+  },
+  "ach_idiom_hunter_desc": {
+    "message": "5 adet İngilizce deyim (idiom) ekle"
+  },
+  "ach_idiom_master_title": {
+    "message": "Deyim Ustası"
+  },
+  "ach_idiom_master_desc": {
+    "message": "15 adet İngilizce deyim (idiom) ekle"
+  },
+  "ach_idiom_sage_title": {
+    "message": "Deyim Bilgesi"
+  },
+  "ach_idiom_sage_desc": {
+    "message": "30 adet İngilizce deyim (idiom) ekle"
+  },
+  "ach_collocation_seeker_title": {
+    "message": "Eş Dizim Çırağı"
+  },
+  "ach_collocation_seeker_desc": {
+    "message": "5 adet eş dizim (collocation) kalıbı ekle"
+  },
+  "ach_collocation_master_title": {
+    "message": "Eş Dizim Ustası"
+  },
+  "ach_collocation_master_desc": {
+    "message": "15 adet eş dizim (collocation) kalıbı ekle"
+  },
+  "ach_collocation_architect_title": {
+    "message": "Kalıp Mimarı"
+  },
+  "ach_collocation_architect_desc": {
+    "message": "30 adet eş dizim (collocation) kalıbı ekle"
+  },
+  "ach_streak_3_title": {
+    "message": "Üçlü Seri"
+  },
+  "ach_streak_3_desc": {
+    "message": "Bir kelimede 5 çalışma serisine ulaş"
+  },
+  "ach_streak_7_title": {
+    "message": "Haftalık Yangın"
+  },
+  "ach_streak_7_desc": {
+    "message": "Bir kelimede 14 çalışma serisine ulaş"
+  },
+  "stats_title": {
+    "message": "Öğrenme İstatistikleri"
+  },
+  "stats_vocab_growth": {
+    "message": "Kelime Büyümesi — Son 30 Gün"
+  },
+  "stats_level_dist": {
+    "message": "CEFR Seviye Dağılımı"
+  },
+  "stats_game_perf": {
+    "message": "Oyun Performansı"
+  },
+  "stats_total_games": {
+    "message": "Toplam Oyun"
+  },
+  "stats_total_correct": {
+    "message": "Doğru Cevap"
+  },
+  "stats_best_score": {
+    "message": "En Yüksek Skor"
+  },
+  "stats_no_data": {
+    "message": "Henüz veri yok."
+  },
+  "stats_words_added": {
+    "message": "kelime eklendi"
+  },
+  "settings_reset_games": {
+    "message": "Oyun ve Başarımları Sıfırla"
+  },
+  "settings_reset_games_help": {
+    "message": "Toplam puanınız (EXP), oyun istatistikleriniz ve kazandığınız tüm başarımlar sıfırlanır."
+  },
+  "settings_reset_games_btn": {
+    "message": "İlerlemeyi Sıfırla"
+  },
+  "settings_reset_games_confirm": {
+    "message": "Oyun istatistikleriniz, toplam puanınız (EXP) ve tüm başarımlarınız sıfırlanacak. Devam etmek istiyor musunuz?"
+  },
+  "settings_reset_games_done": {
+    "message": "Oyun ve başarımlar ilerlemeniz sıfırlandı."
+  },
+  "btn_confirm_reset": {
+    "message": "Sıfırla"
+  },
+  "stats_game_breakdown": {
+    "message": "Oyun Bazlı Detaylı İstatistikler"
+  },
+  "stats_th_game": {
+    "message": "Oyun"
+  },
+  "stats_th_played": {
+    "message": "Oynama"
+  },
+  "stats_th_accuracy": {
+    "message": "Başarı %"
+  },
+  "stats_th_best": {
+    "message": "En Yüksek"
+  },
+  "ach_exp_bronze_title": {
+    "message": "Bronz Kaşif"
+  },
+  "ach_exp_bronze_desc": {
+    "message": "Toplam 500 EXP puanına ulaş"
+  },
+  "ach_exp_silver_title": {
+    "message": "Gümüş Savaşçı"
+  },
+  "ach_exp_silver_desc": {
+    "message": "Toplam 2000 EXP puanına ulaş"
+  },
+  "ach_exp_gold_title": {
+    "message": "Altın Fatih"
+  },
+  "ach_exp_gold_desc": {
+    "message": "Toplam 5000 EXP puanına ulaş"
+  },
+  "ach_exp_legend_title": {
+    "message": "Puan Efsanesi"
+  },
+  "ach_exp_legend_desc": {
+    "message": "Toplam 10000 EXP puanına ulaş"
+  },
+  "stats_avg_accuracy": {
+    "message": "Ortalama Başarı"
+  },
+  "stats_perfect_games": {
+    "message": "Kusursuz Oyunlar"
+  },
+  "stats_total_exp": {
+    "message": "Toplam EXP"
+  },
+  "ach_exp_deity_title": {
+    "message": "Puan İlahı"
+  },
+  "ach_exp_deity_desc": {
+    "message": "Toplam 25000 EXP puanına ulaş"
+  },
+  "ach_word_titan_title": {
+    "message": "Sözlük Titanı"
+  },
+  "ach_word_titan_desc": {
+    "message": "Toplam 1000 kelime ekle"
+  },
+  "ach_perfect_sovereign_title": {
+    "message": "Kusursuz Hükümdar"
+  },
+  "ach_perfect_sovereign_desc": {
+    "message": "30 oyunda %100 skor al"
+  },
+  "ach_game_grandmaster_title": {
+    "message": "Oyun Büyükustası"
+  },
+  "ach_game_grandmaster_desc": {
+    "message": "500 oyun tamamla"
+  },
+  "ach_streak_30_title": {
+    "message": "Zaman Bükücü"
+  },
+  "ach_streak_30_desc": {
+    "message": "Bir kelimede 30 çalışma serisine ulaş"
+  },
+  "settings_anki_export_title": {
+    "message": "Anki için Kelimeleri Aktar"
+  },
+  "settings_anki_export_help": {
+    "message": "Kayıtlı kelimelerinizi, çevirilerini ve bağlam cümlelerini Anki'ye doğrudan aktarabileceğiniz formatta indirin."
+  },
+  "settings_anki_export_btn": {
+    "message": "Anki Aktar"
+  },
+  "anki_export_success": {
+    "message": "Anki dışa aktarma dosyası indirildi!"
+  },
+  "tooltip_seek_to_scene": {
+    "message": "Sahneyi Oynat"
+  },
+  "settings_subtab_platform": {
+    "message": "Oynatıcı"
+  },
+  "settings_subtab_general": {
+    "message": "Ayarlar"
+  },
+  "settings_subtab_about": {
+    "message": "Hakkında"
+  },
+  "settings_platform_filter_title": {
+    "message": "Oynatıcı Filtresi"
+  },
+  "settings_platform_filter_help": {
+    "message": "Platforma özel ayarları listelemek için filtreleyin. Video izlerken otomatik güncellenir."
+  },
+  "settings_section_platforms": {
+    "message": "Aktif Platformlar"
+  },
+  "settings_platforms_help": {
+    "message": "Eklentinin hangi video platformlarında devreye gireceğini seçin."
+  },
+  "status_connected_youtube": {
+    "message": "YouTube'a bağlı"
+  },
+  "status_connected_netflix": {
+    "message": "Netflix'e bağlı"
+  },
+  "status_connected_prime": {
+    "message": "Yerel videoya bağlı"
+  },
+  "onboarding_btn_start": {
+    "message": "Turu Başlat"
+  },
+  "onboarding_welcome_title": {
+    "message": "PrimeVocab'e Hoş Geldiniz!"
+  },
+  "onboarding_welcome_desc": {
+    "message": "PrimeVocab, video izlerken kelime öğrenmenizi sağlayan akıllı bir asistandır. Temel özellikleri 1 dakikada tanıyalım!"
+  },
+  "onboarding_subtitles_title": {
+    "message": "İnteraktif Altyazılar"
+  },
+  "onboarding_subtitles_desc": {
+    "message": "Video izlerken altyazıdaki kelimelere tıklayarak anında çevirisini görebilir ve tek tıkla sözlüğünüze kaydedebilirsiniz."
+  },
+  "onboarding_dictionary_title": {
+    "message": "Kişisel Sözlük"
+  },
+  "onboarding_dictionary_desc": {
+    "message": "Kaydedilen kelimeler dizi/film ve sezon bazında otomatik klasörlenir. Kelimeleri arayabilir, etiketleyebilir ve seviyelerine göre filtreleyebilirsiniz."
+  },
+  "onboarding_review_title": {
+    "message": "SRS Kelime Antrenmanı"
+  },
+  "onboarding_review_desc": {
+    "message": "Bilimsel aralıklı tekrar algoritması (SM-2) ile kelimeleri unutmaya yaklaştığınız anlarda tekrar edin ve çalışma ısı haritanızla gelişiminizi takip edin."
+  },
+  "onboarding_games_title": {
+    "message": "Eğlenceli Mini Oyunlar"
+  },
+  "onboarding_games_desc": {
+    "message": "Boşluk doldurma, kelime eşleştirme, karıştırma ve dikte gibi 6 farklı mini oyunla kelime bilginizi eğlenerek pekiştirin ve puan (XP) kazanın!"
+  },
+  "onboarding_shortcuts_title": {
+    "message": "Klavye Kısayolları"
+  },
+  "onboarding_shortcuts_desc": {
+    "message": "Numpad veya özel klavye kısayollarını kullanarak video durdurulmuşken kelimeler arasında gezinebilir ve kelimeleri hızlıca kaydedebilirsiniz."
+  },
+  "onboarding_btn_next": {
+    "message": "İleri"
+  },
+  "onboarding_btn_prev": {
+    "message": "Geri"
+  },
+  "onboarding_btn_skip": {
+    "message": "Atla"
+  },
+  "onboarding_btn_finish": {
+    "message": "Turu Tamamla"
+  },
+  "onboarding_settings_replay": {
+    "message": "Kısa Tanıtımı Tekrar Oynat"
+  },
+  "onboarding_profile_title": {
+    "message": "Profil & Bulut Senkronizasyonu"
+  },
+  "onboarding_profile_desc": {
+    "message": "Google hesabınızı bağlayarak kelimelerinizi buluta yedekleyin; çalışma serilerinizi, XP ve seviye rozetlerinizi buradan takip edin."
+  },
+  "onboarding_settings_title": {
+    "message": "Ayarlar & Menü"
+  },
+  "onboarding_settings_desc": {
+    "message": "Altyazı boyutları, otomatik yavaş oynatma, Google Drive bulut eşitleme ve klavye kısayollarını üst menüden dilediğiniz gibi yönetin."
+  },
+  "info_btn_title": {
+    "message": "Eklenti Hakkında"
+  },
+  "info_title": {
+    "message": "PrimeVocab Hakkında"
+  },
+  "info_desc": {
+    "message": "PrimeVocab, video izlerken çift altyazı ve aralıklı tekrar yöntemiyle dil öğrenmenizi sağlayan akıllı bir eklentidir."
+  },
+  "info_developer": {
+    "message": "Geliştirici"
+  },
+  "info_contact": {
+    "message": "İletişim"
+  },
+  "info_legal": {
+    "message": "Gizlilik & Koşullar"
+  },
+  "info_legal_view": {
+    "message": "Oku"
+  },
+  "profile_btn_title": {
+    "message": "Kullanıcı Profili"
+  },
+  "profile_title": {
+    "message": "Profil Bilgisi"
+  },
+  "profile_user_title": {
+    "message": "Kullanıcı"
+  },
+  "profile_local_user": {
+    "message": "Yerel Kullanıcı"
+  },
+  "profile_total_words": {
+    "message": "Toplam Kelime:"
+  },
+  "profile_streak": {
+    "message": "Çalışma Serisi:"
+  },
+  "profile_exp": {
+    "message": "Toplam EXP (Deneyim):"
+  },
+  "profile_sync_enable": {
+    "message": "Bulut Senkronizasyonu"
+  },
+  "profile_sync_status_linked": {
+    "message": "Eşitleme Aktif: {email}"
+  },
+  "profile_sync_status_unlinked": {
+    "message": "Senkronizasyon Kapalı"
+  },
+  "profile_sync_now": {
+    "message": "Şimdi Eşitle"
+  },
+  "profile_level_label": {
+    "message": "Mevcut Seviye:"
+  },
+  "profile_level_title": {
+    "message": "Seviye"
+  },
+  "profile_today_activity_label": {
+    "message": "Bugünkü Aktivite:"
+  },
+  "profile_today_activity_saved": {
+    "message": "{count} kelime çalışıldı"
+  },
+  "profile_achievements_label": {
+    "message": "Başarımlar:"
+  },
+  "profile_no_achievements": {
+    "message": "Henüz kazanılan başarım yok. Kelime öğrenmeye devam edin!"
+  },
+  "profile_last_sync_label": {
+    "message": "Son Eşitleme:"
+  },
+  "profile_last_sync_never": {
+    "message": "Henüz Yapılmadı"
+  },
+  "profile_logout": {
+    "message": "Çıkış Yap"
+  },
+  "profile_logging_out": {
+    "message": "Çıkış yapılıyor..."
+  },
+  "archive_csv_backup_warning": {
+    "message": "CSV formatında dışa aktarılan kelimeler doğrudan uygulamaya geri yüklenemez. Bu işlem tam bir yedekleme değildir.\n\nYedekleme için ayarlar sayfasındaki 'Yedekle' seçeneğini kullanabilir veya hesabınızı senkronize edebilirsiniz.\n\nDevam etmek ve CSV indirmek istiyor musunuz?"
+  },
+  "premium_welcome_title": {
+    "message": "Premium'a Hoş Geldiniz!"
+  },
+  "premium_welcome_desc": {
+    "message": "Tüm sınırlar kaldırıldı! PrimeVocab'in tüm gelişmiş ayrıcalıklarına artık sınırsız erişebilirsiniz:"
+  },
+  "premium_feat_limit_title": {
+    "message": "Sınırsız Kelime Havuzu"
+  },
+  "premium_feat_limit": {
+    "message": "50 kelime limiti kalktı, dilediğiniz kadar kelime kaydedin."
+  },
+  "premium_feat_sync_title": {
+    "message": "Google Drive Bulut Eşitleme"
+  },
+  "premium_feat_sync": {
+    "message": "Tüm cihazlarınızdaki kelimeleri ve serilerinizi otomatik senkronize edin."
+  },
+  "premium_feat_practice_title": {
+    "message": "Gelişmiş SRS Alıştırmaları"
+  },
+  "premium_feat_practice": {
+    "message": "Günlük sınır olmadan kelime kartı ve hafıza antrenmanları yapın."
+  },
+  "premium_feat_games_title": {
+    "message": "Tüm Mini Oyunlar Aktif"
+  },
+  "premium_feat_games": {
+    "message": "6 mini oyunun tamamına ve tüm kelime arşivine erişin."
+  },
+  "premium_feat_export_title": {
+    "message": "Anki & JSON Dışa Aktarım"
+  },
+  "premium_feat_export": {
+    "message": "Kelimelerinizi tek tıkla Anki ve JSON yedek formatında dışa aktarın."
+  },
+  "premium_welcome_btn": {
+    "message": "Harika, Başlayalım!"
+  },
+  "profile_sync_status_disabled": {
+    "message": "Bağlantı Aktif (Senkronizasyon Devre Dışı)"
+  },
+  "archive_inactive_badge_title": {
+    "message": "Ücretsiz sürüm limiti (Son 50 kelime) dışında kaldığı için altyazılarda taranmaz."
+  },
+  "archive_inactive_badge_label": {
+    "message": "Altyazıda Pasif"
+  },
+  "premium_smart_locked_desc": {
+    "message": "Akıllı Özellikleri (Shadowing, Otomatik Geri Sarma, Yavaşlatma vb.) kullanabilmek için Premium üyeliğe yükseltmeniz gerekmektedir."
+  },
+  "premium_game_locked_desc": {
+    "message": "Bu oyunu oynayabilmek için Premium üyeliğe yükseltmeniz gerekmektedir."
+  },
+  "premium_modal_title": {
+    "message": "Premium Özellik"
+  },
+  "premium_modal_buy_btn": {
+    "message": "Premium Satın Al"
+  },
+  "premium_modal_close_btn": {
+    "message": "Kapat"
+  },
+  "profile_login_btn": {
+    "message": "Google ile Giriş Yap"
+  },
+  "premium_sync_required_desc": {
+    "message": "Google hesabınız bağlandı, ancak bulut senkronizasyonu özelliğini kullanabilmek için Premium üyeliğe yükseltmeniz gerekmektedir."
+  },
+  "profile_buy_premium_btn": {
+    "message": "Premium Ol"
+  },
+  "profile_manage_subscription_btn": {
+    "message": "Aboneliği Yönet"
+  },
+  "archive_capacity_text": {
+    "message": "Kapasite: {count} / 50 Kelime"
+  },
+  "archive_limit_reached_text": {
+    "message": " (Limit Doldu!)"
+  },
+  "archive_go_premium": {
+    "message": "Premium'a Geç"
+  },
+  "archive_limit_modal_title": {
+    "message": "Kapasite Sınırı"
+  },
+  "archive_limit_modal_desc": {
+    "message": "Daha fazla kelime kaydetmek ve tüm özellikleri açmak için Premium sürüme yükseltin."
+  },
+  "settings_show_learned_games_title": {
+    "message": "Oyunlarda Öğrenilenleri Göster"
+  },
+  "settings_show_learned_games_desc": {
+    "message": "Öğrenildi olarak işaretlediğiniz kelimeleri oyunlarda göstermeye devam et"
+  },
+  "game_insufficient_unlearned_words": {
+    "message": "Bu oyunu oynamak için öğrenilmemiş en az 4 kelimeniz olmalıdır."
+  },
+  "settings_sub_bg_color": {
+    "message": "Arkaplan Rengi"
+  },
+  "settings_sub_bg_opacity": {
+    "message": "Arkaplan Şeffaflığı"
+  },
+  "opacity_0": {
+    "message": "%0"
+  },
+  "opacity_25": {
+    "message": "%25"
+  },
+  "opacity_50": {
+    "message": "%50"
+  },
+  "opacity_75": {
+    "message": "%75"
+  },
+  "opacity_85": {
+    "message": "%85"
+  },
+  "opacity_100": {
+    "message": "%100"
+  },
+  "settings_panel_font_size": {
+    "message": "Panel İçi Altyazı Boyutu"
+  },
+  "settings_panel_font_small": {
+    "message": "Küçük"
+  },
+  "settings_panel_font_medium": {
+    "message": "Orta"
+  },
+  "settings_panel_font_large": {
+    "message": "Büyük"
+  },
+  "color_navy": {
+    "message": "Lacivert"
+  },
+  "color_black": {
+    "message": "Siyah"
+  },
+  "color_gray": {
+    "message": "Gri"
+  },
+  "color_indigo": {
+    "message": "İndigo"
+  },
+  "color_green": {
+    "message": "Yeşil"
+  },
+  "color_yellow": {
+    "message": "Sarı"
+  },
+  "color_blue": {
+    "message": "Mavi"
+  },
+  "color_pink": {
+    "message": "Pembe"
+  },
+  "color_custom": {
+    "message": "Özel Renk"
+  },
+  "settings_game_sound": {
+    "message": "Oyun Ses Efektleri"
+  },
+  "settings_game_auto_pronounce": {
+    "message": "Otomatik Seslendirme"
+  },
+  "settings_game_show_learned": {
+    "message": "Öğrenilenleri Oyunlarda Göster"
+  },
+  "settings_reset_all_data": {
+    "message": "Tüm Verileri Sıfırla"
+  },
+  "settings_reset_all_confirm": {
+    "message": "Tüm kelimeleriniz, SRS ilerlemeniz, oyun istatistikleriniz ve eklenti ayarlarınız kalıcı olarak silinecek. Sıfırlamak istediğinize emin misiniz?"
+  },
+  "settings_reset_all_done": {
+    "message": "Tüm veriler sıfırlandı!"
+  },
+  "settings_export_json_success": {
+    "message": "JSON yedeği indirildi!"
+  },
+  "premium_backup_locked_desc": {
+    "message": "Veri yedekleme özelliğini kullanabilmek için Premium üyeliğe yükseltmeniz gerekmektedir."
+  },
+  "premium_restore_locked_desc": {
+    "message": "Yedek geri yükleme özelliğini kullanabilmek için Premium üyeliğe yükseltmeniz gerekmektedir."
+  },
+  "premium_anki_locked_desc": {
+    "message": "Anki'ye veri aktarma özelliğini kullanabilmek için Premium üyeliğe yükseltmeniz gerekmektedir."
+  },
+  "premium_connect_google_first": {
+    "message": "Devam etmek için Google hesabınızı bağlayın..."
+  },
+  "premium_google_connect_cancelled": {
+    "message": "Google bağlantısı iptal edildi."
+  },
+  "btn_ok": {
+    "message": "Tamam"
+  },
+  "settings_restore_success_alert": {
+    "message": "Yedekleme başarıyla geri yüklendi! Kayıtlı kelimeleriniz ve ayarlarınız güncellendi."
+  },
+  "menu_title": {
+    "message": "Menü"
+  },
+  "settings_tab_player": {
+    "message": "Oynatıcı"
+  },
+  "settings_tab_general": {
+    "message": "Ayarlar"
+  },
+  "settings_tab_about": {
+    "message": "Hakkında"
+  },
+  "settings_shortcuts_view": {
+    "message": "Kısayolları Görüntüle"
+  },
+  "settings_tour_replay": {
+    "message": "Kısa Tanıtımı Tekrar Oynat"
+  },
+  "game_wrong_template": {
+    "message": "✗ Yanlış! Doğru cevap: {word}"
+  },
+  "toast_login_in_progress": {
+    "message": "Giriş yapılıyor..."
+  },
+  "toast_login_tab_opened": {
+    "message": "Google Giriş sayfası açıldı. Sekmede hesabınızı seçiniz..."
+  },
+  "toast_login_success": {
+    "message": "🎉 Giriş başarılı! Hesabınız bağlandı."
+  },
+  "toast_logout_success": {
+    "message": "Oturum kapatıldı"
+  },
+  "toast_login_failed": {
+    "message": "Giriş başarısız oldu"
+  },
+  "toast_sync_success": {
+    "message": "🎉 Bulut eşitlemesi başarıyla yapıldı!"
+  },
+  "toast_sync_warning": {
+    "message": "Eşitleme uyarısı: "
+  },
+  "toast_no_words_to_refresh": {
+    "message": "Yenilenecek kelime bulunamadı."
+  },
+  "toast_updating_word_families": {
+    "message": "Kelime aileleri güncelleniyor..."
+  },
+  "toast_word_families_updated": {
+    "message": "Kelime aileleri güncellendi!"
+  },
+  "toast_no_words_to_export": {
+    "message": "Dışa aktarılacak kelime yok."
+  },
+  "srs_toggle_learned_tooltip": {
+    "message": "Öğrenildi durumunu değiştir"
+  },
+  "fc_translation": {
+    "message": "Çeviri"
+  },
+  "achievement_unlocked_title": {
+    "message": "Başarım Kazanıldı!"
+  },
+  "pool_all": {
+    "message": "Havuz: Tümü"
+  },
+  "translating_ellipsis": {
+    "message": "Çeviriliyor..."
+  },
+  "premium_dual_sub_desc": {
+    "message": "Çift altyazı desteği ile hem hedef dilde hem ana dilde altyazıları aynı anda görüntülemek için Premium üyeliğe yükseltin."
+  },
+  "premium_shadowing_desc": {
+    "message": "Altyazı duraklatma ve konuşma pratiği yapmanızı sağlayan Shadowing modunu açmak için Premium üyeliğe yükseltin."
+  },
+  "premium_auto_rewind_desc": {
+    "message": "Kelime kaydettiğinizde videoyu otomatik geri sararak bağlamı tekrar dinlemenizi sağlayan özelliği kullanmak için Premium üyeliğe yükseltin."
+  },
+  "premium_auto_slow_mo_desc": {
+    "message": "Zor ve ileri seviye kelimeler geçtiğinde video hızını otomatik düşüren Akıllı Yavaşlatma özelliğini kullanmak için Premium üyeliğe yükseltin."
+  },
+  "premium_word_family_desc": {
+    "message": "Kelime köklerini ve türemiş kelime ailelerini inceleyebilmek için Premium üyeliğe yükseltin."
+  },
+  "settings_auto_translate_fallback": {
+    "message": "Otomatik Altyazı Çevirisi (GT)"
+  },
+  "settings_auto_translate_fallback_help": {
+    "message": "İçerikte seçili ikinci dil altyazısı resmi olarak yoksa, Google Translate ile otomatik oluşturup [GT] olarak gösterir."
+  },
+  "source_play_scene_btn": {
+    "message": "Sahneyi Oynat"
+  },
+  "source_open_start_btn": {
+    "message": "Baştan Aç"
+  },
+  "source_copy_link_btn": {
+    "message": "Linki Kopyala"
+  },
+  "toast_link_copied": {
+    "message": "Kopyalandı!"
+  },
+  "lang_fa": {
+    "message": "Farsça"
+  },
+  "platform_local": {
+    "message": "Yerel video"
+  }
+}

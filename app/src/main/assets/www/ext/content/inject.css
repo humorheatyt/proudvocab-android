@@ -1,0 +1,496 @@
+/* Hide native subtitles but keep layout/updates active */
+body.primevocab-active .atvwebplayersdk-captions-text,
+body.primevocab-active .atvwebplayersdk-subtitle-text,
+body.primevocab-active .atvwebplayersdk-captions-text-container,
+body.primevocab-active div[data-testid="caption-text"],
+body.primevocab-active .player-timedtext,
+body.primevocab-active .ytp-caption-window-container {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.primevocab-subtitle-overlay {
+  position: absolute;
+  bottom: var(--primevocab-bottom, 12%) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 2147483647 !important;
+  pointer-events: none !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--primevocab-bg-color, rgba(10, 15, 30, 0.85)) !important;
+  border: var(--primevocab-border-width, 1.5px) solid var(--primevocab-border-color, rgba(99, 102, 241, 0.35)) !important;
+  box-shadow: var(--primevocab-box-shadow, 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 15px rgba(99, 102, 241, 0.15)) !important;
+  padding: 10px 20px !important;
+  border-radius: 12px !important;
+  max-width: 85% !important;
+  transition: bottom 0.2s ease, opacity 0.15s ease !important;
+  font-family: 'Outfit', 'Inter', -apple-system, sans-serif !important;
+  user-select: text !important;
+  opacity: 0;
+}
+
+.primevocab-subtitle-overlay.visible {
+  pointer-events: auto !important;
+  opacity: 1 !important;
+}
+
+.primevocab-subtitle-line {
+  margin: 4px 0 !important;
+  line-height: 1.6 !important;
+  color: #f1f5f9 !important;
+  font-size: var(--primevocab-font-size, 22px) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
+  white-space: nowrap !important;
+  pointer-events: auto !important;
+}
+
+.primevocab-subtitle-translation {
+  margin-top: 6px !important;
+  font-size: calc(var(--primevocab-font-size, 22px) * 0.82) !important;
+  font-weight: 600 !important;
+  color: var(--primevocab-translation-color, #fef08a) !important;
+  opacity: 0.94 !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8) !important;
+  max-width: 90% !important;
+  text-align: center !important;
+  line-height: 1.4 !important;
+  pointer-events: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.primevocab-gt-badge-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 3px !important;
+  position: relative !important;
+}
+
+.primevocab-gt-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  font-size: 9.5px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  padding: 2.5px 8px !important;
+  border-radius: 9999px !important;
+  background: rgba(15, 23, 42, 0.8) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  color: #93c5fd !important;
+  border: 1px solid rgba(147, 197, 253, 0.35) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45) !important;
+  user-select: none !important;
+  letter-spacing: 0.03em !important;
+  cursor: pointer !important;
+  position: relative !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.primevocab-gt-badge:hover {
+  background: rgba(30, 41, 59, 0.95) !important;
+  color: #ffffff !important;
+  border-color: rgba(147, 197, 253, 0.75) !important;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35) !important;
+  transform: translateY(-1px) scale(1.03) !important;
+}
+
+.primevocab-gt-tooltip {
+  position: absolute !important;
+  bottom: calc(100% + 7px) !important;
+  left: 50% !important;
+  transform: translateX(-50%) translateY(4px) scale(0.96) !important;
+  background: rgba(15, 23, 42, 0.94) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 8px !important;
+  padding: 5px 11px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 1px rgba(255, 255, 255, 0.2) !important;
+  color: #f8fafc !important;
+  font-family: inherit !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0.01em !important;
+  white-space: nowrap !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  z-index: 100000 !important;
+  transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.18s ease !important;
+  text-shadow: none !important;
+}
+
+.primevocab-gt-tooltip::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  border-width: 4px 4px 0 4px !important;
+  border-style: solid !important;
+  border-color: rgba(15, 23, 42, 0.94) transparent transparent transparent !important;
+}
+
+.primevocab-gt-badge:hover .primevocab-gt-tooltip {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateX(-50%) translateY(0) scale(1) !important;
+}
+
+.primevocab-trans-text {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+.primevocab-word-chip {
+  display: inline !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 3px !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease !important;
+  color: #f8fafc !important;
+}
+
+.primevocab-word-chip:hover {
+  background: #6366f1 !important;
+  color: #ffffff !important;
+  padding: 0 2px !important;
+  margin: 0 -2px !important;
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.6) !important;
+}
+
+.primevocab-word-chip.word-saved {
+  color: #10b981 !important;
+  text-decoration: underline dashed #10b981 2px !important;
+  text-underline-offset: 4px !important;
+  font-weight: inherit !important;
+  border-bottom: none !important;
+  cursor: pointer !important;
+}
+
+.primevocab-word-chip.phrasal-verb,
+.primevocab-word-chip.phrasal-linked {
+  color: #c084fc !important;
+  text-decoration: underline dashed #a855f7 2px !important;
+  text-underline-offset: 4px !important;
+  border-bottom: none !important;
+  font-weight: 700 !important;
+}
+
+.primevocab-word-chip.phrasal-verb.word-saved,
+.primevocab-word-chip.phrasal-linked.word-saved {
+  color: #c084fc !important;
+  text-decoration: underline dashed #a855f7 2px !important;
+}
+
+.primevocab-word-chip.phrasal-verb:hover,
+.primevocab-word-chip.phrasal-linked:hover,
+.primevocab-word-chip.phrasal-verb.word-saved:hover,
+.primevocab-word-chip.phrasal-linked.word-saved:hover {
+  background: #a855f7 !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.6) !important;
+}
+
+.primevocab-word-chip.idiom-collocation {
+  color: #fb923c !important;
+  text-decoration: underline dashed #f97316 2px !important;
+  text-underline-offset: 4px !important;
+  border-bottom: none !important;
+  font-weight: 700 !important;
+}
+
+.primevocab-word-chip.idiom-collocation.word-saved {
+  color: #fb923c !important;
+  text-decoration: underline dashed #f97316 2px !important;
+}
+
+.primevocab-word-chip.idiom-collocation:hover,
+.primevocab-word-chip.idiom-collocation.word-saved:hover {
+  background: #f97316 !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  box-shadow: 0 0 8px rgba(249, 115, 22, 0.6) !important;
+}
+
+.primevocab-word-chip.collocation-word {
+  color: #38bdf8 !important;
+  text-decoration: underline dashed #0284c7 2px !important;
+  text-underline-offset: 4px !important;
+  border-bottom: none !important;
+  font-weight: 700 !important;
+}
+
+.primevocab-word-chip.collocation-word.word-saved {
+  color: #38bdf8 !important;
+  text-decoration: underline dashed #0284c7 2px !important;
+}
+
+.primevocab-word-chip.collocation-word:hover,
+.primevocab-word-chip.collocation-word.word-saved:hover {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6) !important;
+}
+
+.primevocab-word-chip.primevocab-phrasal-linked-hover {
+  background: #a855f7 !important;
+  color: #ffffff !important;
+  border-bottom-color: transparent !important;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.6) !important;
+  padding: 0 2px !important;
+  margin: 0 -2px !important;
+}
+
+.primevocab-word-chip.word-saved:hover {
+  background: #10b981 !important;
+  color: #ffffff !important;
+  border-bottom-color: transparent !important;
+}
+
+.primevocab-word-chip.word-family {
+  color: #34d399 !important;
+  border-bottom: 2px dotted #34d39988 !important;
+}
+
+.primevocab-word-chip.numpad-selected {
+  background: #6366f1 !important;
+  color: #ffffff !important;
+  padding: 0 2px !important;
+  margin: 0 -2px !important;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.8) !important;
+  outline: 2px solid #818cf8 !important;
+  outline-offset: 1px !important;
+}
+
+/* Tooltip wrapper — görünmez genişletilmiş hit alanı */
+.primevocab-tooltip-wrapper {
+  position: absolute;
+  bottom: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: max-content !important;
+  min-width: 150px !important;
+  max-width: 320px !important;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10px !important;
+  pointer-events: none !important;
+  z-index: 2147483647 !important;
+}
+
+.primevocab-tooltip {
+  background: var(--primevocab-bg-color, rgba(10, 15, 30, 0.85)) !important;
+  border: var(--primevocab-border-width, 1.5px) solid var(--primevocab-border-color, rgba(148, 163, 184, 0.25)) !important;
+  border-radius: 12px !important;
+  padding: 8px 12px !important;
+  box-shadow: var(--primevocab-box-shadow, 0 8px 32px rgba(0, 0, 0, 0.5)) !important;
+  min-width: 150px !important;
+  max-width: 300px !important;
+  width: max-content !important;
+  text-align: left !important;
+  pointer-events: auto !important;
+  animation: primevocab-fade-in 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  font-family: 'Outfit', 'Inter', -apple-system, sans-serif !important;
+  box-sizing: border-box !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+.primevocab-tooltip-word {
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: var(--word-color, #ffffff) !important;
+  display: inline-block !important;
+  margin: 0 !important;
+  letter-spacing: -0.015em !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+}
+
+.primevocab-tooltip-trans {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #f1f5f9 !important;
+  display: block !important;
+  margin-top: 3px !important;
+  line-height: 1.35 !important;
+  white-space: normal !important;
+  opacity: 1 !important;
+}
+
+.primevocab-tooltip-save {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  max-width: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
+  flex: 0 0 28px !important;
+  border-radius: 7px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  color: #cbd5e1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25) !important;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background 0.15s, border-color 0.15s, color 0.15s !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  outline: none !important;
+  position: relative !important;
+}
+
+.primevocab-tooltip-save svg {
+  display: block !important;
+  width: 14px !important;
+  height: 14px !important;
+  flex-shrink: 0 !important;
+  pointer-events: none !important;
+}
+
+.primevocab-tooltip-save:hover {
+  transform: scale(1.1) !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35) !important;
+  outline: none !important;
+  cursor: pointer !important;
+}
+
+.primevocab-tooltip-save.saved {
+  background: var(--btn-active-color, #10b981) !important;
+  border-color: var(--btn-active-color, #10b981) !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--btn-active-color, #10b981) 50%, transparent) !important;
+  outline: none !important;
+}
+
+.primevocab-tooltip-save.saved:hover {
+  transform: scale(1.1) !important;
+  background: color-mix(in srgb, var(--btn-active-color, #10b981) 85%, black) !important;
+  border-color: color-mix(in srgb, var(--btn-active-color, #10b981) 85%, black) !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--btn-active-color, #10b981) 70%, transparent) !important;
+  outline: none !important;
+}
+
+.primevocab-tooltip-collocation-container {
+  margin-top: 8px !important;
+  padding: 8px 10px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+@keyframes primevocab-fade-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.primevocab-quick-access-btn {
+  position: absolute !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 2147483647 !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  background: rgba(10, 15, 30, 0.6) !important;
+  border: 1px solid rgba(99, 102, 241, 0.4) !important;
+  backdrop-filter: blur(8px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  opacity: 0.35 !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  padding: 0 !important;
+}
+
+.primevocab-quick-access-btn:hover {
+  opacity: 0.95 !important;
+  background: rgba(99, 102, 241, 0.25) !important;
+  border-color: rgba(99, 102, 241, 0.8) !important;
+  transform: scale(1.08) !important;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.5), 0 4px 12px rgba(0, 0, 0, 0.45) !important;
+}
+
+.primevocab-quick-access-btn img {
+  width: 20px !important;
+  height: 20px !important;
+  object-fit: contain !important;
+  pointer-events: none !important;
+}
+
+/* Amazon Prime Video specific overrides via body classes */
+body.primevocab-hide-imdb .xrayQuickView,
+body.primevocab-hide-imdb [class*="xray"],
+body.primevocab-hide-imdb [class*="XRay"],
+body.primevocab-hide-imdb [class*="xRay"],
+body.primevocab-hide-imdb [data-testid*="xray"],
+body.primevocab-hide-imdb [class*="av-hover-container"],
+body.primevocab-hide-imdb [class*="avod-visual-badge"],
+body.primevocab-hide-imdb .atvwebplayersdk-xray-panel,
+body.primevocab-hide-imdb .xrayScrollPane,
+body.primevocab-hide-imdb .xrayPanel {
+  display: none !important;
+}
+
+body.primevocab-cinema-mode .atvwebplayersdk-controls-bar,
+body.primevocab-cinema-mode .atvwebplayersdk-title-container,
+body.primevocab-cinema-mode .atvwebplayersdk-settings-button,
+body.primevocab-cinema-mode .atvwebplayersdk-pip-button,
+body.primevocab-cinema-mode .atvwebplayersdk-fullscreen-button,
+body.primevocab-cinema-mode .atvwebplayersdk-timed-text-button {
+  display: none !important;
+}
+
+/* Selection sentence translation tooltip */
+#primevocab-selection-tooltip {
+  position: absolute;
+  z-index: 2147483647;
+  background: #111827;
+  border: 1px solid rgba(99, 102, 241, 0.5);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  max-width: 280px;
+  line-height: 1.5;
+  pointer-events: none;
+}
